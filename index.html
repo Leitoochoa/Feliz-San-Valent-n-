@@ -1,181 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Ti, Mi Amor ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Para Ti ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #ff6f91, #ffb3c6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #5a1a1a;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(180deg, #fff0f5, #ffe4e1);
+      color: #4a2c2a;
+      text-align: center;
       overflow-x: hidden;
     }
-    .card {
-      background: rgba(255, 255, 255, 0.96);
-      max-width: 900px;
-      width: 94%;
-      border-radius: 30px;
-      padding: 52px 38px;
-      box-shadow: 0 35px 90px rgba(0,0,0,0.25);
-      text-align: center;
-      position: relative;
-      animation: fadeIn 1.5s ease;
+
+    .container {
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: auto;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.2rem;
-      margin: 0 0 12px;
-      color: #c2185b;
+      font-size: 2.2em;
+      margin-bottom: 20px;
     }
-    h2 {
-      font-weight: 400;
-      margin: 0 0 30px;
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      margin: 25px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
     }
-    .heart {
-      font-size: 3.4rem;
-      animation: beat 1.3s infinite;
-      display: inline-block;
-      margin-bottom: 8px;
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
     }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-    }
-    .message {
-      font-size: 1.15rem;
-      line-height: 1.9;
-      max-width: 720px;
-      margin: 0 auto 34px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 14px 36px;
-      background: linear-gradient(135deg, #c2185b, #ff4f81);
-      color: #fff;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.05rem;
+
+    button {
+      background: #ff6f91;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 1em;
       cursor: pointer;
-      transition: transform .25s ease, box-shadow .25s ease;
-      box-shadow: 0 14px 30px rgba(194,24,91,0.45);
+      margin-top: 15px;
+      transition: background 0.3s;
     }
-    .btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(194,24,91,0.6);
+
+    button:hover {
+      background: #ff4f7a;
     }
-    .step {
+
+    img {
+      width: 100%;
+      border-radius: 18px;
+      margin-top: 15px;
+    }
+
+    .hidden {
       display: none;
-      margin-top: 28px;
-      animation: fadeIn 1s ease;
     }
-    .footer {
-      margin-top: 46px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .floating-hearts span {
-      position: fixed;
-      bottom: -40px;
-      font-size: 26px;
-      animation: floatUp 9s linear infinite;
-      opacity: 0.75;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 0.8; }
-      100% { transform: translateY(-120vh) translateX(60px); opacity: 0; }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #7a4a48;
     }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <div class="heart">❤️</div>
-    <h1>Feliz 14 de Febrero</h1>
-    <h2>Un pequeño viaje para llegar a mi corazón</h2>
+  <div class="container">
 
-    <p class="message">
-      Amor mío,<br><br>
-      Esta página no se lee… se descubre.
-      Cada paso guarda un pedacito de lo que siento por ti.
-      Tómate tu tiempo, sonríe, y sigue adelante 💕
-    </p>
+    <h1>Para alguien muy especial ❤️</h1>
 
-    <!-- Paso 1 -->
-    <div id="step1">
-      <a class="btn" onclick="nextStep(1)">Comenzar 💖</a>
+    <!-- CAPA 1 -->
+    <div id="capa1" class="card show">
+      <p>
+        No hice esta página por una fecha.<br>
+        La hice porque pensé en ti…<br>
+        y sonreí sin darme cuenta.
+      </p>
+      <button onclick="mostrarCapa(2)">Seguir leyendo 💌</button>
     </div>
 
-    <!-- Paso 2 -->
-    <div class="step" id="step2">
-      <p class="message">💌 Primer secreto:<br>Eres la persona que cambió mis días normales en momentos especiales.</p>
-      <a class="btn" onclick="nextStep(2)">Siguiente ✨</a>
+    <!-- CAPA 2 -->
+    <div id="capa2" class="card hidden">
+      <p>
+        Me gusta cómo haces que los momentos simples<br>
+        se sientan diferentes.<br><br>
+        Como si todo fuera más ligero cuando estás cerca.
+      </p>
+      <button onclick="iniciarMusica()">Un pequeño detalle 🎶</button>
     </div>
 
-    <!-- Paso 3 -->
-    <div class="step" id="step3">
-      <p class="message">🌹 Segundo secreto:<br>No importa el lugar ni el tiempo, mi lugar favorito siempre es contigo.</p>
-      <a class="btn" onclick="nextStep(3)">Continuar 💕</a>
+    <!-- CAPA 3 -->
+    <div id="capa3" class="card hidden">
+      <p>
+        Aún no tenemos una canción…<br>
+        pero me gustaría que algún día la tengamos.
+      </p>
+      <button onclick="mostrarCapa(4)">Ver un recuerdo 📸</button>
     </div>
 
-    <!-- Paso 4 -->
-    <div class="step" id="step4">
-      <p class="message">💖 Último secreto:<br>Prometo cuidarte, respetarte y amarte con todo mi corazón.</p>
-      <a class="btn" onclick="nextStep(4)">Un último paso… ❤️</a>
+    <!-- CAPA 4 FOTO -->
+    <div id="capa4" class="card hidden">
+      <img src="foto-recuerdo.jpg" alt="Nuestro recuerdo">
+      <p>
+        <strong>A veces el amor se ve así:</strong><br>
+        dos manos, un momento<br>
+        y el inicio de algo que se siente bonito. 💕
+      </p>
+      <button onclick="mostrarCapa(5)">Una última cosa… 💖</button>
     </div>
 
-    <!-- Final -->
-    <div class="step" id="final">
-      <h2>¿Quieres ser mi San Valentín? 💍</h2>
-      <div style="margin-top:20px;">
-        <a class="btn" onclick="aceptar()">Sí 💕</a>
-        <a class="btn" onclick="aceptar()" style="margin-left:12px;">Obvio que sí 😍</a>
-      </div>
+    <!-- CAPA FINAL -->
+    <div id="capa5" class="card hidden">
+      <p>
+        Gracias por existir en mi vida.<br>
+        No sé a dónde nos lleve esto,<br>
+        pero me encanta caminarlo contigo.
+      </p>
+      <footer>
+        Con cariño, <br> alguien que te piensa bonito ✨
+      </footer>
     </div>
 
-    <div class="footer">
-      Hecho con todo mi amor, solo para ti ✨
-    </div>
   </div>
 
-  <div class="floating-hearts" id="hearts"></div>
+  <!-- MÚSICA -->
+  <audio id="musica" loop>
+    <!-- Puedes cambiar el archivo cuando tengan canción -->
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
-    const heartsContainer = document.getElementById('hearts');
-    const emojis = ['❤️','💖','💕','💘','💝','🌹'];
-
-    function createHeart() {
-      const span = document.createElement('span');
-      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      span.style.left = Math.random() * 100 + 'vw';
-      span.style.animationDuration = (7 + Math.random() * 4) + 's';
-      heartsContainer.appendChild(span);
-      setTimeout(() => span.remove(), 11000);
-    }
-    setInterval(createHeart, 550);
-
-    function nextStep(step) {
-      document.getElementById('step' + step).style.display = 'none';
-      const next = step + 1;
-      document.getElementById('step' + next).style.display = 'block';
+    function mostrarCapa(num) {
+      const capa = document.getElementById('capa' + num);
+      capa.classList.remove('hidden');
+      setTimeout(() => {
+        capa.classList.add('show');
+      }, 50);
     }
 
-    function aceptar() {
-      alert('💖 Sabía que dirías que sí 💖\nGracias por hacerme tan feliz');
+    function iniciarMusica() {
+      const audio = document.getElementById('musica');
+      audio.play();
+      mostrarCapa(3);
     }
   </script>
+
 </body>
 </html>
