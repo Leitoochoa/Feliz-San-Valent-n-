@@ -79,9 +79,9 @@
 <body>
 
 <!-- AUDIO -->
-<audio id="musica" src="musica.mp3"></audio>
+<audio id="musica" src="Morat, Juanes-Besos en Guerra.mp3"></audio>
 
-<!-- CAPA INICIAL -->
+<!-- CAPA 1 -->
 <div class="card" id="inicio">
   <h1>Hola amor ❤️</h1>
   <p>
@@ -91,13 +91,24 @@
   <button class="btn" onclick="iniciar()">Descúbrelo 💖</button>
 </div>
 
-<!-- CAPA RECUERDO -->
+<!-- CAPA 2 -->
 <div class="card hidden" id="recuerdo">
   <h1>Nuestra primera cita 💑</h1>
   <img src="Foto-recuerdo.jpeg" alt="Nuestro recuerdo" class="foto">
   <p>
     Ese día no sabía que estaba empezando algo tan bonito…  
     pero hoy sé que elegirte fue lo mejor ❤️
+  </p>
+  <button class="btn" onclick="continuar()">Continuar 💕</button>
+</div>
+
+<!-- CAPA 3 -->
+<div class="card hidden" id="mensaje">
+  <h1>Y desde ese día… ✨</h1>
+  <p>
+    Cada risa contigo, cada momento,  
+    me hizo entender que el amor se construye  
+    cuando dos personas se eligen todos los días.
   </p>
 </div>
 
@@ -106,11 +117,17 @@ function iniciar() {
   document.getElementById("inicio").classList.add("hidden");
   document.getElementById("recuerdo").classList.remove("hidden");
 
-  const musica = document.getElementById("Morat, Juanes-Besos en guerra.mp3");
+  const musica = document.getElementById("musica");
   musica.volume = 0.6;
   musica.play();
+}
+
+function continuar() {
+  document.getElementById("recuerdo").classList.add("hidden");
+  document.getElementById("mensaje").classList.remove("hidden");
 }
 </script>
 
 </body>
 </html>
+
