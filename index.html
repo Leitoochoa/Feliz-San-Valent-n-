@@ -11,7 +11,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      background: linear-gradient(135deg, #ff6f91, #ffb3c6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -19,69 +19,68 @@
       overflow-x: hidden;
     }
     .card {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       max-width: 900px;
-      width: 92%;
-      border-radius: 28px;
-      padding: 50px 36px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+      width: 94%;
+      border-radius: 30px;
+      padding: 52px 38px;
+      box-shadow: 0 35px 90px rgba(0,0,0,0.25);
       text-align: center;
       position: relative;
       animation: fadeIn 1.5s ease;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
-      margin: 0 0 10px;
+      font-size: 4.2rem;
+      margin: 0 0 12px;
       color: #c2185b;
     }
     h2 {
       font-weight: 400;
       margin: 0 0 30px;
     }
+    .heart {
+      font-size: 3.4rem;
+      animation: beat 1.3s infinite;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
     .message {
       font-size: 1.15rem;
       line-height: 1.9;
       max-width: 720px;
-      margin: 0 auto 36px;
-    }
-    .heart {
-      font-size: 3.2rem;
-      animation: beat 1.4s infinite;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
+      margin: 0 auto 34px;
     }
     .btn {
       display: inline-block;
-      margin-top: 26px;
-      padding: 14px 34px;
+      margin-top: 22px;
+      padding: 14px 36px;
       background: linear-gradient(135deg, #c2185b, #ff4f81);
       color: #fff;
       border-radius: 999px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.05rem;
+      cursor: pointer;
       transition: transform .25s ease, box-shadow .25s ease;
       box-shadow: 0 14px 30px rgba(194,24,91,0.45);
     }
     .btn:hover {
-      transform: translateY(-3px) scale(1.03);
+      transform: translateY(-3px) scale(1.05);
       box-shadow: 0 20px 40px rgba(194,24,91,0.6);
     }
-    .hidden-message {
+    .step {
       display: none;
-      margin-top: 30px;
-      font-size: 1.1rem;
+      margin-top: 28px;
       animation: fadeIn 1s ease;
-      color: #a0134a;
     }
     .footer {
       margin-top: 46px;
@@ -106,25 +105,49 @@
   <div class="card">
     <div class="heart">❤️</div>
     <h1>Feliz 14 de Febrero</h1>
-    <h2>Para la persona que ilumina mis días</h2>
+    <h2>Un pequeño viaje para llegar a mi corazón</h2>
 
     <p class="message">
       Amor mío,<br><br>
-      Esta página es solo un pequeño detalle comparado con todo lo que siento por ti.
-      Desde que llegaste a mi vida, aprendí que el amor verdadero se construye con sonrisas,
-      paciencia y momentos que se quedan para siempre en el corazón.
-      <br><br>
-      Gracias por ser tú, por tu cariño y por hacerme tan feliz.
+      Esta página no se lee… se descubre.
+      Cada paso guarda un pedacito de lo que siento por ti.
+      Tómate tu tiempo, sonríe, y sigue adelante 💕
     </p>
 
-    <a href="#" class="btn" onclick="mostrarMensaje()">Presiona aquí 💕</a>
+    <!-- Paso 1 -->
+    <div id="step1">
+      <a class="btn" onclick="nextStep(1)">Comenzar 💖</a>
+    </div>
 
-    <div class="hidden-message" id="mensajeSecreto">
-      ✨ Prometo cuidarte, respetarte y amarte hoy, mañana y siempre. ✨
+    <!-- Paso 2 -->
+    <div class="step" id="step2">
+      <p class="message">💌 Primer secreto:<br>Eres la persona que cambió mis días normales en momentos especiales.</p>
+      <a class="btn" onclick="nextStep(2)">Siguiente ✨</a>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="step" id="step3">
+      <p class="message">🌹 Segundo secreto:<br>No importa el lugar ni el tiempo, mi lugar favorito siempre es contigo.</p>
+      <a class="btn" onclick="nextStep(3)">Continuar 💕</a>
+    </div>
+
+    <!-- Paso 4 -->
+    <div class="step" id="step4">
+      <p class="message">💖 Último secreto:<br>Prometo cuidarte, respetarte y amarte con todo mi corazón.</p>
+      <a class="btn" onclick="nextStep(4)">Un último paso… ❤️</a>
+    </div>
+
+    <!-- Final -->
+    <div class="step" id="final">
+      <h2>¿Quieres ser mi San Valentín? 💍</h2>
+      <div style="margin-top:20px;">
+        <a class="btn" onclick="aceptar()">Sí 💕</a>
+        <a class="btn" onclick="aceptar()" style="margin-left:12px;">Obvio que sí 😍</a>
+      </div>
     </div>
 
     <div class="footer">
-      Hecho con todo mi amor, exclusivamente para ti 💖
+      Hecho con todo mi amor, solo para ti ✨
     </div>
   </div>
 
@@ -144,8 +167,14 @@
     }
     setInterval(createHeart, 550);
 
-    function mostrarMensaje() {
-      document.getElementById('mensajeSecreto').style.display = 'block';
+    function nextStep(step) {
+      document.getElementById('step' + step).style.display = 'none';
+      const next = step + 1;
+      document.getElementById('step' + next).style.display = 'block';
+    }
+
+    function aceptar() {
+      alert('💖 Sabía que dirías que sí 💖\nGracias por hacerme tan feliz');
     }
   </script>
 </body>
