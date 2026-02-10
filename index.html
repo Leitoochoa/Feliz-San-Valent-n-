@@ -21,9 +21,10 @@
     padding: 30px;
     border-radius: 20px;
     text-align: center;
-    max-width: 360px;
+    max-width: 380px;
+    width: 90%;
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    animation: fadeIn 1s ease;
+    animation: fadeIn 0.8s ease;
   }
 
   h1 {
@@ -32,7 +33,7 @@
 
   p {
     color: #555;
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
 
   .btn {
@@ -44,13 +45,7 @@
     border-radius: 999px;
     font-size: 1em;
     cursor: pointer;
-    transition: transform .2s, box-shadow .2s;
     box-shadow: 0 10px 25px rgba(194,24,91,.35);
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(194,24,91,.45);
   }
 
   .hidden {
@@ -61,16 +56,23 @@
     width: 100%;
     border-radius: 15px;
     margin-top: 15px;
-    animation: zoom 1s ease;
+  }
+
+  .razones {
+    text-align: left;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 15px;
+    padding-right: 10px;
+  }
+
+  .razones li {
+    margin-bottom: 8px;
+    color: #444;
   }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  @keyframes zoom {
-    from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
   }
 </style>
@@ -82,52 +84,73 @@
 <audio id="musica" src="Morat, Juanes-Besos en Guerra.mp3"></audio>
 
 <!-- CAPA 1 -->
-<div class="card" id="inicio">
+<div class="card" id="capa1">
   <h1>Hola amor ❤️</h1>
   <p>
-    Esto no es solo una página…  
-    es un pedacito de lo que siento por ti.
+    Esta página guarda un pedacito  
+    de todo lo que siento por ti.
   </p>
-  <button class="btn" onclick="iniciar()">Descúbrelo 💖</button>
+  <button class="btn" onclick="irA(2)">Comenzar 💖</button>
 </div>
 
 <!-- CAPA 2 -->
-<div class="card hidden" id="recuerdo">
+<div class="card hidden" id="capa2">
   <h1>Nuestra primera cita 💑</h1>
-  <img src="Foto-recuerdo.jpeg" alt="Nuestro recuerdo" class="foto">
+  <img src="Foto-recuerdo.jpeg" class="foto">
   <p>
-    Ese día no sabía que estaba empezando algo tan bonito…  
-    pero hoy sé que elegirte fue lo mejor ❤️
+    Ese día no sabía que estaba  
+    comenzando algo tan bonito…
   </p>
-  <button class="btn" onclick="continuar()">Continuar 💕</button>
+  <button class="btn" onclick="irA(3)">Continuar 💕</button>
 </div>
 
 <!-- CAPA 3 -->
-<div class="card hidden" id="mensaje">
-  <h1>Y desde ese día… ✨</h1>
+<div class="card hidden" id="capa3">
+  <h1>Y sin darme cuenta ✨</h1>
   <p>
-    Cada risa contigo, cada momento,  
-    me hizo entender que el amor se construye  
-    cuando dos personas se eligen todos los días.
+    Te volviste mi lugar seguro,  
+    mi risa favorita  
+    y mi mejor decisión.
+  </p>
+  <button class="btn" onclick="irA(4)">Siguiente 💘</button>
+</div>
+
+<!-- CAPA 4 -->
+<div class="card hidden" id="capa4">
+  <h1>100 razones por las que te amo ❤️</h1>
+
+  <ol class="razones">
+    <li>Tu sonrisa</li>
+    <li>La forma en que me miras</li>
+    <li>Cómo me haces sentir en paz</li>
+    <li>Tu risa</li>
+    <li>Tu forma de ser</li>
+    <li>Cómo me apoyas</li>
+    <li>Tu paciencia</li>
+    <li>Tu cariño</li>
+    <li>Tu voz</li>
+    <li>Porque eres tú</li>
+    <!-- Puedes seguir agregando hasta 100 -->
+  </ol>
+
+  <p>
+    Y podría seguir escribiendo  
+    razones… toda la vida.
   </p>
 </div>
 
 <script>
-function iniciar() {
-  document.getElementById("inicio").classList.add("hidden");
-  document.getElementById("recuerdo").classList.remove("hidden");
+function irA(numero) {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+  document.getElementById('capa' + numero).classList.remove('hidden');
 
   const musica = document.getElementById("musica");
-  musica.volume = 0.6;
-  musica.play();
-}
-
-function continuar() {
-  document.getElementById("recuerdo").classList.add("hidden");
-  document.getElementById("mensaje").classList.remove("hidden");
+  if (musica.paused) {
+    musica.volume = 0.6;
+    musica.play();
+  }
 }
 </script>
 
 </body>
 </html>
-
