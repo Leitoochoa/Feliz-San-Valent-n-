@@ -1,161 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Para Ti ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Para Ti ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background: linear-gradient(180deg, #fff0f5, #ffe4e1);
-      color: #4a2c2a;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    .container {
-      padding: 40px 20px;
-      max-width: 600px;
-      margin: auto;
-    }
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 360px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+  }
 
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 20px;
-    }
+  h1 {
+    color: #c2185b;
+  }
 
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      margin: 25px 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
-    }
+  p {
+    color: #555;
+    font-size: 1.1em;
+  }
 
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #c2185b;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 10px 25px rgba(194,24,91,.35);
+  }
 
-    button {
-      background: #ff6f91;
-      border: none;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: background 0.3s;
-    }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(194,24,91,.45);
+  }
 
-    button:hover {
-      background: #ff4f7a;
-    }
+  .hidden {
+    display: none;
+  }
 
-    img {
-      width: 100%;
-      border-radius: 18px;
-      margin-top: 15px;
-    }
+  .foto {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+    animation: zoom 1s ease;
+  }
 
-    .hidden {
-      display: none;
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #7a4a48;
-    }
-  </style>
+  @keyframes zoom {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>Para alguien muy especial ❤️</h1>
+<!-- AUDIO -->
+<audio id="musica" src="musica.mp3"></audio>
 
-    <!-- CAPA 1 -->
-    <div id="capa1" class="card show">
-      <p>
-        No hice esta página por una fecha.<br>
-        La hice porque pensé en ti…<br>
-        y sonreí sin darme cuenta.
-      </p>
-      <button onclick="mostrarCapa(2)">Seguir leyendo 💌</button>
-    </div>
+<!-- CAPA INICIAL -->
+<div class="card" id="inicio">
+  <h1>Hola amor ❤️</h1>
+  <p>
+    Esto no es solo una página…  
+    es un pedacito de lo que siento por ti.
+  </p>
+  <button class="btn" onclick="iniciar()">Descúbrelo 💖</button>
+</div>
 
-    <!-- CAPA 2 -->
-    <div id="capa2" class="card hidden">
-      <p>
-        Me gusta cómo haces que los momentos simples<br>
-        se sientan diferentes.<br><br>
-        Como si todo fuera más ligero cuando estás cerca.
-      </p>
-      <button onclick="iniciarMusica()">Un pequeño detalle 🎶</button>
-    </div>
+<!-- CAPA RECUERDO -->
+<div class="card hidden" id="recuerdo">
+  <h1>Nuestra primera cita 💑</h1>
+  <img src="foto-recuerdo.jpg" alt="Nuestro recuerdo" class="foto">
+  <p>
+    Ese día no sabía que estaba empezando algo tan bonito…  
+    pero hoy sé que elegirte fue lo mejor ❤️
+  </p>
+</div>
 
-    <!-- CAPA 3 -->
-    <div id="Morat, Juanes-Besos en Guerra.mp3" class="card hidden">
-      <p>
-        Aún no tenemos una canción…<br>
-        pero me gustaría que algún día la tengamos.
-      </p>
-      <button onclick="mostrarCapa(4)">Ver un recuerdo 📸</button>
-    </div>
+<script>
+function iniciar() {
+  document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("recuerdo").classList.remove("hidden");
 
-    <!-- CAPA 4 FOTO -->
-    <div id="capa4" class="card hidden">
-      <img src="Foto-recuerdo.jpeg" alt="Nuestro recuerdo">
-      <p>
-        <strong>A veces el amor se ve así:</strong><br>
-        dos manos, un momento<br>
-        y el inicio de algo que se siente bonito. 💕
-      </p>
-      <button onclick="mostrarCapa(5)">Una última cosa… 💖</button>
-    </div>
-
-    <!-- CAPA FINAL -->
-    <div id="capa5" class="card hidden">
-      <p>
-        Gracias por existir en mi vida.<br>
-        No sé a dónde nos lleve esto,<br>
-        pero me encanta caminarlo contigo.
-      </p>
-      <footer>
-        Con cariño, <br> alguien que te piensa bonito ✨
-      </footer>
-    </div>
-
-  </div>
-
-  <!-- MÚSICA -->
-  <audio id="musica" loop>
-    <!-- Puedes cambiar el archivo cuando tengan canción -->
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    function mostrarCapa(num) {
-      const capa = document.getElementById('capa' + num);
-      capa.classList.remove('hidden');
-      setTimeout(() => {
-        capa.classList.add('show');
-      }, 50);
-    }
-
-    function iniciarMusica() {
-      const audio = document.getElementById('musica');
-      audio.play();
-      mostrarCapa(3);
-    }
-  </script>
+  const musica = document.getElementById("musica");
+  musica.volume = 0.6;
+  musica.play();
+}
+</script>
 
 </body>
 </html>
