@@ -5,90 +5,83 @@
 <title>Para Ti ❤️</title>
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
-  .card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 380px;
-    width: 90%;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    animation: fadeIn 0.8s ease;
-  }
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: fade 0.8s ease;
+}
 
-  h1 {
-    color: #c2185b;
-  }
+.hidden {
+  display: none;
+}
 
-  p {
-    color: #555;
-    font-size: 1.05em;
-  }
+h1 {
+  color: #c2185b;
+}
 
-  .btn {
-    margin-top: 20px;
-    padding: 12px 28px;
-    background: #c2185b;
-    color: white;
-    border: none;
-    border-radius: 999px;
-    font-size: 1em;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(194,24,91,.35);
-  }
+p {
+  color: #555;
+  font-size: 1.05em;
+}
 
-  .hidden {
-    display: none;
-  }
+.btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(194,24,91,.35);
+}
 
-  .foto {
-    width: 100%;
-    border-radius: 15px;
-    margin-top: 15px;
-  }
+.foto {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
+}
 
-  .razones {
-    text-align: left;
-    max-height: 260px;
-    overflow-y: auto;
-    margin-top: 15px;
-    padding-right: 10px;
-  }
+.razon {
+  margin-top: 20px;
+  font-size: 1.1em;
+  color: #444;
+  min-height: 80px;
+}
 
-  .razones li {
-    margin-bottom: 8px;
-    color: #444;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
+@keyframes fade {
+  from {opacity:0; transform:scale(0.9);}
+  to {opacity:1; transform:scale(1);}
+}
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
 <audio id="musica" src="Morat, Juanes-Besos en Guerra.mp3"></audio>
 
 <!-- CAPA 1 -->
 <div class="card" id="capa1">
   <h1>Hola amor ❤️</h1>
   <p>
-    Esta página guarda un pedacito  
-    de todo lo que siento por ti.
+    Esto no es solo una página…  
+    es una pequeña prueba de todo lo que siento por ti.
   </p>
   <button class="btn" onclick="irA(2)">Comenzar 💖</button>
 </div>
@@ -98,8 +91,8 @@
   <h1>Nuestra primera cita 💑</h1>
   <img src="Foto-recuerdo.jpeg" class="foto">
   <p>
-    Ese día no sabía que estaba  
-    comenzando algo tan bonito…
+    Ese día no sabía que estaba empezando  
+    una de las historias más bonitas de mi vida.
   </p>
   <button class="btn" onclick="irA(3)">Continuar 💕</button>
 </div>
@@ -108,46 +101,88 @@
 <div class="card hidden" id="capa3">
   <h1>Y sin darme cuenta ✨</h1>
   <p>
-    Te volviste mi lugar seguro,  
-    mi risa favorita  
-    y mi mejor decisión.
+    Te convertiste en mi persona favorita,  
+    en mi calma y en mi sonrisa diaria.
   </p>
   <button class="btn" onclick="irA(4)">Siguiente 💘</button>
 </div>
 
-<!-- CAPA 4 -->
+<!-- CAPA 4 - 100 RAZONES -->
 <div class="card hidden" id="capa4">
   <h1>100 razones por las que te amo ❤️</h1>
 
-  <ol class="razones">
-    <li>Tu sonrisa</li>
-    <li>La forma en que me miras</li>
-    <li>Cómo me haces sentir en paz</li>
-    <li>Tu risa</li>
-    <li>Tu forma de ser</li>
-    <li>Cómo me apoyas</li>
-    <li>Tu paciencia</li>
-    <li>Tu cariño</li>
-    <li>Tu voz</li>
-    <li>Porque eres tú</li>
-    <!-- Puedes seguir agregando hasta 100 -->
-  </ol>
+  <div class="razon" id="razonTexto">
+    Toca el botón para descubrirlas 💕
+  </div>
 
+  <button class="btn" onclick="mostrarRazon()">Ver una razón más 💖</button>
+
+  <button class="btn hidden" id="finalBtn" onclick="irA(5)">
+    Continuar 💝
+  </button>
+</div>
+
+<!-- CAPA 5 -->
+<div class="card hidden" id="capa5">
+  <h1>Y podría seguir… 🥹</h1>
   <p>
-    Y podría seguir escribiendo  
-    razones… toda la vida.
+    Porque amarte no es una lista,  
+    es algo que elijo todos los días.
+  </p>
+  <p>
+    Feliz San Valentín ❤️
   </p>
 </div>
 
 <script>
-function irA(numero) {
+const razones = [
+  "1. Porque tu sonrisa ilumina mis días.",
+  "2. Porque me haces sentir en casa.",
+  "3. Porque contigo puedo ser yo.",
+  "4. Porque tu risa es mi sonido favorito.",
+  "5. Porque me apoyas incluso cuando dudo.",
+  "6. Porque haces especiales los momentos simples.",
+  "7. Porque confías en mí.",
+  "8. Porque me miras con amor.",
+  "9. Porque me haces sentir importante.",
+  "10. Porque contigo todo es mejor.",
+  "11. Porque me das paz.",
+  "12. Porque eres auténtica.",
+  "13. Porque me inspiras.",
+  "14. Porque me entiendes.",
+  "15. Porque me eliges.",
+  "16. Porque me cuidas.",
+  "17. Porque me haces reír.",
+  "18. Porque me haces crecer.",
+  "19. Porque eres mi refugio.",
+  "20. Porque eres tú.",
+  // Puedes seguir agregando hasta 100 sin romper nada
+  "21. Y porque aunque escriba mil razones…",
+  "22. Ninguna alcanza para explicar",
+  "23. Todo lo que siento por ti ❤️"
+];
+
+let indice = 0;
+
+function irA(num) {
   document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-  document.getElementById('capa' + numero).classList.remove('hidden');
+  document.getElementById('capa'+num).classList.remove('hidden');
 
   const musica = document.getElementById("musica");
   if (musica.paused) {
     musica.volume = 0.6;
     musica.play();
+  }
+}
+
+function mostrarRazon() {
+  if (indice < razones.length) {
+    document.getElementById("razonTexto").innerText = razones[indice];
+    indice++;
+  } else {
+    document.getElementById("razonTexto").innerText =
+      "La razón número 100… eres tú, todos los días ❤️";
+    document.getElementById("finalBtn").classList.remove("hidden");
   }
 }
 </script>
