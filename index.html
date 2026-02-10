@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Ti, Mi Amor ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5a1a1a;
+      overflow-x: hidden;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      max-width: 900px;
+      width: 92%;
+      border-radius: 28px;
+      padding: 50px 36px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin: 0 0 10px;
+      color: #c2185b;
+    }
+    h2 {
+      font-weight: 400;
+      margin: 0 0 30px;
+    }
+    .message {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      max-width: 720px;
+      margin: 0 auto 36px;
+    }
+    .heart {
+      font-size: 3.2rem;
+      animation: beat 1.4s infinite;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 14px 34px;
+      background: linear-gradient(135deg, #c2185b, #ff4f81);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 14px 30px rgba(194,24,91,0.45);
+    }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(194,24,91,0.6);
+    }
+    .hidden-message {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.1rem;
+      animation: fadeIn 1s ease;
+      color: #a0134a;
+    }
+    .footer {
+      margin-top: 46px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .floating-hearts span {
+      position: fixed;
+      bottom: -40px;
+      font-size: 26px;
+      animation: floatUp 9s linear infinite;
+      opacity: 0.75;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      100% { transform: translateY(-120vh) translateX(60px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Feliz 14 de Febrero</h1>
+    <h2>Para la persona que ilumina mis días</h2>
+
+    <p class="message">
+      Amor mío,<br><br>
+      Esta página es solo un pequeño detalle comparado con todo lo que siento por ti.
+      Desde que llegaste a mi vida, aprendí que el amor verdadero se construye con sonrisas,
+      paciencia y momentos que se quedan para siempre en el corazón.
+      <br><br>
+      Gracias por ser tú, por tu cariño y por hacerme tan feliz.
+    </p>
+
+    <a href="#" class="btn" onclick="mostrarMensaje()">Presiona aquí 💕</a>
+
+    <div class="hidden-message" id="mensajeSecreto">
+      ✨ Prometo cuidarte, respetarte y amarte hoy, mañana y siempre. ✨
+    </div>
+
+    <div class="footer">
+      Hecho con todo mi amor, exclusivamente para ti 💖
+    </div>
+  </div>
+
+  <div class="floating-hearts" id="hearts"></div>
+
+  <script>
+    const heartsContainer = document.getElementById('hearts');
+    const emojis = ['❤️','💖','💕','💘','💝','🌹'];
+
+    function createHeart() {
+      const span = document.createElement('span');
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (7 + Math.random() * 4) + 's';
+      heartsContainer.appendChild(span);
+      setTimeout(() => span.remove(), 11000);
+    }
+    setInterval(createHeart, 550);
+
+    function mostrarMensaje() {
+      document.getElementById('mensajeSecreto').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
