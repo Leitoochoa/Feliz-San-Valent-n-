@@ -2,256 +2,259 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para ti ❤️</title>
+<title>Feliz San Valentín ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  overflow-x:hidden;
+  color:#fff;
+  text-align:center;
 }
-
-body {
-  margin: 0;
-  background: linear-gradient(135deg, #ffd6e0, #fff);
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.card{
+  max-width:600px;
+  margin:60px auto;
+  background:rgba(255,255,255,0.15);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  animation:fade 1s ease;
 }
-
-.card {
-  background: white;
-  width: 90%;
-  max-width: 420px;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  animation: fade 0.6s ease;
+.hidden{display:none;}
+h1{font-size:2em;}
+p{font-size:1.1em; line-height:1.6;}
+button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:#fff;
+  font-size:1em;
+  cursor:pointer;
+  transition:transform .2s, background .2s;
 }
-
-.hidden {
-  display: none;
+button:hover{
+  transform:scale(1.05);
+  background:#ff1e4d;
 }
-
-h1 {
-  color: #d81b60;
+img{
+  max-width:100%;
+  border-radius:15px;
+  margin-top:20px;
 }
-
-p {
-  color: #555;
-  line-height: 1.5;
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
-
-button {
-  margin-top: 20px;
-  padding: 14px 26px;
-  border: none;
-  border-radius: 30px;
-  background: #d81b60;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform .2s, box-shadow .2s;
+.heart{
+  position:fixed;
+  color:#ff2d55;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:0.8;
 }
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(216,27,96,0.4);
-}
-
-img {
-  width: 100%;
-  border-radius: 16px;
-  margin-top: 15px;
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSICA -->
 <audio id="musica" loop>
-  <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
+  <source src="capa 3 opcion.mp3" type="audio/mpeg">
 </audio>
 
 <!-- CAPA 1 -->
 <div class="card" id="capa1">
-  <h1>Hola amor 💖</h1>
+  <h1>Hola… 💖</h1>
   <p>
-    Esto no es solo una página…  
-    es una pequeña prueba de todo lo que siento por ti.
+    Antes de empezar,<br>
+    solo quiero que sepas que esto<br>
+    fue hecho con el corazón.
   </p>
-  <button onclick="irA(2)">Comenzar ✨</button>
+  <button onclick="irA(2)">Comenzar</button>
 </div>
 
 <!-- CAPA 2 -->
 <div class="card hidden" id="capa2">
-  <h1>Nuestra historia 💕</h1>
+  <h1>Nuestra historia 📖</h1>
   <p>
-    Desde que llegaste a mi vida,  
-    todo empezó a sentirse diferente… mejor.
+    Tal vez no lo sabías,<br>
+    pero desde el primer momento<br>
+    algo en ti se quedó conmigo.
   </p>
-  <button onclick="irA(3)">Siguiente 💌</button>
+  <button onclick="irA(3)">Siguiente</button>
 </div>
 
-<!-- CAPA 3 -->
+<!-- CAPA 3 FOTO -->
 <div class="card hidden" id="capa3">
-  <h1>Nuestra primera cita 🍨</h1>
+  <h1>Nuestra primera cita 💕</h1>
   <p>
-    Ese día entendí que contigo,  
-    incluso los momentos simples se vuelven inolvidables.
+    Este momento siempre tendrá<br>
+    un lugar especial en mi corazón.
   </p>
-  <img src="Foto-recuerdo.jpeg" alt="Nuestro recuerdo">
-  <button onclick="irA(4)">Continuar 💖</button>
+  <img src="Foto_recuerdo.jpeg" alt="Nuestra foto">
+  <button onclick="irA(4)">Continuar</button>
 </div>
 
-<!-- CAPA 4 -->
+<!-- CAPA 4 100 RAZONES -->
 <div class="card hidden" id="capa4">
-  <h1>100 razones por las que te amo ❤️</h1>
-  <p id="razonTexto">Toca el botón y descúbrelas…</p>
-  <button onclick="mostrarRazon()">Siguiente razón 💘</button>
-  <button id="finalBtn" class="hidden" onclick="irA(5)">Ver final 💍</button>
+  <h1>100 razones por las que te amo 💖</h1>
+  <p id="razonTexto"></p>
+  <button id="btnRazon" onclick="mostrarRazon()">Siguiente razón</button>
 </div>
 
-<!-- CAPA FINAL -->
+<!-- CAPA 5 CIERRE -->
 <div class="card hidden" id="capa5">
-  <h1>Y si llegaste hasta aquí… 💖</h1>
+  <h1>Y si llegaste hasta aquí… 💞</h1>
   <p>
-    Quiero que sepas que no importa cuántas razones existan,  
-    siempre habrá una más para amarte.
-    <br><br>
-    Gracias por ser tú ✨
+    Gracias por leer cada razón,<br>
+    por quedarte hasta el final,<br>
+    y por existir.
   </p>
+  <p style="margin-top:20px; font-weight:bold; color:#ffd1dc;">
+    Hoy te elijo…<br>
+    y ojalá mañana también 💖
+  </p>
+  <button onclick="irA(6)">Un último paso</button>
+</div>
+
+<!-- CAPA 6 FINAL -->
+<div class="card hidden" id="capa6">
+  <h1>Entonces… 💌</h1>
+  <button onclick="final(true)">Me quedo contigo 💖</button>
+  <button onclick="final(false)">No me quedo contigo 🙈</button>
 </div>
 
 <script>
-const razones = [
-"Tu sonrisa",
-"Tu forma de mirarme",
-"Cómo me haces sentir en paz",
-"Tu risa",
-"Tu voz",
-"Tu manera de preocuparte por mí",
-"Cómo tomas mi mano",
-"Tu ternura",
-"Tu forma de amar",
-"Tu paciencia",
-"Porque me haces mejor persona",
-"Porque confías en mí",
-"Porque me escuchas",
-"Porque me entiendes",
-"Porque me aceptas",
-"Porque eres real",
-"Porque eres dulce",
+const musica=document.getElementById("musica");
+
+function irA(n){
+  document.querySelectorAll(".card").forEach(c=>c.classList.add("hidden"));
+  document.getElementById("capa"+n).classList.remove("hidden");
+  musica.play().catch(()=>{});
+}
+
+function crearCorazon(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(15+Math.random()*25)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+
+let indice=0;
+const razones=[
+"Porque tu sonrisa cambia mi día 💖",
+"Porque tu mirada transmite paz",
+"Porque tu risa es mi sonido favorito",
+"Porque eres auténtica",
+"Porque me inspiras a ser mejor",
+"Porque contigo el tiempo vuela",
+"Porque incluso en silencio estás presente",
+"Porque tus abrazos se sienten como hogar",
+"Porque confío en ti",
+"Porque me haces sentir elegido",
 "Porque eres fuerte",
-"Porque eres única",
-"Porque eres tú",
-"Cómo me apoyas",
-"Cómo me motivas",
-"Cómo me haces reír",
-"Cómo me cuidas",
-"Cómo me miras cuando crees que no veo",
-"Cómo haces especiales los momentos simples",
-"Cómo me inspiras",
-"Cómo amas",
-"Cómo sueñas",
-"Cómo luchas",
-"Porque contigo soy yo",
-"Porque contigo no finjo",
-"Porque contigo todo fluye",
-"Porque contigo todo es mejor",
-"Porque contigo aprendí a amar",
-"Porque contigo aprendí a creer",
-"Porque contigo aprendí a sentir",
-"Porque contigo aprendí a esperar",
-"Porque contigo aprendí a confiar",
-"Porque contigo aprendí a quedarme",
-"Porque contigo aprendí a compartir",
-"Porque contigo aprendí a cuidar",
-"Porque contigo aprendí a crecer",
-"Porque contigo aprendí a soñar",
-"Porque contigo aprendí a vivir",
-"Porque contigo aprendí a amar sin miedo",
-"Porque contigo aprendí a ser feliz",
-"Porque contigo aprendí a sonreír",
-"Porque contigo aprendí a disfrutar",
-"Porque contigo aprendí a amar de verdad",
-"Porque me haces sentir amado",
-"Porque me haces sentir importante",
-"Porque me haces sentir seguro",
-"Porque me haces sentir feliz",
-"Porque me haces sentir completo",
-"Porque me haces sentir vivo",
-"Porque me haces sentir querido",
-"Porque me haces sentir acompañado",
-"Porque me haces sentir en casa",
-"Porque me haces sentir paz",
-"Porque me haces sentir amor",
-"Porque eres mi lugar seguro",
-"Porque eres mi calma",
-"Porque eres mi alegría",
-"Porque eres mi inspiración",
-"Porque eres mi motivación",
-"Porque eres mi apoyo",
-"Porque eres mi refugio",
-"Porque eres mi sonrisa diaria",
-"Porque eres mi persona favorita",
-"Porque eres mi mejor decisión",
-"Porque eres mi presente",
-"Porque eres mi futuro",
-"Porque eres mi siempre",
-"Porque eres mi todo",
+"Porque eres dulce",
+"Porque eres inteligente",
+"Porque eres paciente",
 "Porque eres especial",
-"Porque eres increíble",
-"Porque eres maravillosa",
-"Porque eres perfecta para mí",
-"Porque eres amor",
+"Porque sabes escuchar",
+"Porque me apoyas",
+"Porque celebras mis logros",
+"Porque me aceptas",
+"Porque me entiendes",
+"Porque me haces reír",
+"Porque me cuidas",
+"Porque me motivas",
+"Porque contigo todo es más bonito",
+"Porque contigo soy yo",
+"Porque no eres perfecta, eres real",
+"Porque tu voz me tranquiliza",
+"Porque me importas",
+"Porque eres mi calma",
+"Porque eres mi emoción",
+"Porque eres única",
+"Porque me inspiras confianza",
+"Porque contigo hay complicidad",
 "Porque eres luz",
-"Porque eres magia",
+"Porque eres ternura",
+"Porque eres pasión",
 "Porque eres verdad",
+"Porque eres hogar",
+"Porque eres refugio",
+"Porque eres alegría",
+"Porque contigo no finjo",
+"Porque contigo me siento seguro",
+"Porque contigo sueño",
+"Porque contigo creo",
+"Porque contigo aprendo",
+"Porque contigo crezco",
+"Porque contigo todo suma",
+"Porque contigo todo importa",
+"Porque contigo todo vale",
+"Porque contigo todo es mejor",
 "Porque eres tú",
-"Porque te amo",
-"Porque siempre te elegiría",
-"Porque contigo quiero todo",
-"Porque contigo quiero siempre",
-"Porque contigo quiero la vida",
-"Porque contigo quiero amar",
-"Porque contigo quiero quedarme",
-"Porque contigo quiero intentarlo",
-"Porque contigo quiero todo",
-"Porque eres tú…",
-"Y siempre serás tú 💖"
+"Porque elegiste quedarte",
+"Porque te quedas",
+"Porque intentas",
+"Porque no huyes",
+"Porque luchas",
+"Porque amas",
+"Porque sientes",
+"Porque cuidas",
+"Porque sanas",
+"Porque iluminas",
+"Porque acompañas",
+"Porque permaneces",
+"Porque confías",
+"Porque crees",
+"Porque compartes",
+"Porque entregas",
+"Porque existes",
+"Porque llegaste",
+"Porque cambiaste cosas",
+"Porque marcaste mi vida",
+"Porque dejaste huella",
+"Porque transformaste mi mundo",
+"Porque eres mi elección",
+"Porque eres mi presente",
+"Porque eres mi ilusión",
+"Porque eres mi casualidad favorita",
+"Porque eres mi destino bonito",
+"Porque al final de todo…",
+"💖 Razón 100: porque al final de todas las razones, siempre has sido tú… Katherine 💕"
 ];
 
-let indice = 0;
-
-function irA(num) {
-  document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-  document.getElementById('capa' + num).classList.remove('hidden');
-
-  const musica = document.getElementById("musica");
-  if (musica.paused) {
-    musica.volume = 0.6;
-    musica.play();
+function mostrarRazon(){
+  if(indice<razones.length){
+    document.getElementById("razonTexto").innerText=razones[indice];
+    indice++;
+    crearCorazon();
+  }else{
+    document.getElementById("btnRazon").style.display="none";
+    irA(5);
   }
 }
 
-function mostrarRazon() {
-  if (indice < razones.length) {
-    document.getElementById("razonTexto").innerText = razones[indice];
-    indice++;
-  } else {
-    document.getElementById("razonTexto").innerText =
-      "La razón número 100… eres tú, todos los días 💖";
-    document.getElementById("finalBtn").classList.remove("hidden");
-  }
+function final(ok){
+  document.body.innerHTML=`
+  <div class="card">
+    <h1>${ok?"💖 Sabía que dirías que sí":"🙈 Igual te quiero"}</h1>
+    <p>
+      Gracias por llegar hasta aquí.<br>
+      Esto siempre será para ti.
+    </p>
+  </div>`;
 }
 </script>
 
