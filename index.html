@@ -1,340 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- ================= CONFIGURACIÓN GENERAL ================= -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuestra Historia 💖</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Historia 💖</title>
 
-  <!-- ================= FUENTES ================= -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- ================= ESTILOS ================= -->
-  <style>
-    /* ===== ESTILO GENERAL ===== */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #ff9a9e, #fad0c4);
-      min-height: 100vh;
-      overflow-y: auto; /* IMPORTANTE: permite deslizar en celular */
-    }
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#ff9a9e,#fad0c4);
+  min-height:100vh;
+  overflow-y:auto;
+}
 
-    /* ===== CONTENEDOR ===== */
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+.container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
 
-    /* ===== TARJETA ===== */
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 30px;
-      box-shadow: 0 25px 50px rgba(255, 105, 135, 0.35);
-      padding: 45px 35px;
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
-      animation: aparecer 0.8s ease;
-    }
+.card{
+  background:rgba(255,255,255,0.95);
+  border-radius:30px;
+  box-shadow:0 25px 50px rgba(255,105,135,.35);
+  padding:40px 30px;
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  animation:fade .6s ease;
+}
 
-    @keyframes aparecer {
-      from { opacity: 0; transform: scale(0.92); }
-      to { opacity: 1; transform: scale(1); }
-    }
+@keyframes fade{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1;transform:scale(1)}
+}
 
-    h1, h2 {
-      font-family: 'Great Vibes', cursive;
-      color: #ff4f81;
-      margin-bottom: 10px;
-    }
+h1,h2{
+  font-family:'Great Vibes',cursive;
+  color:#ff4f81;
+}
 
-    p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin: 18px 0;
-    }
+p{
+  line-height:1.7;
+  margin:18px 0;
+}
 
-    img {
-      width: 100%;
-      border-radius: 18px;
-      margin-top: 15px;
-    }
+img{
+  width:100%;
+  border-radius:20px;
+  margin-top:15px;
+}
 
-    /* ===== BOTONES ===== */
-    button {
-      margin-top: 25px;
-      padding: 14px 36px;
-      border: none;
-      border-radius: 40px;
-      background: linear-gradient(135deg, #ff4f81, #ff85a2);
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 79, 129, 0.45);
-    }
+button{
+  margin-top:25px;
+  padding:14px 36px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ff4f81,#ff85a2);
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,79,129,.45);
+}
 
-    button:hover {
-      transform: scale(1.05);
-    }
+.heart{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  animation:caer linear forwards;
+  pointer-events:none;
+}
 
-    /* ===== CONFETI DE CORAZONES ===== */
-    .heart {
-      position: fixed;
-      top: -10px;
-      font-size: 22px;
-      animation: caer linear forwards;
-      pointer-events: none;
-    }
-
-    @keyframes caer {
-      to {
-        transform: translateY(110vh);
-        opacity: 0;
-      }
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 480px) {
-      .card {
-        padding: 35px 25px;
-      }
-      p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+@keyframes caer{
+  to{transform:translateY(110vh);opacity:0}
+}
+</style>
 </head>
 
 <body>
 
-<!-- ================= AUDIO ================= -->
 <audio id="musica" loop>
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================= CONTENIDO ================= -->
 <div class="container">
   <div class="card" id="contenido"></div>
 </div>
 
-<!-- ================= JAVASCRIPT ================= -->
 <script>
-  const musica = document.getElementById('musica');
-  const contenido = document.getElementById('contenido');
-
-  /* ===== HISTORIA (ORDENADA Y EDITABLE) ===== */
-  const historia = [
-    `<h1>Nuestra Historia 💖</h1>
-     <p>Este 14 de febrero quiero que recorras conmigo nuestra historia, despacio, con el corazón abierto y una sonrisa en el alma.</p>
-     <button onclick="siguiente()">Comenzar</button>`,
-
-    `<h2>Antes de conocernos</h2>
-     <p>Estuvimos tres años en el mismo colegio, cruzándonos sin saber que algún día nos volveríamos tan importantes el uno para el otro.</p>
-     <button onclick="siguiente()">Siguiente</button>`,
-
-    `<h2>Septiembre 2025</h2>
-     <p>El BTP nos juntó. Empezamos a hablar, a conocernos, y desde el primer día sentí algo especial contigo.</p>
-     <img src="primera-foto.jpeg">
-     <button onclick="siguiente()">Siguiente</button>`,
-
-    `<h2>Nuestra primera cita 🍨</h2>
-     <p>Salimos por unos helados. Fue simple, sincero y perfecto. Ese día confirmé que me encantabas.</p>
-     <img src="Foto-recuerdo.jpeg">
-     <button onclick="siguiente()">Siguiente</button>`,
-
-    /* MODIFICADO POR MI  */
-
-     `<h2>Verdades duras</h2>
-     <p>Te conte la realidad de como era, sin embargo no me abandonaste te quedaste y luchaste.</p>
-     <button onclick="siguiente()">Siguiente</button>`,
-    
-    `<h2>Un duro golpe</h2>
-     <p>Ese dia del trago amargo, me dijiste una frase q jamas olvidare *LA RELACIÓN ES DE DOS Y NO TE VOY A DEJAR* frase que reafirmo mi amor por ti.</p>
-     <button onclick="siguiente()">Siguiente</button>`,
-
-    `<h2>Un inicio raro</h2>
-     <p>Mientras esperamabos a tu pa surguio la pregunta ¿Qué somos? y sin miedo dijiste seamos pololos❤️ un lugar cero romantico pero con un valor emocional gigante.</p>
-     <button onclick="siguiente()">Siguiente</button>`,
-    
-      /* continua IA  */
-    `<h2>1 de enero</h2>
-     <p style="text-align:center">Me colé en tu casa como un ladrón, pidiéndole al año nuestro primer abrazo. Entre el miedo a que nos descubrieran y las ganas infinitas de no soltarte, nos encontró el amanecer de aquel primero de enero, estrenando calendario y nuestra historia. Hoy lo recuerdo como el comienzo más bonito que pudo tener nuestro amor.</p>
-     <button onclick="siguiente()">Siguiente</button>`,
-
-    `<h2>Y entonces entendí algo…</h2>
-     <p>Y entonces entendí algo…Nuestra historia no se cuenta solo con fechas marcadas en el calendario, sino con los pequeños detalles, con el apoyo silencioso y con ese amor real que se demuestra incluso cuando nadie mira. Está hecha de miradas cómplices, de manos que buscan sin miedo y de la certeza tranquila de saber que, pase lo que pase, siempre elegimos quedarnos...y por eso te doy 100 motivos para amarte.</p>
-     <button onclick="mostrarRazones()">Ver las razones</button>`
-  ];
-
-<!-- CONTENEDOR DONDE SE MUESTRA TODO -->
-<div id="contenido"></div>
-
-<script>
-/* =========================
-   RAZONES POR LAS QUE TE AMO
-   (EDITA AQUÍ CADA RAZÓN)
-   ========================= */
-
-const razones = [
-  {
-    titulo: "Razón 1 💕",
-    texto: "Porque desde que llegaste a mi vida, todo empezó a tener más sentido."
-  },
-  {
-    titulo: "Razón 2 💖",
-    texto: "Porque incluso en mis días más grises, tú encuentras la forma de hacerme sonreír."
-  },
-  {
-    titulo: "Razón 3 💗",
-    texto: "Porque me escuchas sin juzgar y me abrazas cuando más lo necesito."
-  },
-
-  /* 👉 AGREGA AQUÍ TUS RAZONES UNA POR UNA 👈 */
-
-  {
-    titulo: "Razón 100 ❤️",
-    texto: "Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, de mi paz y de cada uno de mis sueños."
-  }
-];
-
-let indiceRazon = 0;
+const musica = document.getElementById("musica");
 const contenido = document.getElementById("contenido");
 
-/* =========================
-   MOSTRAR RAZÓN ACTUAL
-   ========================= */
-function mostrarRazonActual() {
-  const razon = razones[indiceRazon];
+/* ===== HISTORIA ===== */
+const historia = [
+`<h1>Nuestra Historia 💖</h1>
+<p>Mi amor este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto.</p>
+<button onclick="siguiente()">Comenzar</button>`,
 
+`<h2>Antes de conocernos</h2>
+<p>Tres años en el mismo colegio, sin hablarnos jamás, sin saber que el destino nos estaba esperando.</p>
+<button onclick="siguiente()">Siguiente</button>`,
+
+`<h2>Septiembre 2025</h2>
+<p>El BTP nos juntó. Desde el primer día sentí una conexión distinta contigo.</p>
+<img src="primera-foto.jpeg">
+<button onclick="siguiente()">Siguiente</button>`,
+
+`<h2>Nuestra primera cita 🍨</h2>
+<p>Unos helados, risas sinceras y la certeza de que me estabas conquistando sin esfuerzo.</p>
+<img src="Foto-recuerdo.jpeg">
+<button onclick="siguiente()">Siguiente</button>`,
+
+`<h2>1 de enero</h2>
+<p style="text-align:center">
+Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo.
+Entre el miedo y las ganas de no soltarte, amanecimos estrenando calendario y nuestra historia.
+</p>
+<button onclick="mostrarRazones()">Continuar</button>`,
+
+`<h2>Y entonces entendí algo…</h2>
+<p>
+Nuestra historia no se hizo de fechas, sino de apoyo, valentía y amor real.
+Y por eso quiero darte 100 razones por las que te amo.
+</p>
+<button onclick="mostrarRazones()">Ver razones</button>`
+];
+
+let iHistoria = 0;
+let iRazon = 0;
+
+/* ===== 100 RAZONES (EDITA AQUÍ) ===== */
+const razones = [
+{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo empezó a tener sentido."},
+{titulo:"Razón 2 💖",texto:"Porque haces hogar incluso en los días difíciles."},
+{titulo:"Razón 3 💗",texto:"Porque me eliges incluso cuando no es fácil."},
+
+{titulo:"Razón 100 ❤️",texto:"Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, mi paz y el amor de mi vida."}
+];
+
+/* ===== FUNCIONES ===== */
+function iniciar(){
+  contenido.innerHTML = historia[0];
+}
+
+function siguiente(){
+  if(musica.paused) musica.play();
+  iHistoria++;
+  contenido.innerHTML = historia[iHistoria];
+  corazones();
+}
+
+function mostrarRazones(){
+  iRazon = 0;
+  mostrarRazon();
+}
+
+function mostrarRazon(){
+  const r = razones[iRazon];
   contenido.innerHTML = `
-    <div class="tarjeta-razon">
-      <h2>${razon.titulo}</h2>
-      <p>${razon.texto}</p>
-      <button onclick="siguienteRazon()">
-        ${indiceRazon === razones.length - 1 ? "Final 💕" : "Siguiente ➜"}
-      </button>
-    </div>
+    <h2>${r.titulo}</h2>
+    <p>${r.texto}</p>
+    <button onclick="siguienteRazon()">Siguiente</button>
   `;
-
-  lanzarCorazones();
+  corazones();
 }
 
-/* =========================
-   INICIAR RAZONES
-   ========================= */
-function mostrarRazones() {
-  indiceRazon = 0;
-  mostrarRazonActual();
-}
-
-/* =========================
-   SIGUIENTE RAZÓN
-   ========================= */
-function siguienteRazon() {
-  indiceRazon++;
-
-  if (indiceRazon < razones.length) {
-    mostrarRazonActual();
-  } else {
+function siguienteRazon(){
+  iRazon++;
+  if(iRazon < razones.length){
+    mostrarRazon();
+  }else{
     contenido.innerHTML = `
-      <div class="tarjeta-razon">
-        <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
-        <div class="botones-final">
-          <button onclick="respuesta('queda')">Me quedo 💖</button>
-          <button onclick="respuesta('va')">Me voy 💔</button>
-        </div>
-      </div>
+      <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
+      <button onclick="respuesta(true)">Me quedo 💖</button>
+      <button onclick="respuesta(false)">Me voy 💔</button>
     `;
-    lanzarCorazones();
+  }
+}
+
+function respuesta(ok){
+  contenido.innerHTML = ok
+    ? "<h2>Gracias por quedarte 💖</h2><p>Prometo escribir esta historia contigo todos los días.</p>"
+    : "<h2>Gracias por lo vivido 💔</h2><p>Siempre llevaré lo nuestro en el corazón.</p>";
+}
+
+/* ===== CORAZONES ===== */
+function corazones(){
+  for(let i=0;i<8;i++){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration="4s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
   }
 }
 
-/* =========================
-   RESPUESTA FINAL
-   ========================= */
-function respuesta(opcion) {
-  if (opcion === "queda") {
-    contenido.innerHTML = `
-      <div class="tarjeta-razon">
-        <h2>Gracias por quedarte 💖</h2>
-        <p>Prometo seguir escribiendo esta historia contigo, todos los días.</p>
-      </div>
-    `;
-  } else {
-    contenido.innerHTML = `
-      <div class="tarjeta-razon">
-        <h2>Gracias por haber llegado a mi vida 💔</h2>
-        <p>Aunque duela, siempre llevaré lo nuestro en el corazón.</p>
-      </div>
-    `;
-  }
-  lanzarCorazones();
-}
-
-/* =========================
-   CONFETI DE CORAZONES
-   ========================= */
-function lanzarCorazones() {
-  const corazon = document.createElement("div");
-  corazon.innerHTML = "💕";
-  corazon.style.position = "fixed";
-  corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.top = "-20px";
-  corazon.style.fontSize = "24px";
-  corazon.style.animation = "caer 4s linear";
-  document.body.appendChild(corazon);
-
-  setTimeout(() => corazon.remove(), 4000);
-}
+iniciar();
 </script>
 
-<style>
-/* =========================
-   ESTILOS BÁSICOS
-   ========================= */
-.tarjeta-razon {
-  background: rgba(255,255,255,0.9);
-  padding: 25px;
-  border-radius: 25px;
-  text-align: center;
-  max-width: 90%;
-  margin: auto;
-}
-
-.tarjeta-razon h2 {
-  color: #ff4f87;
-}
-
-.tarjeta-razon p {
-  font-size: 1.1em;
-  line-height: 1.6;
-}
-
-button {
-  background: #ff4f87;
-  border: none;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.botones-final button {
-  margin: 10px;
-}
-
-@keyframes caer {
-  to {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-</style>
+</body>
+</html>
