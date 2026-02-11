@@ -2,276 +2,178 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Feliz San Valentín ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Para Ti 💗</title>
 <style>
-body{
-  margin:0;
-  font-family:'Segoe UI', sans-serif;
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-  overflow-x:hidden;
-  color:#fff;
-  text-align:center;
+* {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
-.card{
-  max-width:650px;
-  margin:60px auto;
-  background:rgba(255,255,255,0.15);
-  border-radius:20px;
-  padding:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-  animation:fade 1s ease;
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffd1dc, #ffeef3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.hidden{display:none;}
-h1{font-size:2em;}
-p{font-size:1.1em; line-height:1.7;}
-button{
-  margin-top:25px;
-  padding:12px 28px;
-  border:none;
-  border-radius:25px;
-  background:#ff4d6d;
-  color:#fff;
-  font-size:1em;
-  cursor:pointer;
-  transition:transform .2s, background .2s;
+.card {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+  text-align: center;
+  animation: fade 1s ease;
 }
-button:hover{
-  transform:scale(1.05);
-  background:#ff1e4d;
+.hidden {
+  display: none;
 }
-img{
-  max-width:100%;
-  border-radius:15px;
-  margin-top:25px;
+h1 {
+  color: #e91e63;
 }
-@keyframes fade{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+p {
+  color: #555;
+  line-height: 1.6;
 }
-.heart{
-  position:fixed;
-  color:#ff2d55;
-  font-size:20px;
-  animation:float 6s linear infinite;
-  opacity:0.8;
+button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
 }
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+button:hover {
+  background: #e63e5c;
+}
+img {
+  max-width: 100%;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
-
 <body>
 
-<audio id="musica" loop>
-  <source src="capa 3 opcion.mp3" type="audio/mpeg">
-</audio>
+<audio id="musica" src="besos-en-guerra.mp3" loop></audio>
 
-<!-- CAPA 1 -->
-<div class="card" id="capa1">
-  <h1>Hola… 💖</h1>
-  <p>
-    Antes de empezar,<br>
-    quiero que sepas que esto<br>
-    fue hecho con calma, tiempo<br>
-    y mucho cariño.
-  </p>
-  <button onclick="irA(2)">Comenzar</button>
+<!-- INTRO -->
+<div class="card" id="capa0">
+  <h1>Hola amor 💖</h1>
+  <p>Esto no es solo una página…  
+  es una pequeña prueba de todo lo que siento por ti.</p>
+  <button onclick="irA(1)">Comenzar ✨</button>
 </div>
 
-<!-- CAPA 2 -->
-<div class="card hidden" id="capa2">
-  <h1>Nuestra historia 💫</h1>
-  <p>
-    Hay historias que no empiezan<br>
-    cuando uno las espera,<br>
-    sino cuando deben empezar.
-  </p>
-  <button onclick="irA(25)">Siguiente</button>
-</div>
-
-<!-- CAPA 2.5 COMO SE CONOCIERON -->
-<div class="card hidden" id="capa25">
+<!-- HISTORIA -->
+<div class="card hidden" id="capa1">
   <h1>Cómo nos conocimos ✨</h1>
   <p>
     Durante tres años estuvimos en el mismo colegio.<br>
     Caminamos por los mismos pasillos,<br>
-    compartimos el mismo lugar…
-  </p>
-  <p>
+    compartimos el mismo lugar…<br><br>
+
     y aun así, nunca nos vimos.<br>
     Nunca hablamos.<br>
-    Nunca nos conocimos.
-  </p>
-  <p>
+    Nunca nos conocimos.<br><br>
+
     Fue recién en septiembre,<br>
     cuando entramos al BTP,<br>
     en ese mismo colegio,<br>
-    que el destino decidió hacer bien su trabajo.
-  </p>
-  <p>
+    que el destino decidió hacer bien su trabajo.<br><br>
+
     Entre conversaciones simples,<br>
     risas nerviosas y momentos pequeños,<br>
-    empezamos a hablarnos.
-  </p>
-  <p>
+    empezamos a hablarnos.<br><br>
+
     Lo que no pasó en tres años,<br>
-    comenzó a pasar en poco tiempo.
-  </p>
-  <p style="font-weight:bold; color:#ffd1dc;">
-    Aquí empezó nuestra historia…
-  </p>
+    comenzó a pasar en poco tiempo.<br><br>
 
-  <img src="primera_foto.jpeg" alt="Nuestra primera foto juntos">
-  <button onclick="irA(3)">Seguir recordando</button>
+    Aquí empezó nuestra historia… 💗
+  </p>
+  <img src="primera-foto.jpeg" alt="Nuestra primera foto juntos">
+  <button onclick="irA(2)">Seguir recordando 💞</button>
 </div>
 
-<!-- CAPA 3 PRIMERA CITA -->
-<div class="card hidden" id="capa3">
-  <h1>Nuestra primera cita 💕</h1>
-  <p>
-    Este día no fue perfecto,<br>
-    pero fue real.<br>
-    Y por eso, fue especial.
-  </p>
-  <img src="Foto_recuerdo.jpeg" alt="Nuestra primera cita">
-  <button onclick="irA(4)">Continuar</button>
-</div>
-
-<!-- CAPA 4 100 RAZONES -->
-<div class="card hidden" id="capa4">
-  <h1>100 razones por las que te amo 💖</h1>
+<!-- 100 RAZONES -->
+<div class="card hidden" id="capa2">
+  <h1>Razón 💗</h1>
   <p id="razonTexto"></p>
-  <button id="btnRazon" onclick="mostrarRazon()">Siguiente razón</button>
+  <button id="btnRazon" onclick="mostrarRazon()">Siguiente razón 💕</button>
 </div>
 
-<!-- CAPA 5 CIERRE -->
-<div class="card hidden" id="capa5">
-  <h1>Y si llegaste hasta aquí… 💞</h1>
+<!-- FINAL -->
+<div class="card hidden" id="capaFinal">
+  <h1>Y si llegaste hasta aquí… 💖</h1>
   <p>
-    Gracias por leer cada razón,<br>
-    por quedarte hasta el final,<br>
-    y por ser parte de esta historia.
+    La razón número 100 no es una razón cualquiera.<br><br>
+    Es tu nombre, dicho bajito pero con el corazón lleno:<br><br>
+
+    <strong>Katherine Lisseth Nieto Alvarez</strong> ✨<br><br>
+
+    Porque no importa cuántas razones existan,<br>
+    siempre habrá una más para amarte.
   </p>
-  <p style="margin-top:20px; font-weight:bold; color:#ffd1dc;">
-    Hoy te elijo…<br>
-    y ojalá mañana también 💖
-  </p>
-  <button onclick="irA(6)">Un último paso</button>
+  <img src="foto-recuerdo.jpeg" alt="Nuestro recuerdo">
+  <button onclick="irA(3)">Responder 💞</button>
 </div>
 
-<!-- CAPA 6 FINAL -->
-<div class="card hidden" id="capa6">
-  <h1>Entonces… 💌</h1>
-  <button onclick="final(true)">Me quedo contigo 💖</button>
-  <button onclick="final(false)">No me quedo contigo 🙈</button>
+<!-- DECISIÓN -->
+<div class="card hidden" id="capa3">
+  <h1>Entonces… 💗</h1>
+  <button onclick="respuesta(true)">Sí, me quedo contigo 💞</button>
+  <br><br>
+  <button onclick="respuesta(false)">No me quedo contigo 💔</button>
 </div>
 
 <script>
-const musica=document.getElementById("musica");
-
-function irA(n){
-  document.querySelectorAll(".card").forEach(c=>c.classList.add("hidden"));
-  document.getElementById("capa"+n).classList.remove("hidden");
-  musica.play().catch(()=>{});
-}
-
-function crearCorazon(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText="❤";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(15+Math.random()*25)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}
-
-let indice=0;
-const razones=[/* 1 a 99 */
-"Porque tu sonrisa cambia mi día",
-"Porque tu mirada transmite paz",
-"Porque tu risa es mi sonido favorito",
-"Porque eres auténtica",
-"Porque me inspiras a ser mejor",
-"Porque contigo el tiempo vuela",
-"Porque incluso en silencio estás presente",
-"Porque tus abrazos se sienten como hogar",
-"Porque confío en ti",
-"Porque me haces sentir elegido",
-"Porque eres fuerte",
-"Porque eres dulce",
-"Porque eres inteligente",
-"Porque eres paciente",
-"Porque eres especial",
-"Porque sabes escuchar",
-"Porque me apoyas",
-"Porque celebras mis logros",
-"Porque me aceptas",
-"Porque me entiendes",
-"Porque me haces reír",
-"Porque me cuidas",
-"Porque me motivas",
-"Porque contigo todo es más bonito",
-"Porque contigo soy yo",
-"Porque no eres perfecta, eres real",
-"Porque tu voz me tranquiliza",
-"Porque me importas",
-"Porque eres mi calma",
-"Porque eres mi emoción",
-"Porque eres única",
-"Porque contigo hay complicidad",
-"Porque eres luz",
-"Porque eres ternura",
-"Porque eres verdad",
-"Porque eres hogar",
-"Porque eres refugio",
-"Porque eres alegría",
-"Porque contigo no finjo",
-"Porque contigo me siento seguro",
-"Porque contigo sueño",
-"Porque contigo crezco",
-"Porque contigo todo suma",
-"Porque contigo todo importa",
-"Porque contigo todo vale",
-"Porque eres mi elección",
-"Porque eres mi presente",
-"Porque eres mi ilusión",
-"Porque llegaste",
-"Porque te quedaste",
-"Porque intentas",
-"Porque confías",
-"Porque acompañas",
-"Porque permaneces",
-"Porque cambiaste mi vida",
-"Porque dejaste huella",
-"Porque eres mi casualidad favorita",
-"Porque eres mi destino bonito",
-"💖 Razón 100: porque al final de todas las razones, siempre has sido tú… Katherine 💕"
+const razones = [
+  "Porque tu sonrisa ilumina mis días 💗",
+  "Porque contigo todo se siente más bonito 💞",
+  "Porque haces especiales los momentos simples 💖",
+  "Porque me gusta quién soy cuando estoy contigo 💕",
+  "Porque tu forma de ser me calma 💗",
 ];
 
-function mostrarRazon(){
-  if(indice<razones.length){
-    document.getElementById("razonTexto").innerText=razones[indice];
-    indice++;
-    crearCorazon();
-  }else{
-    document.getElementById("btnRazon").style.display="none";
-    irA(5);
+for (let i = razones.length + 1; i < 100; i++) {
+  razones.push("Porque simplemente eres tú 💖");
+}
+
+let indice = 0;
+
+function irA(num) {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+  document.getElementById('capa' + num).classList.remove('hidden');
+  const musica = document.getElementById("musica");
+  if (musica.paused) {
+    musica.volume = 0.6;
+    musica.play();
   }
 }
 
-function final(ok){
-  document.body.innerHTML=`
-  <div class="card">
-    <h1>${ok?"💖 Sabía que dirías que sí":"🙈 Igual te quiero"}</h1>
-    <p>
-      Gracias por llegar hasta aquí.<br>
-      Esto siempre será para ti.
-    </p>
-  </div>`;
+function mostrarRazon() {
+  if (indice < 99) {
+    document.getElementById("razonTexto").innerText = razones[indice];
+    indice++;
+  } else {
+    document.getElementById("btnRazon").style.display = "none";
+    irA("Final");
+  }
+}
+
+function respuesta(si) {
+  if (si) {
+    alert("Gracias por quedarte 💖 Prometo cuidarte siempre.");
+  } else {
+    alert("Aun así, gracias por haber llegado hasta aquí 💕");
+  }
 }
 </script>
 
