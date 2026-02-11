@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Feliz 14 de Febrero 💖</title>
+
 <style>
-*{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+*{
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
 body{
   margin:0;
   min-height:100vh;
@@ -70,11 +74,9 @@ img{
 <div class="card" id="capa1">
   <h1>Feliz 14 de Febrero 💘</h1>
   <p>
-    Nuestro primer mes fue el <strong>1 de febrero</strong>…  
-    pero hoy quiero celebrar algo diferente.<br><br>
-
-    Nuestro <strong>primer San Valentín juntos</strong> 💖  
-    y todo lo que siento por ti.
+    Nuestro primer mes fue el <strong>1 de febrero</strong>,  
+    pero hoy celebramos algo especial…<br><br>
+    Nuestro <strong>primer San Valentín juntos</strong> 💖
   </p>
   <button class="btn" onclick="irA(2)">Comenzar ✨</button>
 </div>
@@ -83,15 +85,12 @@ img{
 <div class="card hidden" id="capa2">
   <h2>Nuestra historia ✨</h2>
   <p>
-    Tres años en el mismo colegio,  
-    los mismos pasillos, los mismos días…  
-    pero sin conocernos.<br><br>
-
-    Fue recién en septiembre, en el BTP,  
-    cuando el destino decidió unirnos.<br><br>
-
-    Empezamos hablando sin imaginar  
-    que poco a poco nos íbamos eligiendo.
+    Estuvimos tres años en el mismo colegio  
+    sin conocernos, sin hablarnos, sin cruzarnos.<br><br>
+    Fue en septiembre, en el BTP,  
+    cuando el destino decidió presentarnos.<br><br>
+    Empezamos hablando…  
+    y sin darnos cuenta, empezamos a sentir.
   </p>
   <button class="btn" onclick="irA(3)">Seguir 💕</button>
 </div>
@@ -100,7 +99,7 @@ img{
 <div class="card hidden" id="capa3">
   <h2>Nuestra primera foto juntos 📸</h2>
   <img src="primera-foto.jpeg">
-  <p>Desde aquí, nada volvió a ser igual.</p>
+  <p>Desde aquí, todo cambió.</p>
   <button class="btn" onclick="irA(4)">Continuar 💖</button>
 </div>
 
@@ -108,17 +107,15 @@ img{
 <div class="card hidden" id="capa4">
   <h2>Nuestra primera cita 🍨</h2>
   <img src="Foto-recuerdo.jpeg">
-  <p>
-    Sin darnos cuenta…  
-    aquí empezó algo real, bonito y sincero.
-  </p>
+  <p>Aquí empezó algo real… y bonito.</p>
   <button class="btn" onclick="irA(5)">Algo especial 💘</button>
 </div>
 
 <!-- CAPA 5 -->
 <div class="card hidden" id="capa5">
   <div class="heart">💗</div>
-  <h2>Razón <span id="num">1</span></h2>
+  <h2>100 razones por las que te amoo 💖</h2>
+  <h3>Razón <span id="num">1</span></h3>
   <p id="razon"></p>
   <button class="btn" onclick="siguiente()">Siguiente razón 💓</button>
 </div>
@@ -127,11 +124,10 @@ img{
 <div class="card hidden" id="capaFinal">
   <h2>Una promesa 💍</h2>
   <p>
-    En este 14 de febrero  
-    no te prometo perfección…<br><br>
-
-    Te prometo amor, respeto,  
-    paciencia y elegirte cada día.
+    No te prometo perfección…<br>
+    pero sí amor, respeto y elegirte cada día.<br><br>
+    Hoy, en este 14 de febrero,
+    quiero seguir construyendo contigo.
   </p>
   <p><strong>¿Quieres seguir conmigo y luchar por nuestro futuro?</strong></p>
   <button class="btn" onclick="respuesta(true)">Sí, me quedo contigo 💖</button><br><br>
@@ -142,25 +138,98 @@ img{
 
 <script>
 const razones = [
-  "Porque desde que llegaste todo tiene más sentido 💕",
-  "Porque tu sonrisa es mi lugar favorito 💖",
-  "Porque contigo aprendí lo que es amar bonito 💗",
-];
-
-while(razones.length < 99){
-  razones.push("Porque cada pequeño detalle tuyo me enamora más 💓");
-}
-
-razones.push(
+  "Porque desde que llegaste, mi vida es más bonita 💖",
+  "Porque tu sonrisa ilumina mis días 💕",
+  "Porque contigo aprendí a amar de verdad 💗",
+  "Porque me haces sentir en casa 💞",
+  "Porque tus abrazos lo curan todo 💓",
+  "Porque contigo soy yo sin miedo 💘",
+  "Porque tu risa es mi sonido favorito 💝",
+  "Porque me miras con amor 💖",
+  "Porque contigo todo se siente real 💕",
+  "Porque me haces creer en el amor 💗",
+  "Porque apareciste cuando no lo esperaba 💞",
+  "Porque haces especiales los momentos simples 💓",
+  "Porque me inspiras a ser mejor 💘",
+  "Porque contigo el tiempo vuela 💝",
+  "Porque incluso en silencio me haces feliz 💖",
+  "Porque tu forma de ser es única 💕",
+  "Porque me entiendes sin palabras 💗",
+  "Porque confío en ti 💞",
+  "Porque me haces sentir importante 💓",
+  "Porque eres mi casualidad favorita 💘",
+  "Porque tu presencia ilumina todo 💝",
+  "Porque me haces sonreír sin darme cuenta 💖",
+  "Porque contigo todo tiene sentido 💕",
+  "Porque pienso en ti todos los días 💗",
+  "Porque me haces sentir amado 💞",
+  "Porque tu voz me calma 💓",
+  "Porque contigo aprendí a amar sin miedo 💘",
+  "Porque haces mi mundo más bonito 💝",
+  "Porque tu cariño es sincero 💖",
+  "Porque contigo quiero quedarme 💕",
+  "Porque me aceptas tal como soy 💗",
+  "Porque tus detalles valen oro 💞",
+  "Porque me haces sentir seguro 💓",
+  "Porque tus besos tienen magia 💘",
+  "Porque tu amor es paz 💝",
+  "Porque contigo quiero crecer 💖",
+  "Porque eres mi lugar feliz 💕",
+  "Porque tu forma de amar es hermosa 💗",
+  "Porque contigo aprendí a creer 💞",
+  "Porque me haces sentir completo 💓",
+  "Porque tu ternura me derrite 💘",
+  "Porque contigo quiero intentarlo siempre 💝",
+  "Porque me haces sentir elegido 💖",
+  "Porque tus caricias sanan 💕",
+  "Porque contigo los días son mejores 💗",
+  "Porque me haces soñar bonito 💞",
+  "Porque contigo el amor se siente real 💓",
+  "Porque llegaste en el momento perfecto 💘",
+  "Porque contigo aprendí que el amor existe 💝",
+  "Porque tu forma de querer es única 💖",
+  "Porque contigo aprendí a amar sin condiciones 💕",
+  "Porque me haces sentir vivo 💗",
+  "Porque contigo quiero compartir mi futuro 💞",
+  "Porque me haces sentir orgulloso de amar 💓",
+  "Porque tu amor vale todo 💘",
+  "Porque contigo quiero luchar por nosotros 💝",
+  "Porque eres mi mejor decisión 💖",
+  "Porque contigo aprendí paciencia 💕",
+  "Porque me das tranquilidad 💗",
+  "Porque contigo aprendí a cuidar 💞",
+  "Porque me haces sentir afortunado 💓",
+  "Porque quiero escribir nuestra historia contigo 💘",
+  "Porque tu amor me da fuerza 💝",
+  "Porque contigo aprendí a valorar 💖",
+  "Porque eres mi persona favorita 💕",
+  "Porque contigo quiero cada 14 de febrero 💗",
+  "Porque me haces creer en el para siempre 💞",
+  "Porque contigo todo vale la pena 💓",
+  "Porque eres mi amor bonito 💘",
+  "Porque contigo aprendí lo que es amar 💝",
+  "Porque eres mi presente 💖",
+  "Porque quiero cuidarte siempre 💕",
+  "Porque contigo soy feliz 💗",
+  "Porque tu amor me eligió 💞",
+  "Porque contigo quiero todo 💓",
+  "Porque eres mi paz 💘",
+  "Porque contigo aprendí a esperar 💝",
+  "Porque te amo con todo mi corazón 💖",
+  "Porque eres mi historia favorita 💕",
+  "Porque contigo quiero seguir 💗",
+  "Porque eres mi sueño hecho realidad 💞",
+  "Porque contigo el amor es real 💓",
+  "Porque eres todo lo que quiero 💘",
+  "Porque te amo hoy y siempre 💝",
   "Porque la razón número 100 eres tú, KATHERINE LISSETH NIETO ALVAREZ 💖"
-);
+];
 
 let i = 0;
 
 function irA(n){
   document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
   document.getElementById('capa'+n).classList.remove('hidden');
-
   const musica = document.getElementById('musica');
   if(musica.paused){
     musica.volume = 0.5;
@@ -183,7 +252,7 @@ function respuesta(ok){
       <h1>${ok ? "Gracias por quedarte 💖" : "Siempre te llevaré conmigo 💕"}</h1>
       <p>
         ${ok 
-          ? "Este es nuestro primer San Valentín… y ojalá no sea el último."
+          ? "Este es nuestro primer San Valentín… y ojalá sea el primero de muchos."
           : "Lo nuestro fue real y siempre lo será."
         }
       </p>
