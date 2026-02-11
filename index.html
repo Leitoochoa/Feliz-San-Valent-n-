@@ -2,38 +2,37 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para Katherine Lisseth 💖</title>
+<title>Para Mi Destino 💖</title>
 
 <style>
-/* ... (Mantenemos tu base de CSS pero con estos ajustes) ... */
-*{ box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+*{ box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 body{
   margin:0; min-height:100vh;
-  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); /* Un degradado más suave */
+  background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
   display:flex; justify-content:center; align-items:center; overflow:hidden;
 }
 .card{
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  width:90%; max-width:600px; padding:35px; border-radius:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.1); text-align:center;
+  width:90%; max-width:550px; padding:40px; border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.1); text-align:center;
   animation:fade .8s ease; position:relative; z-index: 10;
 }
 .hidden{display:none}
-h1,h2,h3{
+h1, h2, h3{
   background: linear-gradient(90deg,#ff4d6d,#c71585);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
 }
-p{ color:#444; font-size:18px; line-height:1.8; margin-top:15px; }
+p{ color:#555; font-size:18px; line-height:1.6; }
 
 .btn{
-  margin-top:20px; padding:14px 28px; border:none; border-radius:30px;
-  background:#ff4d6d; color:white; font-size:16px; cursor:pointer;
-  transition:.3s; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+  margin-top:20px; padding:14px 30px; border:none; border-radius:50px;
+  background:#ff4d6d; color:white; font-size:16px; font-weight: bold;
+  cursor:pointer; transition:.3s; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
 }
 .btn:hover{transform:scale(1.05); background:#ff3355;}
 
-/* CORAZONES FLOTANTES */
 .heart-particle {
   position: absolute; color: #ff4d6d; pointer-events: none;
   animation: fall linear forwards; z-index: 0;
@@ -42,13 +41,10 @@ p{ color:#444; font-size:18px; line-height:1.8; margin-top:15px; }
   to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-/* EFECTO BOTÓN TRAVIESO */
-#btnNo { position: relative; transition: 0.2s; }
-
+@keyframes beat{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
 @keyframes fade{ from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
 </style>
 </head>
-
 <body>
 
 <audio id="musica" loop>
@@ -56,10 +52,10 @@ p{ color:#444; font-size:18px; line-height:1.8; margin-top:15px; }
 </audio>
 
 <div class="card" id="capa1">
-  <div style="font-size: 50px;">💌</div>
-  <h1>Hola, Katherine Lisseth...</h1>
-  <p>Tengo algo que decirte en este primer San Valentín juntos. ¿Me permites?</p>
-  <button class="btn" onclick="irA(2)">Abrir mi corazón ✨</button>
+  <div style="font-size: 50px; animation: beat 1.5s infinite;">💝</div>
+  <h1>Hola, mi amor...</h1>
+  <p>Hice esto para recordarte lo mucho que significas para mí en nuestro primer San Valentín.</p>
+  <button class="btn" onclick="irA(2)">Empezar nuestro viaje ✨</button>
 </div>
 
 <div class="card hidden" id="capa2">
@@ -70,29 +66,29 @@ p{ color:#444; font-size:18px; line-height:1.8; margin-top:15px; }
     Fue <strong>bajo el sol de septiembre, iniciando nuestro camino en el BTP</strong>, donde la espera terminó. 
     Sentimos ese lazo invisible que nos unió al instante; esa certeza mágica de que nuestras almas siempre se estuvieron buscando. 💖
   </p>
-  <button class="btn" onclick="irA(3)">Seguir leyendo 💕</button>
+  <button class="btn" onclick="irA(3)">Continuar 💕</button>
 </div>
 
 <div class="card hidden" id="capa3">
-  <h2>Un nuevo comienzo 📖</h2>
+  <h2>Un lazo que no se rompe 📖</h2>
   <p>
-    Antes de nuestra primera cita, ya compartíamos un mundo en cada risa y secreto en clase. 
-    Contigo entendí que quería algo real. <strong>Dejé todo atrás</strong> porque mi único objetivo era, y sigue siendo, verte feliz a mi lado. 💘
+    Incluso antes de nuestra primera cita, el destino ya nos tenía atrapados en miradas y secretos. 
+    Contigo entendí que quería algo real y decidí enfocarme solo en ti. <strong>Dejé atrás el pasado</strong> porque mi presente y mi futuro solo tienen sentido si tú estás en ellos. 💘
   </p>
   <button class="btn" onclick="irA(4)">Nuestra primera cita 🍨</button>
 </div>
 
 <div class="card hidden" id="capa4">
-  <h2>Ese primer recuerdo 📸</h2>
-  <img src="Foto-recuerdo.jpeg" alt="Nuestra foto" style="width:100%; border-radius:15px; margin:15px 0;">
-  <p>Ese día el mundo se detuvo. Fue el inicio oficial de nuestra historia verdadera. 💞</p>
-  <button class="btn" onclick="irA(5)">Algo más... 💘</button>
+  <h2>El inicio de todo 📸</h2>
+  <img src="Foto-recuerdo.jpeg" alt="Nuestra foto" style="width:100%; border-radius:15px; margin:15px 0; border: 3px solid #ffedf0;">
+  <p>Aquel día fue la confirmación de lo que ya sabíamos: que estábamos hechos el uno para el otro. 💞</p>
+  <button class="btn" onclick="irA(5)">Tengo 100 razones... 💘</button>
 </div>
 
 <div class="card hidden" id="capa5">
   <div style="font-size:40px; animation: beat 1s infinite;">❤️</div>
-  <h3>Razón #<span id="num">1</span></h3>
-  <p id="razon">Porque desde que llegaste, mi vida es más bonita 💖</p>
+  <h3 style="margin:0;">Razón #<span id="num">1</span></h3>
+  <p id="razon" style="min-height: 80px; display: flex; align-items: center; justify-content: center;">Cargando razón...</p>
   <button class="btn" onclick="siguiente()">Siguiente razón 💓</button>
 </div>
 
@@ -100,77 +96,100 @@ p{ color:#444; font-size:18px; line-height:1.8; margin-top:15px; }
   <h2>Una promesa eterna 💍</h2>
   <p>
     No te prometo una vida perfecta, pero te prometo amor, respeto y 
-    <strong>elegirte cada mañana</strong> por el resto de mis días. 💖<br><br>
+    <strong>elegirte cada mañana</strong> por el resto de mi vida. 💖<br><br>
     ¿Seguimos escribiendo nuestra historia juntos?
   </p>
   <button class="btn" onclick="respuesta(true)">¡Sí, mil veces sí! 💖</button><br>
-  <button class="btn" id="btnNo" onmouseover="muevete(this)" style="background:#bbb;">No me quedo</button>
+  <button class="btn" id="btnNo" onmouseover="muevete(this)" style="background:#bbb; font-size: 12px; padding: 10px 20px;">No me quedo</button>
 </div>
 
 <script>
 let i = 0;
-const razones = [
-  "Porque tu sonrisa es mi combustible diario 💕",
-  "Porque contigo aprendí lo que es la paz 💗",
-  "Porque me haces sentir el hombre más afortunado 💞",
-  "Porque tus abrazos son mi lugar seguro 💓",
-  "Porque amo cómo brillas cuando hablas de lo que te gusta 💘",
-  "Porque incluso en los días malos, estar contigo lo arregla todo 💝",
-  "Porque la razón número 100 eres tú, Katherine Lisseth Nieto Alvarez 💖"
+
+const razonesBase = [
+  "Por tu forma de reír que me alegra el mundo", "Por cómo me miras cuando no me doy cuenta", 
+  "Por tu paciencia conmigo", "Por tu inteligencia que me admira", "Por la paz que me das con un abrazo",
+  "Por tus besos que detienen el tiempo", "Por cómo te preocupas por mí", "Por tu apoyo incondicional",
+  "Por ser mi mejor amiga y mi novia a la vez", "Por tus sueños y metas que me inspiran",
+  "Por la forma en que iluminas cualquier lugar al que llegas", "Por tu voz, que es mi sonido favorito",
+  "Por cómo me haces sentir que puedo lograrlo todo", "Por tu valentía ante los retos",
+  "Por la ternura que pones en cada detalle", "Por ser la mujer más especial que he conocido",
+  "Por los secretos que solo nosotros compartimos", "Por cómo encajamos perfectamente",
+  "Por tu aroma que se queda en mi memoria", "Por hacerme creer de nuevo en el amor de verdad",
+  "Por tu sencillez y tu gran corazón", "Por cada risa que hemos compartido en el BTP",
+  "Por haber aparecido justo cuando más te necesitaba", "Por ser mi refugio seguro"
 ];
 
-// Rellenar razones para llegar a 100
-while(razones.length < 99) {
-    razones.splice(razones.length-1, 0, "Porque amo cada pequeño detalle de tu forma de ser 🌸");
+// Generador de 100 razones para que no se repitan
+const todasLasRazones = [];
+for(let r = 0; r < 99; r++) {
+    let base = razonesBase[r % razonesBase.length];
+    let variantes = ["", " de una manera única", " siempre", " cada día más", " sin límites", " más que a nada"];
+    todasLasRazones.push(base + variantes[Math.floor(Math.random() * variantes.length)]);
 }
+// LA RAZÓN 100 (Personalizada)
+todasLasRazones.push("Porque te amo simplemente por ser tú, <strong>KATHERINE LISSETH NIETO ALVAREZ</strong>; te amo tal y como eres, por existir y por darle sentido a mi vida. Eres mi todo. 💖");
 
 function irA(n){
   document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
-  document.getElementById('capa'+n).classList.remove('hidden');
+  let capa = document.getElementById('capa'+n);
+  if(n === 'Final') capa = document.getElementById('capaFinal');
+  capa.classList.remove('hidden');
+  
   const musica = document.getElementById('musica');
   if(musica.paused) { musica.volume = 0.4; musica.play().catch(()=>{}); }
+  
+  if(n === 5) { // Iniciar la primera razón
+      document.getElementById('razon').innerHTML = todasLasRazones[0];
+  }
 }
 
 function siguiente(){
-  if(i >= razones.length - 1){
+  i++;
+  if(i >= 100){
     irA('Final');
     return;
   }
-  i++;
   document.getElementById('num').innerText = i + 1;
-  document.getElementById('razon').innerText = razones[i];
+  document.getElementById('razon').innerHTML = todasLasRazones[i];
+  
+  // Efecto visual al cambiar
+  const p = document.getElementById('razon');
+  p.style.animation = 'none';
+  void p.offsetWidth;
+  p.style.animation = 'fade 0.5s ease';
 }
 
 function muevete(btn){
-  btn.style.position = 'absolute';
-  btn.style.top = Math.random() * 80 + '%';
-  btn.style.left = Math.random() * 80 + '%';
+  btn.style.position = 'fixed';
+  btn.style.top = Math.random() * 80 + 10 + '%';
+  btn.style.left = Math.random() * 80 + 10 + '%';
 }
 
 function respuesta(ok){
   document.body.innerHTML = `
     <div class="card">
-      <h1>💖 ¡Te amo! 💖</h1>
-      <p>Has hecho que este 14 de febrero sea el mejor de mi vida. <br> Gracias por ser mi destino, Katherine.</p>
+      <h1 style="font-size: 40px;">💖 ¡Gracias! 💖</h1>
+      <p style="font-size: 22px;">Has hecho que este 14 de febrero sea el más feliz de mi vida.<br><br> 
+      Te amo hoy, mañana y para siempre, <strong>Katherine</strong>.</p>
     </div>
   `;
-  setInterval(createHeart, 200);
+  setInterval(createHeart, 150);
 }
 
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart-particle');
-  heart.innerHTML = '❤️';
+  heart.innerHTML = ['❤️','💖','💗','💘','🌸'][Math.floor(Math.random()*5)];
   heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.top = '-20px';
   heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-  heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+  heart.style.fontSize = Math.random() * 20 + 15 + 'px';
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 5000);
 }
 
-// Iniciar corazones lentos al principio
-setInterval(createHeart, 500);
+setInterval(createHeart, 400);
 </script>
-
 </body>
 </html>
