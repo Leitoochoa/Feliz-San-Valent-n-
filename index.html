@@ -35,13 +35,18 @@ p{color:#444;font-size:18px;line-height:1.8}
   background:#ff4d6d;color:white;
   font-size:16px;cursor:pointer;
 }
+.btn.alt{background:#ff99c8}
 .btn:hover{transform:scale(1.05)}
 img{width:100%;border-radius:20px;margin-top:20px}
-.heart{font-size:50px;animation:beat 1s infinite}
+.heart{
+  font-size:40px;
+  animation:beat 1s infinite;
+}
 @keyframes beat{50%{transform:scale(1.3)}}
 .numero{font-size:28px}
-@keyframes fade{from{opacity:0;transform:translateY(20px)}}
 .fadeIn{animation:fade .6s ease}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}}
+.type{border-right:2px solid #ff4d6d;white-space:nowrap;overflow:hidden}
 </style>
 </head>
 
@@ -54,7 +59,11 @@ img{width:100%;border-radius:20px;margin-top:20px}
 <!-- CAPA 1 -->
 <div class="card" id="capa1">
   <h1>Feliz 14 de Febrero 💘</h1>
-  <p>Nuestro primer San Valentín juntos 💖</p>
+  <p>
+    Katherine… 💖<br>
+    todo esto lo hice pensando en ti,<br>
+    en tu sonrisa y en lo mucho que significas para mí.
+  </p>
   <button class="btn" onclick="irA(2)">Comenzar ✨</button>
 </div>
 
@@ -62,8 +71,8 @@ img{width:100%;border-radius:20px;margin-top:20px}
 <div class="card hidden" id="capa2">
   <h2>Cómo empezó todo ✨</h2>
   <p>
-    El destino nos cruzó sin avisar,  
-    y desde entonces mi corazón te eligió 💞
+    El destino nos cruzó sin avisar,<br>
+    y sin darnos cuenta empezamos a elegirnos 💞
   </p>
   <button class="btn" onclick="irA(3)">Seguir 💕</button>
 </div>
@@ -72,8 +81,8 @@ img{width:100%;border-radius:20px;margin-top:20px}
 <div class="card hidden" id="capa3">
   <h2>Antes de la primera cita 💖</h2>
   <p>
-    Sin darnos cuenta ya nos elegíamos,  
-    y yo supe que contigo quería algo real 💘
+    Contigo entendí que quería algo real,<br>
+    algo bonito y verdadero 💘
   </p>
   <button class="btn" onclick="irA(35)">Algo especial 📸</button>
 </div>
@@ -83,8 +92,8 @@ img{width:100%;border-radius:20px;margin-top:20px}
   <h2>Nuestra primera foto juntos 📸💖</h2>
   <img src="primera-foto.jpeg">
   <p>
-    Aquí empezó todo…  
-    sin saber que te convertirías en mi lugar seguro 💞
+    Este momento lo guardaré para siempre,<br>
+    porque aquí empezó todo 💞
   </p>
   <button class="btn" onclick="irA(4)">Seguir 💕</button>
 </div>
@@ -94,15 +103,14 @@ img{width:100%;border-radius:20px;margin-top:20px}
   <h2>Nuestra primera cita 🍨</h2>
   <img src="Foto-recuerdo.jpeg">
   <p>
-    Ese día confirmé que quería intentarlo todo contigo,  
-    sin miedo y con el corazón abierto 💖
+    Ese día confirmé que quería intentarlo todo contigo 💖
   </p>
   <button class="btn" onclick="irA(5)">100 razones 💘</button>
 </div>
 
 <!-- CAPA 5 -->
 <div class="card hidden" id="capa5">
-  <div class="heart">💗</div>
+  <div class="heart">KATHERINE 💓</div>
   <h2>100 razones por las que te amo</h2>
   <h3 class="numero" id="num">1</h3>
   <p id="razon"></p>
@@ -111,33 +119,221 @@ img{width:100%;border-radius:20px;margin-top:20px}
 
 <!-- CAPA FINAL -->
 <div class="card hidden" id="capaFinal">
-  <h2>Nuestra historia 💍</h2>
+  <h2 class="type" id="textoFinal"></h2>
   <p>
     Y aunque aquí solo escribí 100 razones…<br><br>
     existen <strong>muchísimas más</strong> para amarte,<br>
     y las seguiré descubriendo cada día contigo 💖<br><br>
-    Por eso hoy quiero preguntarte algo desde el corazón…<br><br>
     <strong>
       ¿Te gustaría continuar nuestra historia conmigo,<br>
       luchando por lo nuestro,<br>
       apoyándonos siempre<br>
       y afrontando juntos todo lo que venga?
-    </strong> 💕
+    </strong>
   </p>
+  <button class="btn">Sí, sigamos juntos 💖</button>
+  <button class="btn alt">Siempre contigo 🤍</button>
 </div>
 
 <script>
 const razones = [
-"Porque desde el primer día sentí algo diferente contigo 💖",
-"Porque tu sonrisa ilumina mi vida 😊",
-"Porque contigo aprendí a amar sin miedo 💕",
-"Porque haces lo simple especial ✨",
-"Porque tus abrazos son mi refugio 🤍",
-"Porque confías en mí 💘",
-"Porque contigo soy yo mismo 🥰",
-"Porque llenaste mi vida de amor 💖",
-"Porque me haces feliz 😊",
-"Porque eres mi paz 🕊️"
+Porque su sonrisa ilumina cualquier día.
+
+Porque su mirada transmite paz.
+
+Porque es linda por dentro y por fuera.
+
+Porque sabe hacerte sentir importante.
+
+Porque su forma de ser es única.
+
+Porque tiene un corazón enorme.
+
+Porque su risa es contagiosa.
+
+Porque es auténtica.
+
+Porque no finge ser alguien que no es.
+
+Porque te acepta tal como eres.
+
+Porque te hace sentir amado sin esfuerzo.
+
+Porque con ella todo se siente mejor.
+
+Porque su presencia reconforta.
+
+Porque sabe escuchar.
+
+Porque se preocupa de verdad.
+
+Porque es carismática sin intentarlo.
+
+Porque su dulzura es natural.
+
+Porque es fuerte incluso en silencio.
+
+Porque inspira a ser mejor persona.
+
+Porque contigo es sincera.
+
+Porque sus detalles tienen valor.
+
+Porque su forma de hablar enamora.
+
+Porque sus abrazos se sienten como hogar.
+
+Porque entiende sin muchas palabras.
+
+Porque su voz calma.
+
+Porque su cariño es real.
+
+Porque sabe estar cuando más se necesita.
+
+Porque tiene una belleza que va más allá de lo físico.
+
+Porque su ternura es genuina.
+
+Porque contigo se muestra tal cual es.
+
+Porque su manera de amar es especial.
+
+Porque hace sentir seguro.
+
+Porque su energía es hermosa.
+
+Porque sabe hacerte sonreír incluso en días difíciles.
+
+Porque contigo todo fluye.
+
+Porque su cariño no se fuerza.
+
+Porque es una persona increíble.
+
+Porque su forma de pensar enamora.
+
+Porque su sensibilidad es valiosa.
+
+Porque su esencia es única.
+
+Porque demuestra amor con acciones.
+
+Porque se esfuerza.
+
+Porque no se rinde fácilmente.
+
+Porque es un regalo en tu vida.
+
+Porque su presencia suma.
+
+Porque su apoyo se siente.
+
+Porque su forma de querer es honesta.
+
+Porque te hace sentir suficiente.
+
+Porque contigo es paciente.
+
+Porque su amor se nota.
+
+Porque hace especial lo cotidiano.
+
+Porque su cariño no lastima.
+
+Porque es luz.
+
+Porque su forma de mirar enamora.
+
+Porque su esencia es pura.
+
+Porque su compañía vale oro.
+
+Porque contigo es real.
+
+Porque su ternura no tiene límites.
+
+Porque su amor se siente sincero.
+
+Porque hace latir fuerte el corazón.
+
+Porque te da paz.
+
+Porque su presencia tranquiliza.
+
+Porque sabe cuidar.
+
+Porque su cariño es refugio.
+
+Porque su manera de amar es hermosa.
+
+Porque es especial sin intentarlo.
+
+Porque su forma de ser enamora cada día.
+
+Porque hace que amar sea fácil.
+
+Porque su amor no pesa.
+
+Porque contigo es única.
+
+Porque su sonrisa vale todo.
+
+Porque su mirada dice mucho.
+
+Porque su cariño es sincero.
+
+Porque su corazón es noble.
+
+Porque hace sentir amado de verdad.
+
+Porque su forma de querer es distinta.
+
+Porque es un regalo del destino.
+
+Porque contigo comparte su mundo.
+
+Porque hace que todo tenga sentido.
+
+Porque su amor es real.
+
+Porque hace mejor tu vida.
+
+Porque su forma de amar sana.
+
+Porque es paz y emoción al mismo tiempo.
+
+Porque su presencia es hogar.
+
+Porque su amor es refugio.
+
+Porque es luz en momentos oscuros.
+
+Porque su cariño no falla.
+
+Porque su forma de amar es sincera.
+
+Porque su esencia enamora.
+
+Porque su amor se siente en el alma.
+
+Porque hace que valga la pena amar.
+
+Porque su ternura no se olvida.
+
+Porque su sonrisa se queda en la mente.
+
+Porque su cariño se queda en el corazón.
+
+Porque su amor se nota.
+
+Porque su forma de ser enamora cada día más.
+
+Porque hace sentir amado sin condiciones.
+
+Porque contigo comparte amor verdadero.
+
+Porque es ella misma, y eso basta.
 ];
 
 while(razones.length < 99){
@@ -148,7 +344,7 @@ razones.push(
 "Porque la razón número 100 es que te amo por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, tal y como eres 💖"
 );
 
-let i = 0;
+let i=0;
 
 function irA(n){
   document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
@@ -160,18 +356,25 @@ function irA(n){
 function siguiente(){
   const num=document.getElementById('num');
   const razon=document.getElementById('razon');
-  const btn=document.getElementById('btnRazones');
-
   if(i < razones.length){
     num.innerText=i+1;
     razon.innerText=razones[i];
-    razon.classList.remove('fadeIn');
-    void razon.offsetWidth;
-    razon.classList.add('fadeIn');
     i++;
   }else{
     irA('Final');
+    escribir();
   }
+}
+
+function escribir(){
+  const texto="Te elijo hoy, mañana y todos los días 💖";
+  let j=0;
+  const el=document.getElementById('textoFinal');
+  const t=setInterval(()=>{
+    el.textContent+=texto[j];
+    j++;
+    if(j>=texto.length) clearInterval(t);
+  },80);
 }
 </script>
 
