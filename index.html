@@ -16,6 +16,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow-x:hidden;
 }
 .card{
   background:white;
@@ -26,10 +27,21 @@ body{
   box-shadow:0 25px 50px rgba(0,0,0,.15);
   text-align:center;
   animation:fade .6s ease;
+  position:relative;
 }
 .hidden{display:none}
-h1,h2{color:#e91e63}
-p{color:#555;line-height:1.7}
+h1,h2,h3{
+  background: linear-gradient(90deg,#ff4d6d,#ff99c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+p{
+  color:#444;
+  font-size:18px;
+  line-height:1.8;
+  margin-top:15px;
+}
+
 .btn{
   margin-top:25px;
   padding:14px 28px;
@@ -42,24 +54,100 @@ p{color:#555;line-height:1.7}
   transition:.3s;
 }
 .btn:hover{transform:scale(1.05)}
+
 img{
   width:100%;
   border-radius:20px;
   margin-top:20px;
 }
+
 @keyframes fade{
   from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:none}
 }
+
+/* CORAZÓN */
 .heart{
-  font-size:40px;
+  font-size:50px;
   color:#ff4d6d;
   animation:beat 1s infinite;
-  margin-bottom:15px;
+  margin-bottom:10px;
 }
 @keyframes beat{
   0%,100%{transform:scale(1)}
+  50%{transform:scale(1.35)}
+}
+
+/* NÚMERO LATIDO */
+.numero{
+  font-size:28px;
+  animation:latido 1s ease;
+}
+@keyframes latido{
+  0%{transform:scale(1)}
   50%{transform:scale(1.3)}
+  100%{transform:scale(1)}
+}
+
+/* EFECTO ESPECIAL */
+.sparkle{
+  animation:sparkle 1.2s ease;
+}
+@keyframes sparkle{
+  0%{opacity:0;transform:scale(0.8)}
+  50%{opacity:1;transform:scale(1.1)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+/* ANIMACIÓN FADE IN PARA TEXTOS */
+.fadeIn{
+  animation:fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn{
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* CONFETTI CORAZONES */
+.confetti{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+.confetti span{
+  position:absolute;
+  display:block;
+  width:10px;
+  height:10px;
+  background:#ff4d6d;
+  opacity:0.8;
+  border-radius:50%;
+  animation:fall 5s linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(0) rotate(0deg);}
+  100%{transform:translateY(100vh) rotate(360deg);}
+}
+
+/* RESPONSIVO */
+@media(max-width:480px){
+  .card{
+    padding:20px;
+  }
+  h1,h2,h3{
+    font-size:1.5em;
+  }
+  p{
+    font-size:16px;
+  }
+  .btn{
+    padding:12px 20px;
+  }
 }
 </style>
 </head>
@@ -70,12 +158,13 @@ img{
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
+<div class="confetti"></div>
+
 <!-- CAPA 1 -->
 <div class="card" id="capa1">
   <h1>Feliz 14 de Febrero 💘</h1>
   <p>
-    Nuestro primer mes fue el <strong>1 de febrero</strong>,  
-    pero hoy celebramos algo especial…<br><br>
+    Hoy celebramos algo muy especial…<br>
     Nuestro <strong>primer San Valentín juntos</strong> 💖
   </p>
   <button class="btn" onclick="irA(2)">Comenzar ✨</button>
@@ -83,39 +172,44 @@ img{
 
 <!-- CAPA 2 -->
 <div class="card hidden" id="capa2">
-  <h2>Nuestra historia ✨</h2>
+  <h2>Nuestro encuentro ✨</h2>
   <p>
-    Estuvimos tres años en el mismo colegio  
-    sin conocernos, sin hablarnos, sin cruzarnos.<br><br>
-    Fue en septiembre, en el BTP,  
-    cuando el destino decidió presentarnos.<br><br>
-    Empezamos hablando…  
-    y sin darnos cuenta, empezamos a sentir.
+    Tres años compartimos el mismo colegio sin conocernos de verdad…  
+    Pero en septiembre, al entrar al BTP, el destino nos unió.  
+    Desde ese primer momento <strong>sentimos una conexión especial</strong> 💖  
+    como si nuestras almas ya se hubieran reconocido.
   </p>
   <button class="btn" onclick="irA(3)">Seguir 💕</button>
 </div>
 
 <!-- CAPA 3 -->
 <div class="card hidden" id="capa3">
-  <h2>Nuestra primera foto juntos 📸</h2>
-  <img src="primera-foto.jpeg">
-  <p>Desde aquí, todo cambió.</p>
-  <button class="btn" onclick="irA(4)">Continuar 💖</button>
+  <h2>Nuestro vínculo antes de la primera cita 📖</h2>
+  <p>
+    Aunque aún no habíamos tenido nuestra primera cita, ya compartíamos miradas, risas y secretos en clase…  
+    El lazo entre nosotros se hacía cada vez más fuerte 💓  
+    Yo, que antes no sabía comprometerme, entendí que contigo quería algo real.  
+    Dejé atrás todo lo demás y me enfoqué solo en ti 💘
+  </p>
+  <button class="btn" onclick="irA(4)">Nuestra primera cita 💖</button>
 </div>
 
 <!-- CAPA 4 -->
 <div class="card hidden" id="capa4">
   <h2>Nuestra primera cita 🍨</h2>
-  <img src="Foto-recuerdo.jpeg">
-  <p>Aquí empezó algo real… y bonito.</p>
+  <img src="Foto-recuerdo.jpeg" alt="Primera cita">
+  <p>
+    Ese día comenzó algo hermoso y verdadero.  
+    Pero lo más bonito es que nuestro amor ya había empezado antes, en cada sonrisa y cada momento juntos 💞
+  </p>
   <button class="btn" onclick="irA(5)">Algo especial 💘</button>
 </div>
 
 <!-- CAPA 5 -->
 <div class="card hidden" id="capa5">
-  <div class="heart">💗</div>
-  <h2>100 razones por las que te amoo 💖</h2>
-  <h3>Razón <span id="num">1</span></h3>
+  <div class="heart" id="heart">💗</div>
+  <h2>100 razones por las que te amo 💖</h2>
+  <h3 class="numero" id="num">1</h3>
   <p id="razon"></p>
   <button class="btn" onclick="siguiente()">Siguiente razón 💓</button>
 </div>
@@ -125,18 +219,17 @@ img{
   <h2>Una promesa 💍</h2>
   <p>
     No te prometo perfección…<br>
-    pero sí amor, respeto y elegirte cada día.<br><br>
-    Hoy, en este 14 de febrero,
-    quiero seguir construyendo contigo.
+    pero sí amor, respeto y elegirte cada día 💖<br><br>
+    ¿Seguimos escribiendo nuestra historia juntos?
   </p>
-  <p><strong>¿Quieres seguir conmigo y luchar por nuestro futuro?</strong></p>
-  <button class="btn" onclick="respuesta(true)">Sí, me quedo contigo 💖</button><br><br>
+  <button class="btn" id="finalBtn" onclick="respuesta(true)">Sí, me quedo contigo 💖</button><br><br>
   <button class="btn" style="background:#ccc;color:#555" onclick="respuesta(false)">
     No me quedo
   </button>
 </div>
 
 <script>
+// RAZONES
 const razones = [
   "Porque desde que llegaste, mi vida es más bonita 💖",
   "Porque tu sonrisa ilumina mis días 💕",
@@ -153,80 +246,16 @@ const razones = [
   "Porque me inspiras a ser mejor 💘",
   "Porque contigo el tiempo vuela 💝",
   "Porque incluso en silencio me haces feliz 💖",
-  "Porque tu forma de ser es única 💕",
-  "Porque me entiendes sin palabras 💗",
-  "Porque confío en ti 💞",
-  "Porque me haces sentir importante 💓",
-  "Porque eres mi casualidad favorita 💘",
-  "Porque tu presencia ilumina todo 💝",
-  "Porque me haces sonreír sin darme cuenta 💖",
-  "Porque contigo todo tiene sentido 💕",
-  "Porque pienso en ti todos los días 💗",
-  "Porque me haces sentir amado 💞",
-  "Porque tu voz me calma 💓",
-  "Porque contigo aprendí a amar sin miedo 💘",
-  "Porque haces mi mundo más bonito 💝",
-  "Porque tu cariño es sincero 💖",
-  "Porque contigo quiero quedarme 💕",
-  "Porque me aceptas tal como soy 💗",
-  "Porque tus detalles valen oro 💞",
-  "Porque me haces sentir seguro 💓",
-  "Porque tus besos tienen magia 💘",
-  "Porque tu amor es paz 💝",
-  "Porque contigo quiero crecer 💖",
-  "Porque eres mi lugar feliz 💕",
-  "Porque tu forma de amar es hermosa 💗",
-  "Porque contigo aprendí a creer 💞",
-  "Porque me haces sentir completo 💓",
-  "Porque tu ternura me derrite 💘",
-  "Porque contigo quiero intentarlo siempre 💝",
-  "Porque me haces sentir elegido 💖",
-  "Porque tus caricias sanan 💕",
-  "Porque contigo los días son mejores 💗",
-  "Porque me haces soñar bonito 💞",
-  "Porque contigo el amor se siente real 💓",
-  "Porque llegaste en el momento perfecto 💘",
-  "Porque contigo aprendí que el amor existe 💝",
-  "Porque tu forma de querer es única 💖",
-  "Porque contigo aprendí a amar sin condiciones 💕",
-  "Porque me haces sentir vivo 💗",
-  "Porque contigo quiero compartir mi futuro 💞",
-  "Porque me haces sentir orgulloso de amar 💓",
-  "Porque tu amor vale todo 💘",
-  "Porque contigo quiero luchar por nosotros 💝",
-  "Porque eres mi mejor decisión 💖",
-  "Porque contigo aprendí paciencia 💕",
-  "Porque me das tranquilidad 💗",
-  "Porque contigo aprendí a cuidar 💞",
-  "Porque me haces sentir afortunado 💓",
-  "Porque quiero escribir nuestra historia contigo 💘",
-  "Porque tu amor me da fuerza 💝",
-  "Porque contigo aprendí a valorar 💖",
-  "Porque eres mi persona favorita 💕",
-  "Porque contigo quiero cada 14 de febrero 💗",
-  "Porque me haces creer en el para siempre 💞",
-  "Porque contigo todo vale la pena 💓",
-  "Porque eres mi amor bonito 💘",
-  "Porque contigo aprendí lo que es amar 💝",
-  "Porque eres mi presente 💖",
-  "Porque quiero cuidarte siempre 💕",
-  "Porque contigo soy feliz 💗",
-  "Porque tu amor me eligió 💞",
-  "Porque contigo quiero todo 💓",
-  "Porque eres mi paz 💘",
-  "Porque contigo aprendí a esperar 💝",
-  "Porque te amo con todo mi corazón 💖",
-  "Porque eres mi historia favorita 💕",
-  "Porque contigo quiero seguir 💗",
-  "Porque eres mi sueño hecho realidad 💞",
-  "Porque contigo el amor es real 💓",
-  "Porque eres todo lo que quiero 💘",
-  "Porque te amo hoy y siempre 💝",
   "Porque la razón número 100 eres tú, KATHERINE LISSETH NIETO ALVAREZ 💖"
 ];
 
+while(razones.length < 100){
+  razones.splice(razones.length-1,0,"Porque cada pequeño detalle tuyo me enamora más 💓");
+}
+
 let i = 0;
 
+// TRANSICIÓN ENTRE CAPAS
 function irA(n){
   document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
   document.getElementById('capa'+n).classList.remove('hidden');
@@ -237,27 +266,45 @@ function irA(n){
   }
 }
 
+// SIGUIENTE RAZÓN
 function siguiente(){
-  document.getElementById('num').innerText = i+1;
-  document.getElementById('razon').innerText = razones[i];
+  const num = document.getElementById('num');
+  const razon = document.getElementById('razon');
+  num.innerText = i+1;
+  num.classList.remove('numero');
+  void num.offsetWidth;
+  num.classList.add('numero');
+
+  razon.innerText = razones[i];
+  razon.classList.remove('sparkle','fadeIn');
+  if((i+1) % 5 === 0) razon.classList.add('sparkle');
+  razon.classList.add('fadeIn');
+
   i++;
   if(i >= razones.length){
     irA('Final');
   }
 }
 
+// RESPUESTA FINAL
 function respuesta(ok){
   document.body.innerHTML = `
     <div class="card">
       <h1>${ok ? "Gracias por quedarte 💖" : "Siempre te llevaré conmigo 💕"}</h1>
-      <p>
-        ${ok 
-          ? "Este es nuestro primer San Valentín… y ojalá sea el primero de muchos."
-          : "Lo nuestro fue real y siempre lo será."
-        }
-      </p>
+      <p>${ok ? "Este es solo el comienzo de nuestra historia de amor." : "Lo nuestro fue real y siempre lo recordaré."}</p>
     </div>
   `;
+}
+
+// CONFETTI CORAZONES
+const confetti = document.querySelector('.confetti');
+for(let j=0;j<30;j++){
+  const span = document.createElement('span');
+  span.style.left = Math.random()*100+'vw';
+  span.style.animationDuration = 3 + Math.random()*5 +'s';
+  span.style.width = 5+Math.random()*10+'px';
+  span.style.height = span.style.width;
+  confetti.appendChild(span);
 }
 </script>
 
