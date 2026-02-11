@@ -193,23 +193,34 @@ function respuesta(ok){
 
 /* ===== CORAZONES ===== */
 function corazones(){
-  /* ===== CORAZONES ===== */
-setInterval(() => {
-  for(let i=0;i<3;i++){
-    corazones();
-  }
-}, 1200);
-  /* ===== CORAZONES ===== */
-  for(let i=0;i<8;i++){
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerText="💖";
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration="4s";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),4000);
-  }
+/* ===== CORAZONES CONTINUOS SUAVES ===== */
+
+function crearCorazon() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+
+  const emojis = ["💖","💕","💗","❤️"];
+  heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+  // Posición horizontal totalmente aleatoria
+  heart.style.left = Math.random() * 100 + "vw";
+
+  // Tamaño aleatorio
+  heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+
+  // Velocidad diferente para que no bajen en línea
+  heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+  document.body.appendChild(heart);
+
+  // Eliminar después de caer
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
 }
+
+// Crear solo UN corazón cada 400ms (suave)
+setInterval(crearCorazon, 400);
 
 iniciar();
 </script>
