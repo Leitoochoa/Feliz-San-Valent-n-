@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <!-- ================= CONFIGURACIÓN GENERAL ================= -->
@@ -16,59 +16,67 @@
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(180deg, #ff9a9e, #fad0c4);
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-y: auto; /* IMPORTANTE: permite deslizar en celular */
     }
 
-    /* ===== CONTENEDOR PRINCIPAL ===== */
+    /* ===== CONTENEDOR ===== */
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     /* ===== TARJETA ===== */
     .card {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      border-radius: 28px;
-      box-shadow: 0 25px 50px rgba(255,105,135,0.35);
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(255, 105, 135, 0.35);
       padding: 45px 35px;
       max-width: 420px;
       width: 100%;
       text-align: center;
-      animation: aparecer 1s ease;
+      animation: aparecer 0.8s ease;
     }
 
     @keyframes aparecer {
-      from { opacity: 0; transform: scale(0.9); }
+      from { opacity: 0; transform: scale(0.92); }
       to { opacity: 1; transform: scale(1); }
     }
 
     h1, h2 {
       font-family: 'Great Vibes', cursive;
       color: #ff4f81;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.05rem;
-      line-height: 1.6;
+      line-height: 1.7;
       margin: 18px 0;
     }
 
-    /* ===== BOTÓN ===== */
+    img {
+      width: 100%;
+      border-radius: 18px;
+      margin-top: 15px;
+    }
+
+    /* ===== BOTONES ===== */
     button {
       margin-top: 25px;
-      padding: 14px 35px;
+      padding: 14px 36px;
       border: none;
       border-radius: 40px;
       background: linear-gradient(135deg, #ff4f81, #ff85a2);
-      color: #fff;
+      color: white;
       font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255,79,129,0.4);
+      box-shadow: 0 8px 20px rgba(255, 79, 129, 0.45);
     }
 
     button:hover {
@@ -79,26 +87,33 @@
     .heart {
       position: fixed;
       top: -10px;
-      color: rgba(255,79,129,0.7);
-      font-size: 20px;
+      font-size: 22px;
       animation: caer linear forwards;
+      pointer-events: none;
     }
 
     @keyframes caer {
-      to { transform: translateY(110vh); opacity: 0; }
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
-      .card { padding: 35px 25px; }
-      p { font-size: 1rem; }
+      .card {
+        padding: 35px 25px;
+      }
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- ================= AUDIO (SUENA CON CLICK) ================= -->
+<!-- ================= AUDIO ================= -->
 <audio id="musica" loop>
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
@@ -110,80 +125,91 @@
 
 <!-- ================= JAVASCRIPT ================= -->
 <script>
-
-  /* ===== CONTROL DE AUDIO ===== */
   const musica = document.getElementById('musica');
+  const contenido = document.getElementById('contenido');
 
-  /* ===== HISTORIA (ORDENADA) ===== */
+  /* ===== HISTORIA (ORDENADA Y EDITABLE) ===== */
   const historia = [
     `<h1>Nuestra Historia 💖</h1>
-     <p>Este 14 de febrero quiero que recorras conmigo nuestra historia, paso a paso, con el corazón abierto.</p>
+     <p>Este 14 de febrero quiero que recorras conmigo nuestra historia, despacio, con el corazón abierto y una sonrisa en el alma.</p>
      <button onclick="siguiente()">Comenzar</button>`,
 
+    `<h2>Antes de conocernos</h2>
+     <p>Estuvimos tres años en el mismo colegio, cruzándonos sin saber que algún día nos volveríamos tan importantes el uno para el otro.</p>
+     <button onclick="siguiente()">Siguiente</button>`,
+
     `<h2>Septiembre 2025</h2>
-     <p>Tres años en el mismo colegio, sin hablarnos jamás… hasta que el destino decidió sentarnos en el mismo camino llamado BTP.</p>
-     <img src="primera-foto.jpeg" style="width:100%; border-radius:15px; margin-top:15px;">
+     <p>El BTP nos juntó. Empezamos a hablar, a conocernos, y desde el primer día sentí algo especial contigo.</p>
+     <img src="primera-foto.jpeg">
      <button onclick="siguiente()">Siguiente</button>`,
 
-    `<h2>El inicio real</h2>
-     <p>Desde el primer día hubo algo especial. Conversaciones, risas, miradas… una química imposible de ignorar.</p>
-     <button onclick="siguiente()">Siguiente</button>`,
-
-    `<h2>Primera cita 🍨</h2>
-     <p>Helados, sonrisas y un momento simple que se volvió inolvidable. Ahí confirmé que me encantabas.</p>
-     <img src="Foto-recuerdo.jpeg" style="width:100%; border-radius:15px; margin-top:15px;">
+    `<h2>Nuestra primera cita 🍨</h2>
+     <p>Salimos por unos helados. Fue simple, sincero y perfecto. Ese día confirmé que me encantabas.</p>
+     <img src="Foto-recuerdo.jpeg">
      <button onclick="siguiente()">Siguiente</button>`,
 
     `<h2>1 de enero</h2>
-     <p style="text-align:center">Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo. Entre el miedo y las ganas de no soltarte, amanecimos estrenando calendario y nuestra historia.</p>
+     <p style="text-align:center">Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo. Entre el miedo a que nos descubrieran y las ganas de no soltarte, amanecimos aquel primero de enero estrenando calendario y nuestra historia. Fue el mejor inicio de año.</p>
      <button onclick="siguiente()">Siguiente</button>`,
 
     `<h2>Y entonces entendí algo…</h2>
-     <p>Amarte no es solo recordar nuestra historia, es elegirte todos los días.</p>
+     <p>Nuestra historia no solo se cuenta con fechas, sino con detalles, apoyo y amor real. Por eso quiero mostrarte algo más.</p>
      <button onclick="mostrarRazones()">Ver las razones</button>`
   ];
 
   /* ===== 100 RAZONES ===== */
-  const razones = Array.from({length:100}, (_,i)=>`<h2>Razón ${i+1}</h2><p>${i===99 ? 'Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías 💖' : 'Porque haces mi vida más bonita de una manera única.'}</p><button onclick="siguienteRazon()">Siguiente</button>`);
+  const razones = Array.from({ length: 100 }, (_, i) => {
+    if (i === 99) {
+      return `<h2>Razón 100</h2><p>Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, mi paz y mi lugar seguro 💖</p><button onclick="siguienteRazon()">Final</button>`;
+    }
+    return `<h2>Razón ${i + 1}</h2><p>Porque haces mi vida más bonita de una forma única que solo tú sabes.</p><button onclick="siguienteRazon()">Siguiente</button>`;
+  });
 
-  let index = 0;
-  let razonIndex = 0;
+  let indiceHistoria = 0;
+  let indiceRazon = 0;
 
   function iniciar() {
-    document.getElementById('contenido').innerHTML = historia[0];
+    contenido.innerHTML = historia[0];
   }
 
   function siguiente() {
     if (musica.paused) musica.play();
-    index++;
-    document.getElementById('contenido').innerHTML = historia[index];
+    indiceHistoria++;
+    contenido.innerHTML = historia[indiceHistoria];
     lanzarCorazones();
   }
 
   function mostrarRazones() {
-    document.getElementById('contenido').innerHTML = razones[0];
+    indiceRazon = 0;
+    contenido.innerHTML = razones[0];
+    lanzarCorazones();
   }
 
   function siguienteRazon() {
-    razonIndex++;
-    if (razonIndex < razones.length) {
-      document.getElementById('contenido').innerHTML = razones[razonIndex];
+    indiceRazon++;
+    if (indiceRazon < razones.length) {
+      contenido.innerHTML = razones[indiceRazon];
       lanzarCorazones();
     } else {
-      document.getElementById('contenido').innerHTML = `<h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2><button>Me quedo</button> <button>Me voy</button>`;
+      contenido.innerHTML = `
+        <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
+        <button>Me quedo</button>
+        <button>Me voy</button>
+      `;
+      lanzarCorazones();
     }
   }
 
   /* ===== CONFETI ===== */
   function lanzarCorazones() {
     for (let i = 0; i < 10; i++) {
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.innerHTML = '💖';
-      h.style.left = Math.random() * 100 + 'vw';
-      h.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 6000);
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
     }
   }
 
