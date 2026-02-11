@@ -172,83 +172,169 @@
      <button onclick="mostrarRazones()">Ver las razones</button>`
   ];
 
-  /* ===== 100 RAZONES ===== */
+<!-- CONTENEDOR DONDE SE MUESTRA TODO -->
+<div id="contenido"></div>
+
+<script>
+/* =========================
+   RAZONES POR LAS QUE TE AMO
+   (EDITA AQUÍ CADA RAZÓN)
+   ========================= */
+
 const razones = [
   {
-    titulo: "Razón 1",
-    texto: "Porque desde el primer día me hiciste sentir en casa, incluso sin saberlo."
+    titulo: "Razón 1 💕",
+    texto: "Porque desde que llegaste a mi vida, todo empezó a tener más sentido."
   },
   {
-    titulo: "Razón 2",
-    texto: "Porque tu sonrisa tiene la capacidad de arreglar mis días más difíciles."
+    titulo: "Razón 2 💖",
+    texto: "Porque incluso en mis días más grises, tú encuentras la forma de hacerme sonreír."
   },
   {
-    titulo: "Razón 3",
-    texto: "Porque me escuchas con el corazón, no solo con los oídos."
-  },
-  {
-    titulo: "Razón 4",
-    texto: "Porque crees en mí incluso cuando yo dudo de mí mismo."
+    titulo: "Razón 3 💗",
+    texto: "Porque me escuchas sin juzgar y me abrazas cuando más lo necesito."
   },
 
-  // ✍️ SIGUES AGREGANDO AQUÍ ↓↓↓
+  /* 👉 AGREGA AQUÍ TUS RAZONES UNA POR UNA 👈 */
 
   {
-    titulo: "Razón 100",
-    texto: "Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, mi paz, mi amor y el futuro que quiero construir 💖"
+    titulo: "Razón 100 ❤️",
+    texto: "Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, de mi paz y de cada uno de mis sueños."
   }
 ];
 
-  let indiceHistoria = 0;
-  let indiceRazon = 0;
+let indiceRazon = 0;
+const contenido = document.getElementById("contenido");
 
-  function iniciar() {
-    contenido.innerHTML = historia[0];
-  }
+/* =========================
+   MOSTRAR RAZÓN ACTUAL
+   ========================= */
+function mostrarRazonActual() {
+  const razon = razones[indiceRazon];
 
-  function siguiente() {
-    if (musica.paused) musica.play();
-    indiceHistoria++;
-    contenido.innerHTML = historia[indiceHistoria];
-    lanzarCorazones();
-  }
+  contenido.innerHTML = `
+    <div class="tarjeta-razon">
+      <h2>${razon.titulo}</h2>
+      <p>${razon.texto}</p>
+      <button onclick="siguienteRazon()">
+        ${indiceRazon === razones.length - 1 ? "Final 💕" : "Siguiente ➜"}
+      </button>
+    </div>
+  `;
 
-  function mostrarRazones() {
-    indiceRazon = 0;
-    contenido.innerHTML = razones[0];
-    lanzarCorazones();
-  }
+  lanzarCorazones();
+}
 
-  function siguienteRazon() {
-    indiceRazon++;
-    if (indiceRazon < razones.length) {
-      contenido.innerHTML = razones[indiceRazon];
-      lanzarCorazones();
-    } else {
-      contenido.innerHTML = `
+/* =========================
+   INICIAR RAZONES
+   ========================= */
+function mostrarRazones() {
+  indiceRazon = 0;
+  mostrarRazonActual();
+}
+
+/* =========================
+   SIGUIENTE RAZÓN
+   ========================= */
+function siguienteRazon() {
+  indiceRazon++;
+
+  if (indiceRazon < razones.length) {
+    mostrarRazonActual();
+  } else {
+    contenido.innerHTML = `
+      <div class="tarjeta-razon">
         <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
-        <button>Me quedo</button>
-        <button>Me voy</button>
-      `;
-      lanzarCorazones();
-    }
+        <div class="botones-final">
+          <button onclick="respuesta('queda')">Me quedo 💖</button>
+          <button onclick="respuesta('va')">Me voy 💔</button>
+        </div>
+      </div>
+    `;
+    lanzarCorazones();
   }
+}
 
-  /* ===== CONFETI ===== */
-  function lanzarCorazones() {
-    for (let i = 0; i < 10; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerText = '💖';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
+/* =========================
+   RESPUESTA FINAL
+   ========================= */
+function respuesta(opcion) {
+  if (opcion === "queda") {
+    contenido.innerHTML = `
+      <div class="tarjeta-razon">
+        <h2>Gracias por quedarte 💖</h2>
+        <p>Prometo seguir escribiendo esta historia contigo, todos los días.</p>
+      </div>
+    `;
+  } else {
+    contenido.innerHTML = `
+      <div class="tarjeta-razon">
+        <h2>Gracias por haber llegado a mi vida 💔</h2>
+        <p>Aunque duela, siempre llevaré lo nuestro en el corazón.</p>
+      </div>
+    `;
   }
+  lanzarCorazones();
+}
 
-  iniciar();
+/* =========================
+   CONFETI DE CORAZONES
+   ========================= */
+function lanzarCorazones() {
+  const corazon = document.createElement("div");
+  corazon.innerHTML = "💕";
+  corazon.style.position = "fixed";
+  corazon.style.left = Math.random() * 100 + "vw";
+  corazon.style.top = "-20px";
+  corazon.style.fontSize = "24px";
+  corazon.style.animation = "caer 4s linear";
+  document.body.appendChild(corazon);
+
+  setTimeout(() => corazon.remove(), 4000);
+}
 </script>
 
-</body>
-</html>
+<style>
+/* =========================
+   ESTILOS BÁSICOS
+   ========================= */
+.tarjeta-razon {
+  background: rgba(255,255,255,0.9);
+  padding: 25px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+}
+
+.tarjeta-razon h2 {
+  color: #ff4f87;
+}
+
+.tarjeta-razon p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+button {
+  background: #ff4f87;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.botones-final button {
+  margin: 10px;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+</style>
