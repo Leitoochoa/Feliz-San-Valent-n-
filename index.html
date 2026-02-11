@@ -6,105 +6,22 @@
   <title>Nuestra Historia 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #ff9a9e, #fad0c4);
-      color: #333;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      color: #fff;
-    }
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: auto;
-    }
-    .timeline {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      position: relative;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: #ff6f91;
-      transform: translateX(-50%);
-    }
-    .event {
-      width: 45%;
-      padding: 20px;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      margin: 30px 0;
-      position: relative;
-    }
-    .event.left { left: 0; }
-    .event.right { left: 55%; }
-    .event h3 {
-      margin-top: 0;
-      color: #ff4f81;
-    }
-    .event img {
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 15px;
-    }
-    .heart {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ff4f81;
-      color: #fff;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-    footer {
-      text-align: center;
-      padding: 60px 20px;
-      color: #fff;
-    }
-    footer h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
-    }
-    footer p {
-      max-width: 600px;
-      margin: auto;
-      font-size: 1.1rem;
-    }
-    @media (max-width: 768px) {
-      .timeline::before { left: 20px; }
-      .event {
-        width: 100%;
-        left: 0 !important;
-        padding-left: 50px;
-      }
-      .heart { left: 20px; }
-    }
+    body { margin:0; font-family:'Poppins',sans-serif; background:linear-gradient(180deg,#ff9a9e,#fad0c4); color:#333; text-align:center; }
+    header{ padding:60px 20px; color:#fff; }
+    header h1{ font-family:'Great Vibes',cursive; font-size:3.5rem; }
+    .timeline{ max-width:700px; margin:40px auto; }
+    .event{ display:none; background:#fff; padding:30px; border-radius:20px; box-shadow:0 15px 30px rgba(0,0,0,.2); animation:fade 1s; }
+    .event.active{ display:block; }
+    .event img{ width:100%; border-radius:14px; margin-top:15px; }
+    #nextBtn{ margin-top:30px; padding:14px 28px; border:none; border-radius:999px; background:#ff4f81; color:#fff; font-size:1rem; cursor:pointer; }
+    #nextBtn:hover{ transform:scale(1.05); }
+    footer{ padding:60px 20px; color:#fff; }
+    @keyframes fade{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
   </style>
 </head>
 <body>
   <audio autoplay loop>
-    <source src="Morat, Juanes-Besos en Guerra.mp3.mp3" type="audio/mpeg">
+    <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
     Tu navegador no soporta audio.
   </audio>
   <header>
@@ -112,50 +29,45 @@
     <p>Una línea de tiempo de cómo el destino, las decisiones y el amor nos trajeron hasta aquí 💖</p>
   </header>
 
-  <section class="timeline">
-    <div class="heart">❤️</div>
-    <div class="event left">
+  <section class="timeline" id="timeline">
+    <div class="event active">
       <h3>Antes de conocernos</h3>
       <p>Tres años en el mismo colegio. Mismos pasillos, mismas rutinas… pero sin hablarnos jamás.</p>
     </div>
 
-    <div class="heart">❤️</div>
-    <div class="event right">
+    <div class="event">
       <h3>Septiembre 2025 — El inicio</h3>
-      <p>Entramos al BTP. Empezamos a hablar, a conocernos y desde el primer día hubo una química muy fuerte.</p>
+      <p>Entramos al BTP. Empezamos a hablar y desde el primer día hubo una química muy fuerte.</p>
       <img src="primera-foto.jpeg" alt="Nuestro inicio" />
     </div>
 
-    <div class="heart">❤️</div>
-    <div class="event left">
+    <div class="event">
       <h3>Verdades y decisiones</h3>
-      <p>Te conté la verdad, aunque doliera. Y en nuestro primer beso supe que quería algo serio, un futuro contigo.</p>
+      <p>Te conté la verdad, aunque doliera. Y en nuestro primer beso supe que quería un futuro contigo.</p>
     </div>
 
-    <div class="heart">❤️</div>
-    <div class="event right">
+    <div class="event">
       <h3>Nuestra primera cita</h3>
-      <p>Salimos por unos helados. Algo simple, pero perfecto. Risas, conversación y la certeza de que me encantabas.</p>
-      <img src="foto-recuerdo.jpg.jpeg" alt="Nuestra primera cita" />
+      <p>Unos helados, risas y un momento simple que se volvió inolvidable.</p>
+      <img src="Foto-recuerdo.jpeg" alt="Nuestra primera cita" />
     </div>
 
-    <div class="heart">❤️</div>
-    <div class="event left">
+    <div class="event">
       <h3>El día difícil</h3>
-      <p>Hubo lágrimas y palabras que dolieron. Pero dijiste algo que nunca olvidaré: <em>“La relación es de dos, y yo voy a luchar.”</em></p>
+      <p>Entre lágrimas me dijiste algo que jamás olvidaré: <em>“La relación es de dos, y yo voy a luchar.”</em></p>
     </div>
 
-    <div class="heart">❤️</div>
-    <div class="event right">
+    <div class="event">
       <h3>El paradero</h3>
-      <p>Esperando el bus, conversando, surgió la pregunta más importante: ¿qué somos? Y ahí, sin planes, nos hicimos novios.</p>
+      <p>Esperando el bus surgió la pregunta más importante… y ahí nos hicimos novios.</p>
     </div>
 
-    <div class="heart">❤️</div>
-    <div class="event left">
+    <div class="event">
       <h3>1 de enero</h3>
-      <p>Dormí en tu casa el 31, amanecí contigo y comenzamos el año y nuestra historia oficialmente como novios.</p>
+      <p>Comenzamos el año y nuestra historia oficialmente como novios.</p>
     </div>
+
+    <button id="nextBtn">Continuar nuestra historia 💖</button>
   </section>
 
   <footer>
@@ -167,5 +79,21 @@
       Con amor, hoy y siempre ❤️
     </p>
   </footer>
+  <script>
+    const events = document.querySelectorAll('.event');
+    const btn = document.getElementById('nextBtn');
+    let index = 0;
+
+    btn.addEventListener('click', () => {
+      events[index].classList.remove('active');
+      index++;
+      if(index < events.length){
+        events[index].classList.add('active');
+      } else {
+        btn.innerText = 'Gracias por leer nuestra historia 💖';
+        btn.disabled = true;
+      }
+    });
+  </script>
 </body>
 </html>
