@@ -8,14 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+/* ===== ESTILO GENERAL ===== */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
   background:linear-gradient(180deg,#ff9a9e,#fad0c4);
   min-height:100vh;
-  overflow-y:auto;
+  overflow-x:hidden;
 }
 
+/* ===== CONTENEDOR ===== */
 .container{
   min-height:100vh;
   display:flex;
@@ -24,6 +26,7 @@ body{
   padding:20px;
 }
 
+/* ===== TARJETA ===== */
 .card{
   background:rgba(255,255,255,0.95);
   border-radius:30px;
@@ -33,6 +36,8 @@ body{
   width:100%;
   text-align:center;
   animation:fade .6s ease;
+  position:relative;
+  z-index:2;
 }
 
 @keyframes fade{
@@ -66,28 +71,38 @@ button{
   font-size:1rem;
   cursor:pointer;
   box-shadow:0 8px 20px rgba(255,79,129,.45);
+  transition:.2s;
 }
 
+button:hover{
+  transform:scale(1.05);
+}
+
+/* ===== CORAZONES CONTINUOS ===== */
 .heart{
   position:fixed;
-  top:-20px;
-  font-size:22px;
-  animation:caer linear forwards;
+  top:-30px;
   pointer-events:none;
+  z-index:1;
+  opacity:0.85;
+  animation:caer linear forwards;
 }
 
 @keyframes caer{
-  to{transform:translateY(110vh);opacity:0}
+  0%{transform:translateY(0) rotate(0deg);}
+  100%{transform:translateY(110vh) rotate(360deg);}
 }
 </style>
 </head>
 
 <body>
 
+<!-- ===== AUDIO ===== -->
 <audio id="musica" loop>
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
+<!-- ===== CONTENIDO ===== -->
 <div class="container">
   <div class="card" id="contenido"></div>
 </div>
@@ -98,18 +113,18 @@ const contenido = document.getElementById("contenido");
 
 /* ===== HISTORIA ===== */
 const historia = [
+
 `<h1>Nuestra Historia 💖</h1>
-<p>Mi amor este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto.</p>
+<p>Este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto.</p>
 <button onclick="siguiente()">Comenzar</button>`,
 
 `<h2>Antes de conocernos</h2>
-<p>Tres años compartiendo los mismos pasillos, respirando el mismo aire, cruzándonos sin saberlo… sin imaginarnos que el destino, paciente y silencioso, ya estaba escribiendo nuestra historia.</p>
+<p>Tres años en el mismo colegio, sin hablarnos jamás, sin imaginar que el destino nos estaba preparando algo tan hermoso.</p>
 <button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Septiembre 2025</h2>
 <p>El BTP nos juntó. Desde el primer día sentí una conexión distinta contigo.</p>
 <img src="primera-foto.jpeg">
-<p>El amor ya había empezado; esta foto solo lo delató.</p>
 <button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Nuestra primera cita 🍨</h2>
@@ -122,12 +137,12 @@ const historia = [
 Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo.
 Entre el miedo y las ganas de no soltarte, amanecimos estrenando calendario y nuestra historia.
 </p>
-<button onclick="mostrarRazones()">Continuar</button>`,
+<button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Y entonces entendí algo…</h2>
 <p>
-Nuestra historia no se hizo de fechas, sino de apoyo, valentía y amor real.
-Y por eso quiero darte 100 razones por las que te amo.
+Nuestra historia no se cuenta solo con fechas, sino con apoyo, valentía y amor real.
+Y por eso quiero darte algunas razones por las que te amo.
 </p>
 <button onclick="mostrarRazones()">Ver razones</button>`
 ];
@@ -135,26 +150,30 @@ Y por eso quiero darte 100 razones por las que te amo.
 let iHistoria = 0;
 let iRazon = 0;
 
-/* ===== 100 RAZONES (EDITA AQUÍ) ===== */
+/* ===== RAZONES (EDITA AQUÍ) ===== */
 const razones = [
-{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo empezó a tener sentido."},
-{titulo:"Razón 2 💖",texto:"Porque haces hogar incluso en los días difíciles."},
-{titulo:"Razón 3 💗",texto:"Porque me eliges incluso cuando no es fácil."},
+{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo empezó a tener más sentido."},
+{titulo:"Razón 2 💖",texto:"Porque tu sonrisa puede cambiar mi día completo."},
+{titulo:"Razón 3 💗",texto:"Porque me apoyas incluso cuando yo dudo de mí."},
+{titulo:"Razón 4 ❤️",texto:"Porque contigo me siento seguro."},
+{titulo:"Razón 5 💘",texto:"Porque eres auténtica y real."},
 
-{titulo:"Razón 100 ❤️",texto:"Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, mi paz y el amor de mi vida."}
+{titulo:"Razón Final ❤️",texto:"Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, mi paz y el amor que quiero para toda mi vida."}
 ];
 
 /* ===== FUNCIONES ===== */
+
 function iniciar(){
-  
   contenido.innerHTML = historia[0];
 }
 
 function siguiente(){
-  if(musica.paused) musica.play();
+  if(musica.paused){
+    musica.play().catch(()=>{});
+  }
+
   iHistoria++;
   contenido.innerHTML = historia[iHistoria];
-  corazones();
 }
 
 function mostrarRazones(){
@@ -164,12 +183,12 @@ function mostrarRazones(){
 
 function mostrarRazon(){
   const r = razones[iRazon];
+
   contenido.innerHTML = `
     <h2>${r.titulo}</h2>
     <p>${r.texto}</p>
     <button onclick="siguienteRazon()">Siguiente</button>
   `;
-  corazones();
 }
 
 function siguienteRazon(){
@@ -187,65 +206,31 @@ function siguienteRazon(){
 
 function respuesta(ok){
   contenido.innerHTML = ok
-    ? "<h2>Gracias por quedarte 💖</h2><p>Prometo escribir esta historia contigo todos los días.</p>"
-    : "<h2>Gracias por lo vivido 💔</h2><p>Siempre llevaré lo nuestro en el corazón.</p>";
+  ? "<h2>Gracias por quedarte 💖</h2><p>Prometo escribir esta historia contigo todos los días.</p>"
+  : "<h2>Siempre serás parte de mi historia 💔</h2><p>Gracias por lo que vivimos.</p>";
 }
 
-/* ===== CORAZONES ===== */
-function corazones(){
-<style>
-/* ===== CORAZONES FLOTANDO CONTINUOS (SUAVES Y ELEGANTES) ===== */
+/* ===== CORAZONES CONTINUOS SUAVES ===== */
 
-.heart {
-  position: fixed;
-  top: -30px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.85;
-  animation: caer linear forwards;
-}
+function crearCorazon(){
+  const heart=document.createElement("div");
+  heart.className="heart";
 
-@keyframes caer {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
-</style>
+  const emojis=["💖","💕","💗","❤️"];
+  heart.innerText=emojis[Math.floor(Math.random()*emojis.length)];
 
-<script>
-/* ===== SISTEMA DE CORAZONES CONTINUOS OPTIMIZADO ===== */
-
-function crearCorazon() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-
-  const emojis = ["💖","💕","💗","❤️"];
-  heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-
-  // Posición horizontal totalmente aleatoria
-  heart.style.left = Math.random() * 100 + "vw";
-
-  // Tamaño aleatorio
-  heart.style.fontSize = (Math.random() * 18 + 14) + "px";
-
-  // Duración distinta para que no bajen en línea
-  heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*18+14)+"px";
+  heart.style.animationDuration=(Math.random()*4+4)+"s";
 
   document.body.appendChild(heart);
 
-  // Eliminar después de caer (optimización)
-  setTimeout(() => {
-    heart.remove();
-  }, 8000);
+  setTimeout(()=>heart.remove(),8000);
 }
 
-// Crear un corazón cada 500ms (suave y no satura)
-setInterval(crearCorazon, 500);
-</script>
+setInterval(crearCorazon,500);
 
+iniciar();
 </script>
 
 </body>
