@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-/* ===== ESTILO GENERAL ===== */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -17,7 +16,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== CONTENEDOR ===== */
 .container{
   min-height:100vh;
   display:flex;
@@ -26,7 +24,6 @@ body{
   padding:20px;
 }
 
-/* ===== TARJETA ===== */
 .card{
   background:rgba(255,255,255,0.95);
   border-radius:30px;
@@ -59,6 +56,7 @@ img{
   width:100%;
   border-radius:20px;
   margin-top:15px;
+  box-shadow:0 10px 25px rgba(255,105,135,.3);
 }
 
 button{
@@ -78,7 +76,7 @@ button:hover{
   transform:scale(1.05);
 }
 
-/* ===== CORAZONES CONTINUOS ===== */
+/* ===== CORAZONES ===== */
 .heart{
   position:fixed;
   top:-30px;
@@ -97,12 +95,10 @@ button:hover{
 
 <body>
 
-<!-- ===== AUDIO ===== -->
 <audio id="musica" loop>
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ===== CONTENIDO ===== -->
 <div class="container">
   <div class="card" id="contenido"></div>
 </div>
@@ -119,16 +115,16 @@ const historia = [
 <button onclick="siguiente()">Comenzar</button>`,
 
 `<h2>Antes de conocernos</h2>
-<p>Tres años en el mismo colegio, sin hablarnos jamás, sin imaginar que el destino nos estaba preparando algo tan hermoso.</p>
+<p>Tres años en el mismo colegio sin hablarnos… sin imaginar que terminarías siendo lo mejor que me pasó.</p>
 <button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Septiembre 2025</h2>
-<p>El BTP nos juntó. Desde el primer día sentí una conexión distinta contigo.</p>
+<p>El BTP nos unió. Desde el primer día hubo algo diferente contigo.</p>
 <img src="primera-foto.jpeg">
 <button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Nuestra primera cita 🍨</h2>
-<p>Unos helados, risas sinceras y la certeza de que me estabas conquistando sin esfuerzo.</p>
+<p>Unos helados, risas sinceras y el inicio de algo que hoy es lo más importante en mi vida.</p>
 <img src="Foto-recuerdo.jpeg">
 <button onclick="siguiente()">Siguiente</button>`,
 
@@ -142,7 +138,7 @@ Entre el miedo y las ganas de no soltarte, amanecimos estrenando calendario y nu
 `<h2>Y entonces entendí algo…</h2>
 <p>
 Nuestra historia no se cuenta solo con fechas, sino con apoyo, valentía y amor real.
-Y por eso quiero darte algunas razones por las que te amo.
+Por eso quiero darte 100 razones por las que te amo.
 </p>
 <button onclick="mostrarRazones()">Ver razones</button>`
 ];
@@ -150,17 +146,25 @@ Y por eso quiero darte algunas razones por las que te amo.
 let iHistoria = 0;
 let iRazon = 0;
 
-/* ===== RAZONES (EDITA AQUÍ) ===== */
+/* ===== RAZONES ===== */
 const razones = [
-{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo empezó a tener más sentido."},
-{titulo:"Razón 2 💖",texto:"Porque tu sonrisa puede cambiar mi día completo."},
-{titulo:"Razón 3 💗",texto:"Porque me apoyas incluso cuando yo dudo de mí."},
-{titulo:"Razón 4 ❤️",texto:"Porque contigo me siento seguro."},
-{titulo:"Razón 5 💘",texto:"Porque eres auténtica y real."},
 
-{titulo:"Razón Final ❤️",texto:"Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, mi paz y el amor que quiero para toda mi vida."}
-<img src="Mi-preciosa.jpeg"
-     style="width:100%; border-radius:20px; margin-top:20px; box-shadow:0 10px 25px rgba(255,105,135,0.4);">
+{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo tiene más sentido."},
+{titulo:"Razón 2 💖",texto:"Porque tu sonrisa puede cambiar mi día entero."},
+{titulo:"Razón 3 💗",texto:"Porque me apoyas incluso cuando dudo de mí mismo."},
+
+{
+titulo:"Razón 100 ❤️",
+texto:`
+Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ,
+la razón de mis alegrías, mi paz y el amor que quiero para toda mi vida.
+
+<br><br>
+
+<img src="Mi-preciosa.jpeg">
+`
+}
+
 ];
 
 /* ===== FUNCIONES ===== */
@@ -173,7 +177,6 @@ function siguiente(){
   if(musica.paused){
     musica.play().catch(()=>{});
   }
-
   iHistoria++;
   contenido.innerHTML = historia[iHistoria];
 }
@@ -185,7 +188,6 @@ function mostrarRazones(){
 
 function mostrarRazon(){
   const r = razones[iRazon];
-
   contenido.innerHTML = `
     <h2>${r.titulo}</h2>
     <p>${r.texto}</p>
@@ -209,10 +211,10 @@ function siguienteRazon(){
 function respuesta(ok){
   contenido.innerHTML = ok
   ? "<h2>Gracias por quedarte 💖</h2><p>Prometo escribir esta historia contigo todos los días.</p>"
-  : "<h2>Siempre serás parte de mi historia 💔</h2><p>Gracias por lo que vivimos.</p>";
+  : "<h2>Siempre serás parte de mi historia 💔</h2><p>Gracias por lo vivido.</p>";
 }
 
-/* ===== CORAZONES CONTINUOS SUAVES ===== */
+/* ===== CORAZONES SUAVES CONTINUOS ===== */
 
 function crearCorazon(){
   const heart=document.createElement("div");
