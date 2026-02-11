@@ -1,229 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>San Valentín 💘 Nuestra Historia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #ff758c, #ff7eb3);
-      color: #333;
-      overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 80px 20px;
-      color: #fff;
-    }
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.8rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2rem;
-      max-width: 650px;
-      margin: auto;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      text-align: center;
-    }
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      animation: fade 1s ease;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 20px;
-    }
-    button {
-      margin-top: 30px;
-      padding: 15px 35px;
-      border: none;
-      border-radius: 30px;
-      background: #ff4f81;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-    }
-    button:hover {
-      transform: scale(1.05);
-      background: #ff2f6d;
-    }
-    footer {
-      padding: 60px 20px;
-      text-align: center;
-      color: #fff;
-    }
-    footer h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-    }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .heart-float{
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.8;
-      z-index: 0;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz 14 de Febrero ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#ff758c,#ff7eb3);
+  color:#333;
+  overflow-x:hidden;
+}
+header{
+  text-align:center;
+  padding:80px 20px;
+  color:white;
+}
+header h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.8rem;
+}
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+.event{
+  background:white;
+  border-radius:20px;
+  padding:30px;
+  margin:40px 0;
+  box-shadow:0 15px 30px rgba(0,0,0,.2);
+  animation:fade .8s ease;
+}
+.event img{
+  width:100%;
+  border-radius:15px;
+  margin-top:20px;
+}
+button{
+  display:block;
+  margin:40px auto;
+  padding:15px 40px;
+  border:none;
+  border-radius:30px;
+  background:#ff4f81;
+  color:white;
+  font-size:1.1rem;
+  cursor:pointer;
+}
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:.8;
+}
+@keyframes float{
+  from{transform:translateY(0);opacity:.8}
+  to{transform:translateY(-120vh);opacity:0}
+}
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
 </head>
 <body>
 
-<audio id="musica" loop>
-  <source src="Morat, Juanes-Besos en Guerra.mp3.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio.
+<!-- AUDIO -->
+<audio id="musica" preload="auto">
+  <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
 <header>
   <h1>Feliz 14 de Febrero ❤️</h1>
-  <p>Un pequeño regalo hecho con amor para recordar nuestra historia y celebrar que nos tenemos</p>
+  <p>Una historia escrita con amor, solo para ti</p>
 </header>
 
-<div class="container">
-  <div class="card" id="contenido"></div>
-  <button onclick="siguiente()">Continuar 💖</button>
-</div>
+<div class="container" id="historia"></div>
 
-<section class="timeline" id="historia"></section>
-
-<div style="text-align:center; margin:50px;">
-  <button id="btnAvanzar" onclick="avanzar()" style="background:#ff4f81;color:white;border:none;padding:15px 35px;font-size:1.1rem;border-radius:30px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-    💖 Avanzar en nuestra historia
-  </button>
-</div>
-
-<footer>
-  <h2>Con amor, hoy y siempre</h2>
-  </footer>
-
-  <div id="finalPregunta" style="display:none; text-align:center; padding:80px 20px; color:white;">
-    <h2 style="font-family:'Great Vibes', cursive; font-size:3rem;">¿Quieres seguir escribiendo esta historia conmigo?</h2>
-    <p style="font-size:1.2rem;">Hoy, mañana y todos los días 💖</p>
-  </div>
+<button id="btn" onclick="avanzar()">💖 Comenzar nuestra historia</button>
 
 <script>
-  const musica = document.getElementById('musica');
-  const contenido = document.getElementById('contenido');
+const musica = document.getElementById('musica');
+let iniciado = false;
+let paso = 0;
 
-  const historia = [
-    `<h3>Nuestra historia</h3><p>Esta no es solo una página. Es un pedacito de nuestro amor, hecho para ti en este 14 de febrero ❤️</p>`,
-    `<h3>Antes de conocernos</h3><p>Estuvimos tres años en el mismo colegio, sin hablarnos… y aun así el destino ya nos estaba esperando.</p>`,
-    `<h3>Septiembre 2025</h3><p>Entramos al BTP y empezamos a hablar. Desde el primer día supe que había algo especial contigo.</p><img src="primera-foto.jpeg">`,
-    `<h3>Nuestra primera cita</h3><p>Helados, risas y miradas. Algo simple, pero perfecto.</p><img src="Foto-recuerdo.jpeg">`,
-    `<h3>El día difícil</h3><p>Hubo lágrimas, pero también una frase que marcó todo:<br><em>"La relación es de dos, y yo voy a luchar."</em></p>`,
-    `<h3>El paradero</h3><p>Esperando el bus, sin planearlo… nos hicimos novios. Ahí empezó oficialmente nuestro nosotros.</p>`,
-    `<h3>1 de enero</h3><p>Amanecimos juntos y empezamos el año siendo novios, con ilusión y amor.</p>`,
-    `<h3>Razones por las que te amo</h3><p>Porque me apoyas.<br>Porque me aceptas.<br>Porque conoces mi pasado y no me juzgas.<br><strong>Y sobre todo, por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías ❤️</strong></p>`,
-    `<h3>Feliz San Valentín</h3><p>Gracias por quedarte, por amar y por construir un futuro conmigo. Quiero todo contigo.</p>`
-  ];
+const momentos = [
+  'Esta página no es solo un regalo… es una parte de mi corazón hecha palabras, pensada para ti en este 14 de febrero ❤️',
 
-  let paso = 0;
+  'Durante tres años caminamos por los mismos pasillos, compartimos el mismo colegio, sin hablarnos jamás. Y aun así, el destino ya estaba escribiendo nuestra historia en silencio.',
 
-  function siguiente() {
-    if (paso === 0) musica.play();
-    contenido.innerHTML = historia[paso];
-    paso++;
-    if (paso >= historia.length) paso = historia.length - 1;
+  'En septiembre de 2025 todo cambió. Entramos al BTP y empezamos a hablar. Desde el primer día sentí una conexión distinta, una química que no se puede explicar, solo sentir.',
+
+  '<p>Esta foto guarda el inicio de algo hermoso. Cada vez que la veo recuerdo cómo empezó todo.</p><img src="primera-foto.jpeg">',
+
+  'Nuestra primera cita fue sencilla, pero perfecta. Helados, risas, miradas largas y la certeza de que quería seguir conociéndote cada día más.',
+
+  '<p>Este momento quedó grabado en mi memoria para siempre.</p><img src="Foto-recuerdo.jpeg">',
+
+  'Gracias por apoyarme cuando más lo necesitaba, por escucharme sin juzgarme, por tomar mi pasado y ayudarme a transformarlo en fuerza. Gracias por quedarte.',
+
+  '<strong>Te amo por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, porque con tu forma de ser te convertiste en la razón de mis alegrías, mi calma y mi hogar ❤️</strong>',
+
+  '<h2>¿Quieres seguir escribiendo esta historia conmigo?</h2><p>Hoy, mañana y todos los días.</p>'
+];
+
+function avanzar(){
+  // INICIO FORZADO DE MUSICA (funciona en GitHub Pages)
+  if(!iniciado){
+    musica.volume = 1;
+    musica.play().catch(()=>{});
+    iniciado = true;
   }
 
-  contenido.innerHTML = historia[0];
+  if(paso >= momentos.length) return;
+
+  const div = document.createElement('div');
+  div.className = 'event';
+  div.innerHTML = momentos[paso];
+  document.getElementById('historia').appendChild(div);
+
+  paso++;
+  if(paso === momentos.length){
+    document.getElementById('btn').innerText = '❤️ Siempre contigo';
+  }
+}
+
+// Corazones flotando
+setInterval(()=>{
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.innerText = '💖';
+  h.style.left = Math.random()*100+'vw';
+  h.style.animationDuration = (4+Math.random()*4)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+},600);
 </script>
 
-<script>
-  function crearCorazon() {
-    const corazon = document.createElement('div');
-    corazon.classList.add('heart-float');
-    corazon.innerHTML = '💖';
-    corazon.style.left = Math.random() * 100 + 'vw';
-    corazon.style.animationDuration = (4 + Math.random() * 4) + 's';
-    document.body.appendChild(corazon);
-    setTimeout(() => corazon.remove(), 8000);
-  }
-
-  setInterval(crearCorazon, 500);
-
-  // Mostrar pregunta final al final
-  window.addEventListener('scroll', () => {
-    const footer = document.querySelector('footer');
-    const pregunta = document.getElementById('finalPregunta');
-    const rect = footer.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      pregunta.style.display = 'block';
-    }
-  });
-</script>
-<script>
-  const musica = document.getElementById('musica');
-  let musicaIniciada = false;
-
-  const momentos = [
-    { titulo: 'Antes de conocernos', texto: 'Tres años en el mismo colegio… sin hablarnos jamás.' },
-    { titulo: 'Septiembre 2025', texto: 'Entramos al BTP y desde el primer día hubo una química especial.', img: 'primera-foto.jpeg' },
-    { titulo: 'Decisiones', texto: 'En nuestro primer beso supe que te elegía a ti.' },
-    { titulo: 'Nuestra primera cita', texto: 'Helados, risas y un recuerdo eterno.', img: 'Foto-recuerdo.jpeg' },
-    { titulo: 'Cuando dijiste que lucharías', texto: '"La relación es de dos y yo no me voy a ir."' },
-    { titulo: 'Razones por las que te amo', texto: 'Por tu apoyo, tu paciencia, tu amor sincero.' },
-    { titulo: 'La razón más importante', texto: 'Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías ❤️' }
-  ];
-
-  let index = 0;
-
-  function avanzar() {
-    if (!musicaIniciada) {
-      musica.play();
-      musicaIniciada = true;
-    }
-
-    if (index >= momentos.length) return;
-
-    const cont = document.getElementById('historia');
-    const evento = document.createElement('div');
-    evento.className = 'event ' + (index % 2 === 0 ? 'left' : 'right');
-
-    let html = `<h3>${momentos[index].titulo}</h3><p>${momentos[index].texto}</p>`;
-    if (momentos[index].img) html += `<img src="${momentos[index].img}" />`;
-
-    evento.innerHTML = html;
-    cont.appendChild(evento);
-    index++;
-
-    if (index === momentos.length) {
-      document.getElementById('btnAvanzar').innerText = '❤️ ¿Seguimos escribiendo nuestra historia?';
-    }
-  }
-
-  function crearCorazon() {
-    const c = document.createElement('div');
-    c.classList.add('heart-float');
-    c.innerHTML = '💖';
-    c.style.left = Math.random() * 100 + 'vw';
-    c.style.animationDuration = (4 + Math.random() * 4) + 's';
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 8000);
-  }
-
-  setInterval(crearCorazon, 600);
-</script>
 </body>
 </html>
