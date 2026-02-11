@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para Ti 💖</title>
+<title>Feliz 14 de Febrero 💖</title>
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
 body{
@@ -68,37 +68,39 @@ img{
 
 <!-- CAPA 1 -->
 <div class="card" id="capa1">
-  <h1>Hola amor 💖</h1>
-  <p>Esto no es solo una página…  
-  es una pequeña prueba de todo lo que siento por ti.</p>
+  <h1>Feliz 14 de Febrero 💘</h1>
+  <p>
+    Nuestro primer mes fue el <strong>1 de febrero</strong>…  
+    pero hoy quiero celebrar algo diferente.<br><br>
+
+    Nuestro <strong>primer San Valentín juntos</strong> 💖  
+    y todo lo que siento por ti.
+  </p>
   <button class="btn" onclick="irA(2)">Comenzar ✨</button>
 </div>
 
 <!-- CAPA 2 -->
 <div class="card hidden" id="capa2">
-  <h2>Cómo nos conocimos ✨</h2>
+  <h2>Nuestra historia ✨</h2>
   <p>
-    Durante tres años estuvimos en el mismo colegio…  
-    los mismos pasillos, los mismos días,  
-    pero nunca nos vimos.<br><br>
+    Tres años en el mismo colegio,  
+    los mismos pasillos, los mismos días…  
+    pero sin conocernos.<br><br>
 
-    Fue recién en septiembre, cuando entramos al BTP,  
-    que el destino decidió hacer bien su trabajo.<br><br>
+    Fue recién en septiembre, en el BTP,  
+    cuando el destino decidió unirnos.<br><br>
 
-    Entre conversaciones simples, risas nerviosas  
-    y momentos pequeños… empezamos a hablarnos.<br><br>
-
-    Lo que no pasó en tres años,  
-    comenzó a pasar en poco tiempo.
+    Empezamos hablando sin imaginar  
+    que poco a poco nos íbamos eligiendo.
   </p>
-  <button class="btn" onclick="irA(3)">Seguir recordando 💕</button>
+  <button class="btn" onclick="irA(3)">Seguir 💕</button>
 </div>
 
 <!-- CAPA 3 -->
 <div class="card hidden" id="capa3">
   <h2>Nuestra primera foto juntos 📸</h2>
   <img src="primera-foto.jpeg">
-  <p>Este fue uno de esos momentos que no se olvidan.</p>
+  <p>Desde aquí, nada volvió a ser igual.</p>
   <button class="btn" onclick="irA(4)">Continuar 💖</button>
 </div>
 
@@ -106,8 +108,11 @@ img{
 <div class="card hidden" id="capa4">
   <h2>Nuestra primera cita 🍨</h2>
   <img src="Foto-recuerdo.jpeg">
-  <p>Sin saberlo… aquí empezó algo muy real.</p>
-  <button class="btn" onclick="irA(5)">Y ahora… 💘</button>
+  <p>
+    Sin darnos cuenta…  
+    aquí empezó algo real, bonito y sincero.
+  </p>
+  <button class="btn" onclick="irA(5)">Algo especial 💘</button>
 </div>
 
 <!-- CAPA 5 -->
@@ -120,14 +125,15 @@ img{
 
 <!-- CAPA FINAL -->
 <div class="card hidden" id="capaFinal">
-  <h2>Promesa 💍</h2>
+  <h2>Una promesa 💍</h2>
   <p>
-    No prometo perfección…  
-    pero sí elegirte cada día,<br>
-    cuidarte, respetarte  
-    y luchar por nosotros.
+    En este 14 de febrero  
+    no te prometo perfección…<br><br>
+
+    Te prometo amor, respeto,  
+    paciencia y elegirte cada día.
   </p>
-  <p><strong>¿Quieres seguir conmigo y construir un futuro juntos?</strong></p>
+  <p><strong>¿Quieres seguir conmigo y luchar por nuestro futuro?</strong></p>
   <button class="btn" onclick="respuesta(true)">Sí, me quedo contigo 💖</button><br><br>
   <button class="btn" style="background:#ccc;color:#555" onclick="respuesta(false)">
     No me quedo
@@ -136,10 +142,9 @@ img{
 
 <script>
 const razones = [
-  "Porque desde que llegaste todo se siente más bonito 💕",
-  "Porque tu sonrisa tiene el poder de cambiar mi día 💖",
-  "Porque contigo soy yo mismo 💗",
-  // … (NO TE PREOCUPES, SIGUEN TODAS)
+  "Porque desde que llegaste todo tiene más sentido 💕",
+  "Porque tu sonrisa es mi lugar favorito 💖",
+  "Porque contigo aprendí lo que es amar bonito 💗",
 ];
 
 while(razones.length < 99){
@@ -147,7 +152,7 @@ while(razones.length < 99){
 }
 
 razones.push(
-  "Porque la razón número 100… eres tú, KATHERINE LISSETH NIETO ALVAREZ 💖"
+  "Porque la razón número 100 eres tú, KATHERINE LISSETH NIETO ALVAREZ 💖"
 );
 
 let i = 0;
@@ -176,7 +181,12 @@ function respuesta(ok){
   document.body.innerHTML = `
     <div class="card">
       <h1>${ok ? "Gracias por quedarte 💖" : "Siempre te llevaré conmigo 💕"}</h1>
-      <p>${ok ? "Este es solo el comienzo de nuestra historia." : "Lo nuestro siempre fue real."}</p>
+      <p>
+        ${ok 
+          ? "Este es nuestro primer San Valentín… y ojalá no sea el último."
+          : "Lo nuestro fue real y siempre lo será."
+        }
+      </p>
     </div>
   `;
 }
