@@ -1,143 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Para Mi Destino: Katherine 💖</title>
-<style>
-    *{ box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
-    body{
-        margin:0; min-height:100vh;
-        background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
-        display:flex; justify-content:center; align-items:center; overflow-x:hidden;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestra Historia 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+      color: #333;
     }
-    .card{
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        width:90%; max-width:550px; padding:35px; border-radius:30px;
-        box-shadow:0 20px 50px rgba(0,0,0,0.15); text-align:center;
-        animation:fade .8s ease; position:relative; z-index: 10;
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      color: #fff;
     }
-    .hidden{display:none}
-    h1, h2, h3{ background: linear-gradient(90deg,#ff4d6d,#c71585); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    p{ color:#444; font-size:17px; line-height:1.6; }
-    .btn{
-        margin-top:20px; padding:12px 25px; border:none; border-radius:30px;
-        background:#ff4d6d; color:white; font-size:16px; cursor:pointer;
-        transition:.3s; font-weight: bold;
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
     }
-    .btn:hover{transform:scale(1.05);}
-    img{ width:100%; border-radius:20px; margin: 15px 0; border: 5px solid #fff; }
-    
-    .heart-particle { position: absolute; color: #ff4d6d; pointer-events: none; animation: fall linear forwards; z-index: 0; }
-    @keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
-    @keyframes fade { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
-</style>
+    header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    .timeline {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #ff6f91;
+      transform: translateX(-50%);
+    }
+    .event {
+      width: 45%;
+      padding: 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      margin: 30px 0;
+      position: relative;
+    }
+    .event.left { left: 0; }
+    .event.right { left: 55%; }
+    .event h3 {
+      margin-top: 0;
+      color: #ff4f81;
+    }
+    .event img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+    .heart {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff4f81;
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: #fff;
+    }
+    footer h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+    }
+    footer p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 768px) {
+      .timeline::before { left: 20px; }
+      .event {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 50px;
+      }
+      .heart { left: 20px; }
+    }
+  </style>
 </head>
 <body>
+  <audio autoplay loop>
+    <source src="Morat, Juanes-Besos en Guerra.mp3.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+  <header>
+    <h1>Nuestra Historia</h1>
+    <p>Una línea de tiempo de cómo el destino, las decisiones y el amor nos trajeron hasta aquí 💖</p>
+  </header>
 
-<audio id="musica" loop>
-  <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
-</audio>
+  <section class="timeline">
+    <div class="heart">❤️</div>
+    <div class="event left">
+      <h3>Antes de conocernos</h3>
+      <p>Tres años en el mismo colegio. Mismos pasillos, mismas rutinas… pero sin hablarnos jamás.</p>
+    </div>
 
-<div class="card" id="capa1">
-    <h1>Hola, Katherine... 💌</h1>
-    <p>Nuestra historia no es un cuento de hadas perfecto, es algo mucho mejor: es <strong>nuestra</strong> y es real.</p>
-    <button class="btn" onclick="irA(2)">Recordar todo ✨</button>
-</div>
+    <div class="heart">❤️</div>
+    <div class="event right">
+      <h3>Septiembre 2025 — El inicio</h3>
+      <p>Entramos al BTP. Empezamos a hablar, a conocernos y desde el primer día hubo una química muy fuerte.</p>
+      <img src="primera-foto.jpeg" alt="Nuestro inicio" />
+    </div>
 
-<div class="card hidden" id="capa2">
-    <h2>Donde todo empezó ✨</h2>
-    <p>Tres años en el mismo colegio y tuvo que ser en el <strong>BTP</strong> donde el destino nos obligó a mirarnos. Desde ese septiembre, algo en mis piezas encajó con las tuyas.</p>
-    <button class="btn" onclick="irA(3)">Nuestra primera foto 📸</button>
-</div>
+    <div class="heart">❤️</div>
+    <div class="event left">
+      <h3>Verdades y decisiones</h3>
+      <p>Te conté la verdad, aunque doliera. Y en nuestro primer beso supe que quería algo serio, un futuro contigo.</p>
+    </div>
 
-<div class="card hidden" id="capa3">
-    <h2>El primer recuerdo 📸</h2>
-    <img src="Foto-recuerdo.jpeg" alt="Nuestra primera foto">
-    <p>Esta foto fue antes de nuestra primera cita, cuando el "algo especial" ya se nos notaba en la cara. El inicio de todo.</p>
-    <button class="btn" onclick="irA(4)">Nuestra primera cita 🍦</button>
-</div>
+    <div class="heart">❤️</div>
+    <div class="event right">
+      <h3>Nuestra primera cita</h3>
+      <p>Salimos por unos helados. Algo simple, pero perfecto. Risas, conversación y la certeza de que me encantabas.</p>
+      <img src="Foto-recuerdo.jpeg" alt="Nuestra primera cita" />
+    </div>
 
-<div class="card hidden" id="capa4">
-    <h2>Nuestra primera cita 🍨</h2>
-    <p>Fue hermosa, pero nuestro camino apenas comenzaba. Aunque ese día no nos hicimos novios, el lazo ya era indestructible.</p>
-    <button class="btn" onclick="irA(5)">El momento que lo cambió todo 🛑</button>
-</div>
+    <div class="heart">❤️</div>
+    <div class="event left">
+      <h3>El día difícil</h3>
+      <p>Hubo lágrimas y palabras que dolieron. Pero dijiste algo que nunca olvidaré: <em>“La relación es de dos, y yo voy a luchar.”</em></p>
+    </div>
 
-<div class="card hidden" id="capa5">
-    <h2>"Las relaciones son de dos" 💖</h2>
-    <p>Nunca olvidaré aquel día en mi casa y el momento amargo con mi madrina. Pero lo más valioso fue lo que pasó en esa parada de bus...</p>
-    <p><i>"No te voy a dejar",</i> me dijiste. Allí, entre el ruido de los buses, decidimos ser novios y que nuestro día sería el <strong>1 de enero</strong>.</p>
-    <button class="btn" onclick="irA(6)">Llegó el 1 de enero... 🎆</button>
-</div>
+    <div class="heart">❤️</div>
+    <div class="event right">
+      <h3>El paradero</h3>
+      <p>Esperando el bus, conversando, surgió la pregunta más importante: ¿qué somos? Y ahí, sin planes, nos hicimos novios.</p>
+    </div>
 
-<div class="card hidden" id="capa6">
-    <h2>Un inicio peculiar 🏠</h2>
-    <p>31 de diciembre, yo durmiendo en tu casa a escondidas de tus papás... nada romántico para el mundo, pero inolvidable para mí.</p>
-    <p>Ese <strong>1 de enero</strong> te pedí de nuevo que fueras mi novia. Fue real, fue auténtico y fue el mejor inicio de año de mi vida.</p>
-    <button class="btn" onclick="irA(7)">Tengo 100 razones... 💘</button>
-</div>
+    <div class="heart">❤️</div>
+    <div class="event left">
+      <h3>1 de enero</h3>
+      <p>Dormí en tu casa el 31, amanecí contigo y comenzamos el año y nuestra historia oficialmente como novios.</p>
+    </div>
+  </section>
 
-<div class="card hidden" id="capa7">
-    <h3>Razón #<span id="num">1</span></h3>
-    <p id="razon" style="min-height: 80px; display: flex; align-items: center; justify-content: center;"></p>
-    <button class="btn" onclick="siguiente()">Siguiente razón 💓</button>
-</div>
-
-<div class="card hidden" id="capaFinal">
-    <h2>Una promesa eterna 💍</h2>
-    <p>Gracias por elegirme aquel día en la parada y por dejarme dormir cerca de ti ese año nuevo. <br><br> ¿Seguimos escribiendo nuestra historia?</p>
-    <button class="btn" onclick="respuesta(true)">¡Sí, mil veces sí! 💖</button>
-</div>
-
-<script>
-let i = 0;
-const razonesBase = [
-    "Porque te quedaste conmigo cuando las cosas se pusieron difíciles",
-    "Por lo que me dijiste en esa parada de bus",
-    "Porque las relaciones son de dos y tú lo demuestras",
-    "Por dejarme ser parte de tu familia a escondidas",
-    "Porque tu amor es más fuerte que cualquier insulto o problema",
-    "Por ser mi cómplice aquel 31 de diciembre",
-    "Porque eres mi mejor decisión del BTP",
-    "Por elegirme cada día desde aquel 1 de enero"
-];
-
-const todasLasRazones = [];
-for(let r = 0; r < 99; r++) {
-    todasLasRazones.push(razonesBase[r % razonesBase.length] + ". ✨");
-}
-todasLasRazones.push("Porque te amo tal como eres, por existir y por ser mi valiente <strong>KATHERINE LISSETH NIETO ALVAREZ</strong>. Eres mi vida entera. 💖");
-
-function irA(n){
-    document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
-    document.getElementById('capa'+n).classList.remove('hidden');
-    const musica = document.getElementById('musica');
-    if(musica.paused) { musica.play().catch(()=>{}); }
-    if(n === 7) document.getElementById('razon').innerHTML = todasLasRazones[0];
-}
-
-function siguiente(){
-    i++;
-    if(i >= 100){ irA('Final'); return; }
-    document.getElementById('num').innerText = i + 1;
-    document.getElementById('razon').innerHTML = todasLasRazones[i];
-}
-
-function respuesta(ok){
-    document.body.innerHTML = `<div class="card"><h1>💖 ¡TE AMO! 💖</h1><p>Gracias por quedarte a mi lado, Katherine.</p></div>`;
-    setInterval(createHeart, 200);
-}
-
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart-particle');
-    heart.innerHTML = '❤️';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-}
-</script>
+  <footer>
+    <h2>Hoy y el futuro</h2>
+    <p>
+      Eres mi apoyo, mi calma y mi fuerza. Conoces mi pasado y nunca me juzgaste, solo me ayudaste a salir adelante.
+      Quiero un futuro contigo, algo serio, algo real. Gracias por elegir quedarte.
+      <br /><br />
+      Con amor, hoy y siempre ❤️
+    </p>
+  </footer>
 </body>
 </html>
