@@ -20,34 +20,35 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       padding: 20px;
+      text-align: center;
     }
 
     .card {
       background: white;
       padding: 40px;
-      border-radius: 20px;
-      max-width: 600px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      animation: fadeIn 1s ease;
+      border-radius: 22px;
+      max-width: 650px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: fadeIn 0.8s ease;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
       color: #ff4f81;
+      margin-bottom: 15px;
     }
 
     p {
       font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
     button {
-      margin-top: 25px;
-      padding: 12px 30px;
-      font-size: 1rem;
+      margin-top: 30px;
+      padding: 14px 34px;
+      font-size: 1.05rem;
       border: none;
       border-radius: 30px;
       background: #ff4f81;
@@ -63,20 +64,28 @@
 
     .heart {
       position: fixed;
-      bottom: -10px;
+      top: -20px;
       font-size: 20px;
-      animation: float 6s linear infinite;
-      opacity: 0.7;
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
     }
 
-    @keyframes float {
+    @keyframes fall {
       from { transform: translateY(0); }
-      to { transform: translateY(-110vh); }
+      to { transform: translateY(110vh); }
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================== MOBILE ================== */
+    @media (max-width: 768px) {
+      .card { padding: 25px; max-width: 95%; }
+      h1 { font-size: 2.2rem; }
+      p { font-size: 1rem; }
+      button { width: 100%; padding: 14px; }
     }
   </style>
 </head>
@@ -84,163 +93,99 @@
 
 <!-- ================== MUSICA ================== -->
 <audio id="musica" loop>
-  <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
+  <source src="Morat, Juanes-Besos en Guerra.mp3.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================== CONTENEDOR ================== -->
 <div class="container">
   <div class="card" id="card">
-    <h1>Para ti 💖</h1>
-    <p>Este 14 de febrero no quería flores ni regalos comunes… quería darte algo que quedara para siempre. Dale click y camina conmigo 💕</p>
+    <h1>Nuestra Historia 💖</h1>
+    <p>Este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto.</p>
     <button onclick="iniciar()">Comenzar</button>
   </div>
 </div>
 
-<!-- ================== SCRIPT ================== -->
 <script>
   const musica = document.getElementById('musica');
   const card = document.getElementById('card');
-
   let indice = 0;
 
-  const razones = [
-    "1. Porque desde el primer día sentí una conexión que no se explica, solo se siente.",
-    "2. Porque tu sonrisa tiene el poder de calmar cualquier tormenta en mí.",
-    "3. Porque tus ojos dicen más de lo que mil palabras podrían decir.",
-    "4. Porque contigo aprendí que amar no duele cuando es verdadero.",
-    "5. Porque me haces sentir en casa incluso lejos de todo.",
-    "6. Porque tus abrazos curan partes de mí que nadie más vio rotas.",
-    "7. Porque me escuchas incluso cuando no sé cómo expresarme.",
-    "8. Porque nunca me juzgaste por mi pasado.",
-    "9. Porque decidiste quedarte cuando no era fácil.",
-    "10. Porque luchas por lo nuestro.",
-    "11. Porque tu risa es mi sonido favorito.",
-    "12. Porque confías en mí.",
-    "13. Porque me inspiras a ser mejor.",
-    "14. Porque contigo aprendí lo que es el amor real.",
-    "15. Porque me haces sentir suficiente.",
-    "16. Porque respetas mis heridas.",
-    "17. Porque me das paz.",
-    "18. Porque incluso en silencio me entiendes.",
-    "19. Porque contigo no tengo miedo de ser yo.",
-    "20. Porque me acompañas en mis días grises.",
-    "21. Porque celebras mis pequeños logros.",
-    "22. Porque confías en nuestro futuro.",
-    "23. Porque eres fuerte y dulce al mismo tiempo.",
-    "24. Porque tu amor no exige, acompaña.",
-    "25. Porque sabes amar bonito.",
-    "26. Porque me enseñaste que no todo amor hiere.",
-    "27. Porque tu forma de querer es sincera.",
-    "28. Porque eres mi lugar seguro.",
-    "29. Porque nunca soltaste mi mano.",
-    "30. Porque me eliges todos los días.",
-    "31. Porque haces que crea otra vez.",
-    "32. Porque contigo no tengo que fingir.",
-    "33. Porque eres luz.",
-    "34. Porque me das esperanza.",
-    "35. Porque haces mis días más suaves.",
-    "36. Porque me cuidas.",
-    "37. Porque respetas mis tiempos.",
-    "38. Porque sabes amar sin lastimar.",
-    "39. Porque contigo aprendí a confiar.",
-    "40. Porque haces que todo valga la pena.",
-    "41. Porque eres paciencia.",
-    "42. Porque no te rendiste.",
-    "43. Porque me miras con amor.",
-    "44. Porque tus palabras sanan.",
-    "45. Porque haces que sonría sin razón.",
-    "46. Porque me aceptas completo.",
-    "47. Porque contigo me siento vivo.",
-    "48. Porque haces del amor algo sencillo.",
-    "49. Porque me apoyas.",
-    "50. Porque contigo quiero quedarme.",
-    "51. Porque haces que el futuro no dé miedo.",
-    "52. Porque tu amor es real.",
-    "53. Porque contigo aprendí a amar bien.",
-    "54. Porque eres ternura.",
-    "55. Porque eres valentía.",
-    "56. Porque eres mi calma.",
-    "57. Porque me haces sentir amado.",
-    "58. Porque contigo todo tiene sentido.",
-    "59. Porque eres apoyo.",
-    "60. Porque eres comprensión.",
-    "61. Porque eres hogar.",
-    "62. Porque contigo no hay máscaras.",
-    "63. Porque confías en nosotros.",
-    "64. Porque tu amor es sincero.",
-    "65. Porque me abrazas el alma.",
-    "66. Porque eres lealtad.",
-    "67. Porque contigo aprendí a sanar.",
-    "68. Porque me haces creer en el amor.",
-    "69. Porque me cuidas incluso cuando no lo digo.",
-    "70. Porque tu amor no se rinde.",
-    "71. Porque eres mi paz.",
-    "72. Porque haces que todo duela menos.",
-    "73. Porque contigo soy feliz.",
-    "74. Porque eres comprensión.",
-    "75. Porque haces del amor algo bonito.",
-    "76. Porque tu amor es refugio.",
-    "77. Porque me miras como nadie.",
-    "78. Porque contigo quiero construir.",
-    "79. Porque me haces sentir amado de verdad.",
-    "80. Porque eres mi alegría.",
-    "81. Porque contigo aprendí a confiar.",
-    "82. Porque haces que valga la pena amar.",
-    "83. Porque no me soltaste.",
-    "84. Porque eres mi fuerza.",
-    "85. Porque contigo aprendí a creer.",
-    "86. Porque tu amor es sincero.",
-    "87. Porque me haces sentir en casa.",
-    "88. Porque tu amor es luz.",
-    "89. Porque contigo todo es real.",
-    "90. Porque me eliges.",
-    "91. Porque me haces sentir completo.",
-    "92. Porque contigo quiero quedarme.",
-    "93. Porque eres apoyo constante.",
-    "94. Porque haces que todo valga la pena.",
-    "95. Porque contigo aprendí a amar.",
-    "96. Porque eres amor.",
-    "97. Porque eres mi presente.",
-    "98. Porque eres mi futuro.",
-    "99. Porque eres mi felicidad.",
-    "100. Porque por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, eres la razón de mis alegrías."
+  const historia = [
+    "Durante tres años estuvimos en el mismo colegio. Los mismos pasillos, las mismas clases… pero sin hablarnos nunca.",
+    "En septiembre del 2025 entramos al BTP. Ahí empezó todo. Hablamos por primera vez y desde ese día hubo una química que no se podía negar.",
+    "Empezamos a conversar, a reír, a conocernos. El interés fue mutuo desde el primer momento.",
+    "Hubo verdades difíciles, pero en nuestro primer beso supe que te elegía a ti, que quería un futuro serio contigo.",
+    "Nuestra primera cita fue sencilla: unos helados, risas y miradas que decían más que palabras.",
+    "Hubo un día difícil, lágrimas y comentarios que dolieron. Pero dijiste algo que jamás olvidaré: que la relación es de dos y que ibas a luchar.",
+    "Esperando el bus, sin planes, surgió la pregunta más importante… y nos hicimos novios.",
+    "El 31 de diciembre me fui a dormir a tu casa y amanecimos juntos el 1 de enero, comenzando el año y nuestra historia oficialmente.",
+    "Desde entonces has sido mi apoyo, mi paz, mi fuerza. Conoces mi pasado y nunca me juzgaste.",
+    "Y hoy, aquí estamos… celebrando nuestro amor este 14 de febrero."
   ];
+
+  const razones = Array.from({ length: 100 }, (_, i) => i + 1);
 
   function iniciar() {
     musica.play();
-    mostrarRazon();
+    mostrarHistoria();
+  }
+
+  function mostrarHistoria() {
+    card.innerHTML = `
+      <h1>Nuestra Historia 💕</h1>
+      <p>${historia[indice]}</p>
+      <button onclick="siguienteHistoria()">Siguiente</button>
+    `;
+  }
+
+  function siguienteHistoria() {
+    indice++;
+    if (indice < historia.length) {
+      mostrarHistoria();
+    } else {
+      indice = 0;
+      mostrarRazon();
+    }
   }
 
   function mostrarRazon() {
     card.innerHTML = `
-      <h1>Razón ${indice + 1} 💕</h1>
-      <p>${razones[indice]}</p>
-      <button onclick="siguiente()">Siguiente</button>
+      <h1>Razón ${indice + 1} 💖</h1>
+      <p>${textoRazon(indice)}</p>
+      <button onclick="siguienteRazon()">Siguiente</button>
     `;
   }
 
-  function siguiente() {
+  function siguienteRazon() {
     indice++;
-    if (indice < razones.length) {
+    if (indice < 100) {
       mostrarRazon();
     } else {
-      card.innerHTML = `
-        <h1>¿Quieres seguir escribiendo esta historia conmigo? 💖</h1>
-        <button onclick="respuestaSi()">💖 Me quedo</button>
-        <button onclick="respuestaNo()">💔 Me voy</button>
-      `;
+      final();
     }
   }
 
+  function textoRazon(i) {
+    if (i === 99) return "Porque por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, eres la razón de mis alegrías.";
+    return `Porque contigo aprendí que el amor se construye con paciencia, verdad y ternura. (${i + 1})`;
+  }
+
+  function final() {
+    card.innerHTML = `
+      <h1>¿Quieres seguir escribiendo esta historia conmigo? 💍</h1>
+      <button onclick="respuestaSi()">💖 Me quedo</button>
+      <button onclick="respuestaNo()">💔 Me voy</button>
+    `;
+  }
+
   function respuestaSi() {
-    card.innerHTML = '<h1>Gracias por quedarte 💍</h1><p>Prometo cuidarte, amarte y escribir contigo cada capítulo de nuestra historia.</p>';
+    card.innerHTML = '<h1>Gracias por quedarte 💖</h1><p>Prometo amarte, cuidarte y escribir contigo cada capítulo de nuestra historia.</p>';
   }
 
   function respuestaNo() {
-    card.innerHTML = '<h1>Gracias por leer 💔</h1><p>Siempre llevaré lo nuestro en el corazón.</p>';
+    card.innerHTML = '<h1>Gracias por todo 💔</h1><p>Siempre llevaré lo nuestro en el corazón.</p>';
   }
 
-  // Corazones flotando
+  // Confeti de corazones
   setInterval(() => {
     const heart = document.createElement('div');
     heart.className = 'heart';
@@ -248,7 +193,7 @@
     heart.style.left = Math.random() * 100 + 'vw';
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 6000);
-  }, 400);
+  }, 350);
 </script>
 
 </body>
