@@ -15,7 +15,7 @@ body{
   text-align:center;
 }
 .card{
-  max-width:600px;
+  max-width:650px;
   margin:60px auto;
   background:rgba(255,255,255,0.15);
   border-radius:20px;
@@ -25,10 +25,10 @@ body{
 }
 .hidden{display:none;}
 h1{font-size:2em;}
-p{font-size:1.1em; line-height:1.6;}
+p{font-size:1.1em; line-height:1.7;}
 button{
-  margin-top:20px;
-  padding:12px 25px;
+  margin-top:25px;
+  padding:12px 28px;
   border:none;
   border-radius:25px;
   background:#ff4d6d;
@@ -44,7 +44,7 @@ button:hover{
 img{
   max-width:100%;
   border-radius:15px;
-  margin-top:20px;
+  margin-top:25px;
 }
 @keyframes fade{
   from{opacity:0; transform:translateY(20px);}
@@ -75,31 +75,69 @@ img{
   <h1>Hola… 💖</h1>
   <p>
     Antes de empezar,<br>
-    solo quiero que sepas que esto<br>
-    fue hecho con el corazón.
+    quiero que sepas que esto<br>
+    fue hecho con calma, tiempo<br>
+    y mucho cariño.
   </p>
   <button onclick="irA(2)">Comenzar</button>
 </div>
 
 <!-- CAPA 2 -->
 <div class="card hidden" id="capa2">
-  <h1>Nuestra historia 📖</h1>
+  <h1>Nuestra historia 💫</h1>
   <p>
-    Tal vez no lo sabías,<br>
-    pero desde el primer momento<br>
-    algo en ti se quedó conmigo.
+    Hay historias que no empiezan<br>
+    cuando uno las espera,<br>
+    sino cuando deben empezar.
   </p>
-  <button onclick="irA(3)">Siguiente</button>
+  <button onclick="irA(25)">Siguiente</button>
 </div>
 
-<!-- CAPA 3 FOTO -->
+<!-- CAPA 2.5 COMO SE CONOCIERON -->
+<div class="card hidden" id="capa25">
+  <h1>Cómo nos conocimos ✨</h1>
+  <p>
+    Durante tres años estuvimos en el mismo colegio.<br>
+    Caminamos por los mismos pasillos,<br>
+    compartimos el mismo lugar…
+  </p>
+  <p>
+    y aun así, nunca nos vimos.<br>
+    Nunca hablamos.<br>
+    Nunca nos conocimos.
+  </p>
+  <p>
+    Fue recién en septiembre,<br>
+    cuando entramos al BTP,<br>
+    en ese mismo colegio,<br>
+    que el destino decidió hacer bien su trabajo.
+  </p>
+  <p>
+    Entre conversaciones simples,<br>
+    risas nerviosas y momentos pequeños,<br>
+    empezamos a hablarnos.
+  </p>
+  <p>
+    Lo que no pasó en tres años,<br>
+    comenzó a pasar en poco tiempo.
+  </p>
+  <p style="font-weight:bold; color:#ffd1dc;">
+    Aquí empezó nuestra historia…
+  </p>
+
+  <img src="primera_foto.jpeg" alt="Nuestra primera foto juntos">
+  <button onclick="irA(3)">Seguir recordando</button>
+</div>
+
+<!-- CAPA 3 PRIMERA CITA -->
 <div class="card hidden" id="capa3">
   <h1>Nuestra primera cita 💕</h1>
   <p>
-    Este momento siempre tendrá<br>
-    un lugar especial en mi corazón.
+    Este día no fue perfecto,<br>
+    pero fue real.<br>
+    Y por eso, fue especial.
   </p>
-  <img src="Foto_recuerdo.jpeg" alt="Nuestra foto">
+  <img src="Foto_recuerdo.jpeg" alt="Nuestra primera cita">
   <button onclick="irA(4)">Continuar</button>
 </div>
 
@@ -116,7 +154,7 @@ img{
   <p>
     Gracias por leer cada razón,<br>
     por quedarte hasta el final,<br>
-    y por existir.
+    y por ser parte de esta historia.
   </p>
   <p style="margin-top:20px; font-weight:bold; color:#ffd1dc;">
     Hoy te elijo…<br>
@@ -152,8 +190,8 @@ function crearCorazon(){
 }
 
 let indice=0;
-const razones=[
-"Porque tu sonrisa cambia mi día 💖",
+const razones=[/* 1 a 99 */
+"Porque tu sonrisa cambia mi día",
 "Porque tu mirada transmite paz",
 "Porque tu risa es mi sonido favorito",
 "Porque eres auténtica",
@@ -184,11 +222,9 @@ const razones=[
 "Porque eres mi calma",
 "Porque eres mi emoción",
 "Porque eres única",
-"Porque me inspiras confianza",
 "Porque contigo hay complicidad",
 "Porque eres luz",
 "Porque eres ternura",
-"Porque eres pasión",
 "Porque eres verdad",
 "Porque eres hogar",
 "Porque eres refugio",
@@ -196,42 +232,23 @@ const razones=[
 "Porque contigo no finjo",
 "Porque contigo me siento seguro",
 "Porque contigo sueño",
-"Porque contigo creo",
-"Porque contigo aprendo",
 "Porque contigo crezco",
 "Porque contigo todo suma",
 "Porque contigo todo importa",
 "Porque contigo todo vale",
-"Porque contigo todo es mejor",
-"Porque eres tú",
-"Porque elegiste quedarte",
-"Porque te quedas",
-"Porque intentas",
-"Porque no huyes",
-"Porque luchas",
-"Porque amas",
-"Porque sientes",
-"Porque cuidas",
-"Porque sanas",
-"Porque iluminas",
-"Porque acompañas",
-"Porque permaneces",
-"Porque confías",
-"Porque crees",
-"Porque compartes",
-"Porque entregas",
-"Porque existes",
-"Porque llegaste",
-"Porque cambiaste cosas",
-"Porque marcaste mi vida",
-"Porque dejaste huella",
-"Porque transformaste mi mundo",
 "Porque eres mi elección",
 "Porque eres mi presente",
 "Porque eres mi ilusión",
+"Porque llegaste",
+"Porque te quedaste",
+"Porque intentas",
+"Porque confías",
+"Porque acompañas",
+"Porque permaneces",
+"Porque cambiaste mi vida",
+"Porque dejaste huella",
 "Porque eres mi casualidad favorita",
 "Porque eres mi destino bonito",
-"Porque al final de todo…",
 "💖 Razón 100: porque al final de todas las razones, siempre has sido tú… Katherine 💕"
 ];
 
