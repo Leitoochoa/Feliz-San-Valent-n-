@@ -2,153 +2,50 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Feliz 14 de Febrero 💖</title>
+<title>Para Katherine Lisseth 💖</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-}
+/* ... (Mantenemos tu base de CSS pero con estos ajustes) ... */
+*{ box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
 body{
-  margin:0;
-  min-height:100vh;
-  background:linear-gradient(135deg,#ffd1dc,#ffeaf1);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow-x:hidden;
+  margin:0; min-height:100vh;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); /* Un degradado más suave */
+  display:flex; justify-content:center; align-items:center; overflow:hidden;
 }
 .card{
-  background:white;
-  width:90%;
-  max-width:600px;
-  padding:35px;
-  border-radius:25px;
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
-  text-align:center;
-  animation:fade .6s ease;
-  position:relative;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  width:90%; max-width:600px; padding:35px; border-radius:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.1); text-align:center;
+  animation:fade .8s ease; position:relative; z-index: 10;
 }
 .hidden{display:none}
 h1,h2,h3{
-  background: linear-gradient(90deg,#ff4d6d,#ff99c8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg,#ff4d6d,#c71585);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-p{
-  color:#444;
-  font-size:18px;
-  line-height:1.8;
-  margin-top:15px;
-}
+p{ color:#444; font-size:18px; line-height:1.8; margin-top:15px; }
 
 .btn{
-  margin-top:25px;
-  padding:14px 28px;
-  border:none;
-  border-radius:30px;
-  background:#ff4d6d;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  transition:.3s;
+  margin-top:20px; padding:14px 28px; border:none; border-radius:30px;
+  background:#ff4d6d; color:white; font-size:16px; cursor:pointer;
+  transition:.3s; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
 }
-.btn:hover{transform:scale(1.05)}
+.btn:hover{transform:scale(1.05); background:#ff3355;}
 
-img{
-  width:100%;
-  border-radius:20px;
-  margin-top:20px;
+/* CORAZONES FLOTANTES */
+.heart-particle {
+  position: absolute; color: #ff4d6d; pointer-events: none;
+  animation: fall linear forwards; z-index: 0;
+}
+@keyframes fall {
+  to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}
-}
+/* EFECTO BOTÓN TRAVIESO */
+#btnNo { position: relative; transition: 0.2s; }
 
-/* CORAZÓN */
-.heart{
-  font-size:50px;
-  color:#ff4d6d;
-  animation:beat 1s infinite;
-  margin-bottom:10px;
-}
-@keyframes beat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.35)}
-}
-
-/* NÚMERO LATIDO */
-.numero{
-  font-size:28px;
-  animation:latido 1s ease;
-}
-@keyframes latido{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.3)}
-  100%{transform:scale(1)}
-}
-
-/* EFECTO ESPECIAL */
-.sparkle{
-  animation:sparkle 1.2s ease;
-}
-@keyframes sparkle{
-  0%{opacity:0;transform:scale(0.8)}
-  50%{opacity:1;transform:scale(1.1)}
-  100%{opacity:1;transform:scale(1)}
-}
-
-/* ANIMACIÓN FADE IN PARA TEXTOS */
-.fadeIn{
-  animation:fadeIn 0.6s ease forwards;
-}
-@keyframes fadeIn{
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* CONFETTI CORAZONES */
-.confetti{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:0;
-}
-.confetti span{
-  position:absolute;
-  display:block;
-  width:10px;
-  height:10px;
-  background:#ff4d6d;
-  opacity:0.8;
-  border-radius:50%;
-  animation:fall 5s linear infinite;
-}
-@keyframes fall{
-  0%{transform:translateY(0) rotate(0deg);}
-  100%{transform:translateY(100vh) rotate(360deg);}
-}
-
-/* RESPONSIVO */
-@media(max-width:480px){
-  .card{
-    padding:20px;
-  }
-  h1,h2,h3{
-    font-size:1.5em;
-  }
-  p{
-    font-size:16px;
-  }
-  .btn{
-    padding:12px 20px;
-  }
-}
+@keyframes fade{ from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
 </style>
 </head>
 
@@ -158,154 +55,121 @@ img{
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
-<div class="confetti"></div>
-
-<!-- CAPA 1 -->
 <div class="card" id="capa1">
-  <h1>Feliz 14 de Febrero 💘</h1>
-  <p>
-    Hoy celebramos algo muy especial…<br>
-    Nuestro <strong>primer San Valentín juntos</strong> 💖
-  </p>
-  <button class="btn" onclick="irA(2)">Comenzar ✨</button>
+  <div style="font-size: 50px;">💌</div>
+  <h1>Hola, Katherine Lisseth...</h1>
+  <p>Tengo algo que decirte en este primer San Valentín juntos. ¿Me permites?</p>
+  <button class="btn" onclick="irA(2)">Abrir mi corazón ✨</button>
 </div>
 
-<!-- CAPA 2 -->
 <div class="card hidden" id="capa2">
   <h2>Nuestro encuentro ✨</h2>
   <p>
-    Tres años compartimos el mismo colegio sin conocernos de verdad…  
-    Pero en septiembre, al entrar al BTP, el destino nos unió.  
-    Desde ese primer momento <strong>sentimos una conexión especial</strong> 💖  
-    como si nuestras almas ya se hubieran reconocido.
+    Caminamos por el mismo colegio durante tres años sin cruzarnos, como si el tiempo nos estuviera 
+    reservando para el momento exacto. <br><br>
+    Fue <strong>bajo el sol de septiembre, iniciando nuestro camino en el BTP</strong>, donde la espera terminó. 
+    Sentimos ese lazo invisible que nos unió al instante; esa certeza mágica de que nuestras almas siempre se estuvieron buscando. 💖
   </p>
-  <button class="btn" onclick="irA(3)">Seguir 💕</button>
+  <button class="btn" onclick="irA(3)">Seguir leyendo 💕</button>
 </div>
 
-<!-- CAPA 3 -->
 <div class="card hidden" id="capa3">
-  <h2>Nuestro vínculo antes de la primera cita 📖</h2>
+  <h2>Un nuevo comienzo 📖</h2>
   <p>
-    Aunque aún no habíamos tenido nuestra primera cita, ya compartíamos miradas, risas y secretos en clase…  
-    El lazo entre nosotros se hacía cada vez más fuerte 💓  
-    Yo, que antes no sabía comprometerme, entendí que contigo quería algo real.  
-    Dejé atrás todo lo demás y me enfoqué solo en ti 💘
+    Antes de nuestra primera cita, ya compartíamos un mundo en cada risa y secreto en clase. 
+    Contigo entendí que quería algo real. <strong>Dejé todo atrás</strong> porque mi único objetivo era, y sigue siendo, verte feliz a mi lado. 💘
   </p>
-  <button class="btn" onclick="irA(4)">Nuestra primera cita 💖</button>
+  <button class="btn" onclick="irA(4)">Nuestra primera cita 🍨</button>
 </div>
 
-<!-- CAPA 4 -->
 <div class="card hidden" id="capa4">
-  <h2>Nuestra primera cita 🍨</h2>
-  <img src="Foto-recuerdo.jpeg" alt="Primera cita">
-  <p>
-    Ese día comenzó algo hermoso y verdadero.  
-    Pero lo más bonito es que nuestro amor ya había empezado antes, en cada sonrisa y cada momento juntos 💞
-  </p>
-  <button class="btn" onclick="irA(5)">Algo especial 💘</button>
+  <h2>Ese primer recuerdo 📸</h2>
+  <img src="Foto-recuerdo.jpeg" alt="Nuestra foto" style="width:100%; border-radius:15px; margin:15px 0;">
+  <p>Ese día el mundo se detuvo. Fue el inicio oficial de nuestra historia verdadera. 💞</p>
+  <button class="btn" onclick="irA(5)">Algo más... 💘</button>
 </div>
 
-<!-- CAPA 5 -->
 <div class="card hidden" id="capa5">
-  <div class="heart" id="heart">💗</div>
-  <h2>100 razones por las que te amo 💖</h2>
-  <h3 class="numero" id="num">1</h3>
-  <p id="razon"></p>
+  <div style="font-size:40px; animation: beat 1s infinite;">❤️</div>
+  <h3>Razón #<span id="num">1</span></h3>
+  <p id="razon">Porque desde que llegaste, mi vida es más bonita 💖</p>
   <button class="btn" onclick="siguiente()">Siguiente razón 💓</button>
 </div>
 
-<!-- CAPA FINAL -->
 <div class="card hidden" id="capaFinal">
-  <h2>Una promesa 💍</h2>
+  <h2>Una promesa eterna 💍</h2>
   <p>
-    No te prometo perfección…<br>
-    pero sí amor, respeto y elegirte cada día 💖<br><br>
+    No te prometo una vida perfecta, pero te prometo amor, respeto y 
+    <strong>elegirte cada mañana</strong> por el resto de mis días. 💖<br><br>
     ¿Seguimos escribiendo nuestra historia juntos?
   </p>
-  <button class="btn" id="finalBtn" onclick="respuesta(true)">Sí, me quedo contigo 💖</button><br><br>
-  <button class="btn" style="background:#ccc;color:#555" onclick="respuesta(false)">
-    No me quedo
-  </button>
+  <button class="btn" onclick="respuesta(true)">¡Sí, mil veces sí! 💖</button><br>
+  <button class="btn" id="btnNo" onmouseover="muevete(this)" style="background:#bbb;">No me quedo</button>
 </div>
 
 <script>
-// RAZONES
+let i = 0;
 const razones = [
-  "Porque desde que llegaste, mi vida es más bonita 💖",
-  "Porque tu sonrisa ilumina mis días 💕",
-  "Porque contigo aprendí a amar de verdad 💗",
-  "Porque me haces sentir en casa 💞",
-  "Porque tus abrazos lo curan todo 💓",
-  "Porque contigo soy yo sin miedo 💘",
-  "Porque tu risa es mi sonido favorito 💝",
-  "Porque me miras con amor 💖",
-  "Porque contigo todo se siente real 💕",
-  "Porque me haces creer en el amor 💗",
-  "Porque apareciste cuando no lo esperaba 💞",
-  "Porque haces especiales los momentos simples 💓",
-  "Porque me inspiras a ser mejor 💘",
-  "Porque contigo el tiempo vuela 💝",
-  "Porque incluso en silencio me haces feliz 💖",
-  "Porque la razón número 100 eres tú, KATHERINE LISSETH NIETO ALVAREZ 💖"
+  "Porque tu sonrisa es mi combustible diario 💕",
+  "Porque contigo aprendí lo que es la paz 💗",
+  "Porque me haces sentir el hombre más afortunado 💞",
+  "Porque tus abrazos son mi lugar seguro 💓",
+  "Porque amo cómo brillas cuando hablas de lo que te gusta 💘",
+  "Porque incluso en los días malos, estar contigo lo arregla todo 💝",
+  "Porque la razón número 100 eres tú, Katherine Lisseth Nieto Alvarez 💖"
 ];
 
-while(razones.length < 100){
-  razones.splice(razones.length-1,0,"Porque cada pequeño detalle tuyo me enamora más 💓");
+// Rellenar razones para llegar a 100
+while(razones.length < 99) {
+    razones.splice(razones.length-1, 0, "Porque amo cada pequeño detalle de tu forma de ser 🌸");
 }
 
-let i = 0;
-
-// TRANSICIÓN ENTRE CAPAS
 function irA(n){
   document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
   document.getElementById('capa'+n).classList.remove('hidden');
   const musica = document.getElementById('musica');
-  if(musica.paused){
-    musica.volume = 0.5;
-    musica.play().catch(()=>{});
-  }
+  if(musica.paused) { musica.volume = 0.4; musica.play().catch(()=>{}); }
 }
 
-// SIGUIENTE RAZÓN
 function siguiente(){
-  const num = document.getElementById('num');
-  const razon = document.getElementById('razon');
-  num.innerText = i+1;
-  num.classList.remove('numero');
-  void num.offsetWidth;
-  num.classList.add('numero');
-
-  razon.innerText = razones[i];
-  razon.classList.remove('sparkle','fadeIn');
-  if((i+1) % 5 === 0) razon.classList.add('sparkle');
-  razon.classList.add('fadeIn');
-
-  i++;
-  if(i >= razones.length){
+  if(i >= razones.length - 1){
     irA('Final');
+    return;
   }
+  i++;
+  document.getElementById('num').innerText = i + 1;
+  document.getElementById('razon').innerText = razones[i];
 }
 
-// RESPUESTA FINAL
+function muevete(btn){
+  btn.style.position = 'absolute';
+  btn.style.top = Math.random() * 80 + '%';
+  btn.style.left = Math.random() * 80 + '%';
+}
+
 function respuesta(ok){
   document.body.innerHTML = `
     <div class="card">
-      <h1>${ok ? "Gracias por quedarte 💖" : "Siempre te llevaré conmigo 💕"}</h1>
-      <p>${ok ? "Este es solo el comienzo de nuestra historia de amor." : "Lo nuestro fue real y siempre lo recordaré."}</p>
+      <h1>💖 ¡Te amo! 💖</h1>
+      <p>Has hecho que este 14 de febrero sea el mejor de mi vida. <br> Gracias por ser mi destino, Katherine.</p>
     </div>
   `;
+  setInterval(createHeart, 200);
 }
 
-// CONFETTI CORAZONES
-const confetti = document.querySelector('.confetti');
-for(let j=0;j<30;j++){
-  const span = document.createElement('span');
-  span.style.left = Math.random()*100+'vw';
-  span.style.animationDuration = 3 + Math.random()*5 +'s';
-  span.style.width = 5+Math.random()*10+'px';
-  span.style.height = span.style.width;
-  confetti.appendChild(span);
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart-particle');
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+  heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
 }
+
+// Iniciar corazones lentos al principio
+setInterval(createHeart, 500);
 </script>
 
 </body>
