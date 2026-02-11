@@ -146,6 +146,7 @@ const razones = [
 
 /* ===== FUNCIONES ===== */
 function iniciar(){
+  
   contenido.innerHTML = historia[0];
 }
 
@@ -192,6 +193,8 @@ function respuesta(ok){
 
 /* ===== CORAZONES ===== */
 function corazones(){
+  // corazones infinitos cada 800 milisegundos
+setInterval(corazones, 800);
   for(let i=0;i<8;i++){
     const h=document.createElement("div");
     h.className="heart";
