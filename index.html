@@ -1,201 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>14 de Febrero 💖 Nuestra Historia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Historia 💖</title>
 
-  <!-- ================== ESTILOS ================== -->
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #ff9a9e, #fad0c4);
-      color: #333;
-      overflow: hidden;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    .container {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      text-align: center;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 22px;
-      max-width: 650px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      animation: fadeIn 0.8s ease;
-    }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+}
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: #ff4f81;
-      margin-bottom: 15px;
-    }
+/* CONTENEDOR */
+.card {
+  background: white;
+  max-width: 90%;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.2);
+  text-align: center;
+}
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
+/* TITULOS */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  color: #ff4f81;
+  font-size: 3rem;
+}
 
-    button {
-      margin-top: 30px;
-      padding: 14px 34px;
-      font-size: 1.05rem;
-      border: none;
-      border-radius: 30px;
-      background: #ff4f81;
-      color: white;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-    }
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
 
-    button:hover {
-      transform: scale(1.05);
-      background: #ff2f6d;
-    }
+/* BOTONES */
+button {
+  background: #ff4f81;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 25px;
+}
 
-    .heart {
-      position: fixed;
-      top: -20px;
-      font-size: 20px;
-      animation: fall 6s linear infinite;
-      opacity: 0.8;
-    }
+button:hover {
+  transform: scale(1.05);
+}
 
-    @keyframes fall {
-      from { transform: translateY(0); }
-      to { transform: translateY(110vh); }
-    }
+/* IMAGEN */
+img {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+  display: none;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* CONFETI */
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
 
-    /* ================== MOBILE ================== */
-    @media (max-width: 768px) {
-      .card { padding: 25px; max-width: 95%; }
-      h1 { font-size: 2.2rem; }
-      p { font-size: 1rem; }
-      button { width: 100%; padding: 14px; }
-    }
-  </style>
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* OCULTAR */
+.hidden {
+  display: none;
+}
+</style>
 </head>
+
 <body>
 
-<!-- ================== MUSICA ================== -->
+<!-- MUSICA -->
 <audio id="musica" loop>
   <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container">
-  <div class="card" id="card">
-    <h1>Nuestra Historia 💖</h1>
-    <p>Este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto.</p>
-    <button onclick="iniciar()">Comenzar</button>
-  </div>
+<!-- INTRO -->
+<div class="card" id="intro">
+  <h1>Nuestra Historia 💖</h1>
+  <p>
+    Este 14 de febrero quiero que recorras conmigo nuestra historia…  
+    paso a paso, sin prisas, con el corazón abierto.
+  </p>
+  <button onclick="comenzar()">Comenzar</button>
+</div>
+
+<!-- CONTENIDO -->
+<div class="card hidden" id="contenido">
+  <p id="texto"></p>
+  <img id="imagen">
+  <button onclick="siguiente()">Siguiente</button>
 </div>
 
 <script>
-  const musica = document.getElementById('musica');
-  const card = document.getElementById('card');
-  let indice = 0;
+/* ===== VARIABLES ===== */
+let paso = 0;
 
-  const historia = [
-    { texto: "Durante tres años estuvimos en el mismo colegio. Los mismos pasillos, las mismas clases… pero sin hablarnos nunca.", img: null },
-    { texto: "En septiembre del 2025 entramos al BTP. Ahí empezó todo. Hablamos por primera vez y desde ese día hubo una química que no se podía negar.", img: "primera-foto.jpeg" },
-    { texto: "Empezamos a conversar, a reír, a conocernos. El interés fue mutuo desde el primer momento.", img: null },
-    { texto: "Hubo verdades difíciles, pero en nuestro primer beso supe que te elegía a ti, que quería un futuro serio contigo.", img: null },
-    { texto: "Nuestra primera cita fue sencilla: unos helados, risas y miradas que decían más que palabras.", img: "Foto-recuerdo.jpg.jpeg" },
-    { texto: "Hubo un día difícil, lágrimas y comentarios que dolieron. Pero dijiste algo que jamás olvidaré: "LA RELACIÓN ES DE DOS Y NO TE VOY A DEJAR.", img: null },
-    { texto: "Esperando el bus, sin planes, surgió la pregunta más importante ¿Qué somos?… y en medio del dolor decidimos hacernos novios.", img: null },
-    { texto: "Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo. Entre el miedo a que nos descubrieran y las ganas de no soltarte, despertamos aquel primero de enero estrenando calendario y nuestra historia. Fue el mejor inicio de año: oficialmente juntos, extraoficialmente sin permiso, pero con todo el amor del mundo.", img: null },
-    { texto: "Desde entonces has sido mi apoyo, mi paz, mi fuerza. Conoces mi pasado y nunca me juzgaste.", img: null },
-    { texto: "Y hoy, aquí estamos… celebrando nuestro amor este 14 de febrero.", img: null }
-  ];
+/* ===== HISTORIA ===== */
+const historia = [
+  {
+    texto: "Tres años en el mismo colegio. Mismos pasillos, mismas miradas cruzadas, mismas rutinas… y aun así, sin hablarnos jamás. El destino nos estaba guardando.",
+    img: null
+  },
+  {
+    texto: "Septiembre de 2025. Entramos al BTP y empezamos a hablar. Desde el primer día algo se sintió distinto, una conexión real, intensa, imposible de ignorar.",
+    img: "primera-foto.jpeg"
+  },
+  {
+    texto: "Te conté mi verdad, incluso las partes más oscuras. No huiste. No juzgaste. Me abrazaste con palabras y decidiste quedarte.",
+    img: null
+  },
+  {
+    texto: "Nuestra primera cita fue simple: unos helados, risas nerviosas y la certeza de que contigo todo se sentía correcto.",
+    img: "Foto-recuerdo.jpeg"
+  },
+  {
+    texto: "Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo. Entre el miedo y las ganas, despertamos estrenando calendario y nuestra historia.",
+    img: null
+  },
+  {
+    texto: "Desde ese día entendí que el amor no es perfecto, pero sí valiente. Y tú eres la valentía más bonita que conozco.",
+    img: null
+  }
+];
 
-  const razones = Array.from({ length: 100 }, (_, i) => i + 1);
+/* ===== 100 RAZONES ===== */
+for (let i = 1; i <= 99; i++) {
+  historia.push({
+    texto: "Razón " + i + ": Porque incluso sin darte cuenta, haces que mi mundo sea un lugar más seguro y bonito.",
+    img: null
+  });
+}
 
-  function iniciar() {
-    musica.play();
-    mostrarHistoria();
+historia.push({
+  texto: "Razón 100: Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías, de mi calma y de mi amor más sincero.",
+  img: null
+});
+
+/* FINAL */
+historia.push({
+  texto: "¿Quieres seguir escribiendo esta historia conmigo? 💖",
+  img: null,
+  final: true
+});
+
+/* ===== FUNCIONES ===== */
+function comenzar() {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("contenido").classList.remove("hidden");
+  reproducirMusica();
+  lanzarCorazones();
+  mostrarPaso();
+}
+
+function mostrarPaso() {
+  const texto = document.getElementById("texto");
+  const imagen = document.getElementById("imagen");
+  const boton = document.querySelector("#contenido button");
+
+  texto.innerText = historia[paso].texto;
+
+  if (historia[paso].img) {
+    imagen.src = historia[paso].img;
+    imagen.style.display = "block";
+  } else {
+    imagen.style.display = "none";
   }
 
-  function mostrarHistoria() {
-    const paso = historia[indice];
-    card.innerHTML = `
-      <h1>Nuestra Historia 💕</h1>
-      <p>${paso.texto}</p>
-      ${paso.img ? `<img src="${paso.img}" style="width:100%; border-radius:16px; margin-top:20px;">` : ""}
-      <button onclick="siguienteHistoria()">Siguiente</button>
+  if (historia[paso].final) {
+    boton.style.display = "none";
+    texto.innerHTML += `
+      <br><br>
+      <button onclick="respuesta(true)">Me quedo 💕</button>
+      <button onclick="respuesta(false)">Me voy 💔</button>
     `;
   }
+}
 
-  function siguienteHistoria() {
-    indice++;
-    if (indice < historia.length) {
-      mostrarHistoria();
-    } else {
-      indice = 0;
-      mostrarRazon();
-    }
-  }
+function siguiente() {
+  paso++;
+  mostrarPaso();
+}
 
-  function mostrarRazon() {
-    card.innerHTML = `
-      <h1>Razón ${indice + 1} 💖</h1>
-      <p>${textoRazon(indice)}</p>
-      <button onclick="siguienteRazon()">Siguiente</button>
-    `;
-  }
+function reproducirMusica() {
+  const musica = document.getElementById("musica");
+  musica.volume = 0.5;
+  musica.play();
+}
 
-  function siguienteRazon() {
-    indice++;
-    if (indice < 100) {
-      mostrarRazon();
-    } else {
-      final();
-    }
-  }
-
-  function textoRazon(i) {
-    if (i === 99) return "Porque por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, eres la razón de mis alegrías.";
-    return `Porque contigo aprendí que el amor se construye con paciencia, verdad y ternura. (${i + 1})`;
-  }
-
-  function final() {
-    card.innerHTML = `
-      <h1>¿Quieres seguir escribiendo esta historia conmigo? 💍</h1>
-      <button onclick="respuestaSi()">💖 Me quedo</button>
-      <button onclick="respuestaNo()">💔 Me voy</button>
-    `;
-  }
-
-  function respuestaSi() {
-    card.innerHTML = '<h1>Gracias por quedarte 💖</h1><p>Prometo amarte, cuidarte y escribir contigo cada capítulo de nuestra historia.</p>';
-  }
-
-  function respuestaNo() {
-    card.innerHTML = '<h1>Gracias por todo 💔</h1><p>Siempre llevaré lo nuestro en el corazón.</p>';
-  }
-
-  // Confeti de corazones
+function lanzarCorazones() {
   setInterval(() => {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerHTML = '💖';
-    heart.style.left = Math.random() * 100 + 'vw';
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💕";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 6000);
-  }, 350);
+  }, 300);
+}
+
+function respuesta(seQueda) {
+  document.getElementById("texto").innerText = seQueda
+    ? "Gracias por quedarte. Prometo amarte bonito, incluso en los días difíciles 💖"
+    : "Aunque duela, siempre agradeceré haberte amado 💔";
+}
 </script>
 
 </body>
