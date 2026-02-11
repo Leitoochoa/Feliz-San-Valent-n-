@@ -193,8 +193,13 @@ function respuesta(ok){
 
 /* ===== CORAZONES ===== */
 function corazones(){
-  // corazones infinitos cada 800 milisegundos
-setInterval(corazones, 800);
+  /* ===== CORAZONES ===== */
+setInterval(() => {
+  for(let i=0;i<3;i++){
+    corazones();
+  }
+}, 1200);
+  /* ===== CORAZONES ===== */
   for(let i=0;i<8;i++){
     const h=document.createElement("div");
     h.className="heart";
