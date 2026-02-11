@@ -1,218 +1,255 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- =========================
-       CONFIGURACIÓN BÁSICA
-  ========================== -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz 14 de Febrero ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14 de Febrero 💖 Nuestra Historia</title>
 
-  <!-- =========================
-       FUENTES
-  ========================== -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- =========================
-       ESTILOS (DISEÑO)
-  ========================== -->
+  <!-- ================== ESTILOS ================== -->
   <style>
-    body{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,#ff758c,#ff7eb3);
-      color:#333;
-      overflow-x:hidden;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+      color: #333;
+      overflow: hidden;
     }
 
-    header{
-      text-align:center;
-      padding:80px 20px;
-      color:white;
+    .container {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
     }
 
-    header h1{
-      font-family:'Great Vibes',cursive;
-      font-size:3.8rem;
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
     }
 
-    .container{
-      max-width:800px;
-      margin:auto;
-      padding:20px;
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #ff4f81;
     }
 
-    .event{
-      background:white;
-      border-radius:20px;
-      padding:30px;
-      margin:40px 0;
-      box-shadow:0 15px 30px rgba(0,0,0,.2);
-      animation:fade .8s ease;
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
-    .event img{
-      width:100%;
-      border-radius:15px;
-      margin-top:20px;
+    button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: #ff4f81;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
     }
 
-    button{
-      display:block;
-      margin:40px auto;
-      padding:15px 40px;
-      border:none;
-      border-radius:30px;
-      background:#ff4f81;
-      color:white;
-      font-size:1.1rem;
-      cursor:pointer;
+    button:hover {
+      transform: scale(1.05);
+      background: #ff2f6d;
     }
 
-    /* Corazones flotando */
-    .heart{
-      position:fixed;
-      bottom:-20px;
-      font-size:20px;
-      animation:float 6s linear infinite;
-      opacity:.8;
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
     }
 
-    @keyframes float{
-      from{transform:translateY(0);opacity:.8}
-      to{transform:translateY(-120vh);opacity:0}
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-110vh); }
     }
 
-    @keyframes fade{
-      from{opacity:0;transform:translateY(20px)}
-      to{opacity:1;transform:translateY(0)}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- =========================
-       AUDIO (MÚSICA)
-       ⚠️ Suena SOLO con click
-  ========================== -->
-  <audio id="musica" preload="auto">
-    <source src="Morat, Juanes-Besos en Guerra.mp3.mp3" type="audio/mpeg">
-  </audio>
+<!-- ================== MUSICA ================== -->
+<audio id="musica" loop>
+  <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- =========================
-       ENCABEZADO
-  ========================== -->
-  <header>
-    <h1>Feliz 14 de Febrero ❤️</h1>
-    <p>Una historia escrita con amor, solo para ti</p>
-  </header>
+<!-- ================== CONTENEDOR ================== -->
+<div class="container">
+  <div class="card" id="card">
+    <h1>Para ti 💖</h1>
+    <p>Este 14 de febrero no quería flores ni regalos comunes… quería darte algo que quedara para siempre. Dale click y camina conmigo 💕</p>
+    <button onclick="iniciar()">Comenzar</button>
+  </div>
+</div>
 
-  <!-- =========================
-       CONTENIDO INTERACTIVO
-  ========================== -->
-  <div class="container" id="historia"></div>
+<!-- ================== SCRIPT ================== -->
+<script>
+  const musica = document.getElementById('musica');
+  const card = document.getElementById('card');
 
-  <button id="btn" onclick="avanzar()">💖 Comenzar nuestra historia</button>
+  let indice = 0;
 
-  <!-- =========================
-       JAVASCRIPT (INTERACCIÓN)
-  ========================== -->
-  <script>
-    /* ---------- VARIABLES ---------- */
-    const musica = document.getElementById('musica');
-    let musicaIniciada = false;
-    let paso = 0;
+  const razones = [
+    "1. Porque desde el primer día sentí una conexión que no se explica, solo se siente.",
+    "2. Porque tu sonrisa tiene el poder de calmar cualquier tormenta en mí.",
+    "3. Porque tus ojos dicen más de lo que mil palabras podrían decir.",
+    "4. Porque contigo aprendí que amar no duele cuando es verdadero.",
+    "5. Porque me haces sentir en casa incluso lejos de todo.",
+    "6. Porque tus abrazos curan partes de mí que nadie más vio rotas.",
+    "7. Porque me escuchas incluso cuando no sé cómo expresarme.",
+    "8. Porque nunca me juzgaste por mi pasado.",
+    "9. Porque decidiste quedarte cuando no era fácil.",
+    "10. Porque luchas por lo nuestro.",
+    "11. Porque tu risa es mi sonido favorito.",
+    "12. Porque confías en mí.",
+    "13. Porque me inspiras a ser mejor.",
+    "14. Porque contigo aprendí lo que es el amor real.",
+    "15. Porque me haces sentir suficiente.",
+    "16. Porque respetas mis heridas.",
+    "17. Porque me das paz.",
+    "18. Porque incluso en silencio me entiendes.",
+    "19. Porque contigo no tengo miedo de ser yo.",
+    "20. Porque me acompañas en mis días grises.",
+    "21. Porque celebras mis pequeños logros.",
+    "22. Porque confías en nuestro futuro.",
+    "23. Porque eres fuerte y dulce al mismo tiempo.",
+    "24. Porque tu amor no exige, acompaña.",
+    "25. Porque sabes amar bonito.",
+    "26. Porque me enseñaste que no todo amor hiere.",
+    "27. Porque tu forma de querer es sincera.",
+    "28. Porque eres mi lugar seguro.",
+    "29. Porque nunca soltaste mi mano.",
+    "30. Porque me eliges todos los días.",
+    "31. Porque haces que crea otra vez.",
+    "32. Porque contigo no tengo que fingir.",
+    "33. Porque eres luz.",
+    "34. Porque me das esperanza.",
+    "35. Porque haces mis días más suaves.",
+    "36. Porque me cuidas.",
+    "37. Porque respetas mis tiempos.",
+    "38. Porque sabes amar sin lastimar.",
+    "39. Porque contigo aprendí a confiar.",
+    "40. Porque haces que todo valga la pena.",
+    "41. Porque eres paciencia.",
+    "42. Porque no te rendiste.",
+    "43. Porque me miras con amor.",
+    "44. Porque tus palabras sanan.",
+    "45. Porque haces que sonría sin razón.",
+    "46. Porque me aceptas completo.",
+    "47. Porque contigo me siento vivo.",
+    "48. Porque haces del amor algo sencillo.",
+    "49. Porque me apoyas.",
+    "50. Porque contigo quiero quedarme.",
+    "51. Porque haces que el futuro no dé miedo.",
+    "52. Porque tu amor es real.",
+    "53. Porque contigo aprendí a amar bien.",
+    "54. Porque eres ternura.",
+    "55. Porque eres valentía.",
+    "56. Porque eres mi calma.",
+    "57. Porque me haces sentir amado.",
+    "58. Porque contigo todo tiene sentido.",
+    "59. Porque eres apoyo.",
+    "60. Porque eres comprensión.",
+    "61. Porque eres hogar.",
+    "62. Porque contigo no hay máscaras.",
+    "63. Porque confías en nosotros.",
+    "64. Porque tu amor es sincero.",
+    "65. Porque me abrazas el alma.",
+    "66. Porque eres lealtad.",
+    "67. Porque contigo aprendí a sanar.",
+    "68. Porque me haces creer en el amor.",
+    "69. Porque me cuidas incluso cuando no lo digo.",
+    "70. Porque tu amor no se rinde.",
+    "71. Porque eres mi paz.",
+    "72. Porque haces que todo duela menos.",
+    "73. Porque contigo soy feliz.",
+    "74. Porque eres comprensión.",
+    "75. Porque haces del amor algo bonito.",
+    "76. Porque tu amor es refugio.",
+    "77. Porque me miras como nadie.",
+    "78. Porque contigo quiero construir.",
+    "79. Porque me haces sentir amado de verdad.",
+    "80. Porque eres mi alegría.",
+    "81. Porque contigo aprendí a confiar.",
+    "82. Porque haces que valga la pena amar.",
+    "83. Porque no me soltaste.",
+    "84. Porque eres mi fuerza.",
+    "85. Porque contigo aprendí a creer.",
+    "86. Porque tu amor es sincero.",
+    "87. Porque me haces sentir en casa.",
+    "88. Porque tu amor es luz.",
+    "89. Porque contigo todo es real.",
+    "90. Porque me eliges.",
+    "91. Porque me haces sentir completo.",
+    "92. Porque contigo quiero quedarme.",
+    "93. Porque eres apoyo constante.",
+    "94. Porque haces que todo valga la pena.",
+    "95. Porque contigo aprendí a amar.",
+    "96. Porque eres amor.",
+    "97. Porque eres mi presente.",
+    "98. Porque eres mi futuro.",
+    "99. Porque eres mi felicidad.",
+    "100. Porque por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, eres la razón de mis alegrías."
+  ];
 
-    /* ---------- HISTORIA ---------- */
-    const momentos = [
-      'Esta página no es solo un regalo… es una parte de mi corazón hecha palabras, pensada para ti ❤️',
+  function iniciar() {
+    musica.play();
+    mostrarRazon();
+  }
 
-      'Durante tres años caminamos por los mismos pasillos sin hablarnos, sin saber que el destino nos estaba preparando este encuentro.',
+  function mostrarRazon() {
+    card.innerHTML = `
+      <h1>Razón ${indice + 1} 💕</h1>
+      <p>${razones[indice]}</p>
+      <button onclick="siguiente()">Siguiente</button>
+    `;
+  }
 
-      'En septiembre de 2025 todo cambió. Entramos al BTP y desde el primer día sentí algo especial contigo.',
-
-      '<p>Esta foto guarda el inicio de algo hermoso.</p><img src="primera-foto.jpeg">',
-
-      'Nuestra primera cita fue sencilla, pero perfecta. Helados, risas y miradas que decían más que mil palabras.',
-
-      '<p>Este recuerdo quedó grabado en mi corazón.</p><img src="Foto-recuerdo.jpeg">',
-
-      'Gracias por apoyarme, por no juzgarme y por quedarte incluso cuando no fue fácil.',
-
-      '<strong>Te amo por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, porque te convertiste en la razón de mis alegrías ❤️</strong>',
-
-      '<h2>¿Quieres seguir escribiendo esta historia conmigo?</h2>'
-    ];
-
-    /* ---------- FUNCIÓN BOTÓN ---------- */
-    function avanzar(){
-      // Inicia música en el primer click
-      if(!musicaIniciada){
-        musica.play().catch(()=>{});
-        musicaIniciada = true;
-      }
-
-      if(paso >= momentos.length) return;
-
-      const contenedor = document.getElementById('historia');
-      contenedor.innerHTML = ''; // BORRA LO ANTERIOR
-
-      const div = document.createElement('div');
-      div.className = 'event';
-      div.innerHTML = momentos[paso];
-      contenedor.appendChild(div);
-
-      paso++;
-
-      if(paso === momentos.length){
-        document.getElementById('btn').style.display = 'none';
-
-        const opciones = document.createElement('div');
-        opciones.style.textAlign = 'center';
-        opciones.style.marginTop = '40px';
-
-        opciones.innerHTML = `
-          <button onclick="respuestaSi()" style="margin:15px;padding:15px 35px;border:none;border-radius:30px;background:#ff4f81;color:white;font-size:1.1rem;cursor:pointer;">💖 Me quedo</button>
-          <button onclick="respuestaNo()" style="margin:15px;padding:15px 35px;border:none;border-radius:30px;background:#aaa;color:white;font-size:1.1rem;cursor:pointer;">💔 Me voy</button>
-        `;
-
-        contenedor.appendChild(opciones);
-      }
+  function siguiente() {
+    indice++;
+    if (indice < razones.length) {
+      mostrarRazon();
+    } else {
+      card.innerHTML = `
+        <h1>¿Quieres seguir escribiendo esta historia conmigo? 💖</h1>
+        <button onclick="respuestaSi()">💖 Me quedo</button>
+        <button onclick="respuestaNo()">💔 Me voy</button>
+      `;
     }
+  }
 
-      if(paso >= momentos.length) return;
+  function respuestaSi() {
+    card.innerHTML = '<h1>Gracias por quedarte 💍</h1><p>Prometo cuidarte, amarte y escribir contigo cada capítulo de nuestra historia.</p>';
+  }
 
-      const div = document.createElement('div');
-      div.className = 'event';
-      div.innerHTML = momentos[paso];
-      document.getElementById('historia').appendChild(div);
+  function respuestaNo() {
+    card.innerHTML = '<h1>Gracias por leer 💔</h1><p>Siempre llevaré lo nuestro en el corazón.</p>';
+  }
 
-      paso++;
-
-      if(paso === momentos.length){
-        document.getElementById('btn').innerText = '❤️ Siempre contigo';
-      }
-    }
-
-    /* ---------- CORAZONES FLOTANDO ---------- */
-    setInterval(()=>{
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.innerText = '💖';
-      h.style.left = Math.random()*100 + 'vw';
-      h.style.animationDuration = (4 + Math.random()*4) + 's';
-      document.body.appendChild(h);
-      setTimeout(()=>h.remove(),8000);
-    },600);
-  function respuestaSi(){
-      document.body.innerHTML = '<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#ff9a9e,#fad0c4);color:white;text-align:center;padding:40px;"><h1 style="font-family:Great Vibes;font-size:4rem;">Gracias por quedarte 💖</h1><p style="font-size:1.3rem;max-width:600px;">Prometo amarte, cuidarte y seguir escribiendo esta historia contigo todos los días.</p></div>';
-    }
-
-    function respuestaNo(){
-      document.body.innerHTML = '<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#333;color:white;text-align:center;padding:40px;"><h1>Siempre te amaré</h1><p>Gracias por todo lo vivido ❤️</p></div>';
-    }
-
-  </script>
+  // Corazones flotando
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '💖';
+    heart.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 400);
+</script>
 
 </body>
 </html>
