@@ -74,12 +74,25 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .heart-float{
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
   </style>
 </head>
 <body>
 
 <audio id="musica" loop>
   <source src="Morat, Juanes-Besos en Guerra.mp3.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
 </audio>
 
 <header>
@@ -92,9 +105,22 @@
   <button onclick="siguiente()">Continuar 💖</button>
 </div>
 
+<section class="timeline" id="historia"></section>
+
+<div style="text-align:center; margin:50px;">
+  <button id="btnAvanzar" onclick="avanzar()" style="background:#ff4f81;color:white;border:none;padding:15px 35px;font-size:1.1rem;border-radius:30px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+    💖 Avanzar en nuestra historia
+  </button>
+</div>
+
 <footer>
   <h2>Con amor, hoy y siempre</h2>
-</footer>
+  </footer>
+
+  <div id="finalPregunta" style="display:none; text-align:center; padding:80px 20px; color:white;">
+    <h2 style="font-family:'Great Vibes', cursive; font-size:3rem;">¿Quieres seguir escribiendo esta historia conmigo?</h2>
+    <p style="font-size:1.2rem;">Hoy, mañana y todos los días 💖</p>
+  </div>
 
 <script>
   const musica = document.getElementById('musica');
@@ -124,5 +150,80 @@
   contenido.innerHTML = historia[0];
 </script>
 
+<script>
+  function crearCorazon() {
+    const corazon = document.createElement('div');
+    corazon.classList.add('heart-float');
+    corazon.innerHTML = '💖';
+    corazon.style.left = Math.random() * 100 + 'vw';
+    corazon.style.animationDuration = (4 + Math.random() * 4) + 's';
+    document.body.appendChild(corazon);
+    setTimeout(() => corazon.remove(), 8000);
+  }
+
+  setInterval(crearCorazon, 500);
+
+  // Mostrar pregunta final al final
+  window.addEventListener('scroll', () => {
+    const footer = document.querySelector('footer');
+    const pregunta = document.getElementById('finalPregunta');
+    const rect = footer.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      pregunta.style.display = 'block';
+    }
+  });
+</script>
+<script>
+  const musica = document.getElementById('musica');
+  let musicaIniciada = false;
+
+  const momentos = [
+    { titulo: 'Antes de conocernos', texto: 'Tres años en el mismo colegio… sin hablarnos jamás.' },
+    { titulo: 'Septiembre 2025', texto: 'Entramos al BTP y desde el primer día hubo una química especial.', img: 'primera-foto.jpeg' },
+    { titulo: 'Decisiones', texto: 'En nuestro primer beso supe que te elegía a ti.' },
+    { titulo: 'Nuestra primera cita', texto: 'Helados, risas y un recuerdo eterno.', img: 'Foto-recuerdo.jpeg' },
+    { titulo: 'Cuando dijiste que lucharías', texto: '"La relación es de dos y yo no me voy a ir."' },
+    { titulo: 'Razones por las que te amo', texto: 'Por tu apoyo, tu paciencia, tu amor sincero.' },
+    { titulo: 'La razón más importante', texto: 'Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la razón de mis alegrías ❤️' }
+  ];
+
+  let index = 0;
+
+  function avanzar() {
+    if (!musicaIniciada) {
+      musica.play();
+      musicaIniciada = true;
+    }
+
+    if (index >= momentos.length) return;
+
+    const cont = document.getElementById('historia');
+    const evento = document.createElement('div');
+    evento.className = 'event ' + (index % 2 === 0 ? 'left' : 'right');
+
+    let html = `<h3>${momentos[index].titulo}</h3><p>${momentos[index].texto}</p>`;
+    if (momentos[index].img) html += `<img src="${momentos[index].img}" />`;
+
+    evento.innerHTML = html;
+    cont.appendChild(evento);
+    index++;
+
+    if (index === momentos.length) {
+      document.getElementById('btnAvanzar').innerText = '❤️ ¿Seguimos escribiendo nuestra historia?';
+    }
+  }
+
+  function crearCorazon() {
+    const c = document.createElement('div');
+    c.classList.add('heart-float');
+    c.innerHTML = '💖';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.animationDuration = (4 + Math.random() * 4) + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 8000);
+  }
+
+  setInterval(crearCorazon, 600);
+</script>
 </body>
 </html>
