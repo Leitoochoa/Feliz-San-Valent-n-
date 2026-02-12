@@ -219,10 +219,7 @@ indiceRazon++;
 if(indiceRazon<razones.length){
   renderRazon();
 }else{
-  contenido.innerHTML=`
-  <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
-  <button onclick="guardarRespuesta('Se queda ❤️')">Me quedo</button>
-  <button onclick="guardarRespuesta('Se va 💔')">Me voy</button>`;
+  mostrarDecision();
 }
 }
 
@@ -233,6 +230,28 @@ contenido.innerHTML=`
 <p>${r.texto}</p>
 ${r.foto?`<img src="${r.foto}">`:""}
 <button onclick="siguienteRazon()">Siguiente</button>`;
+}
+
+/* ===== DECISIÓN FINAL ===== */
+function mostrarDecision(){
+contenido.innerHTML=`
+<h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
+<button onclick="respuesta('Se queda ❤️')">Me quedo</button>
+<button onclick="respuesta('Se va 💔')">Me voy</button>`;
+}
+
+function respuesta(valor){
+guardarRespuesta(valor);
+
+if(valor==="Se queda ❤️"){
+contenido.innerHTML=`
+<h2>Sabía que dirías que sí 💖</h2>
+<p>Prometo seguir construyendo contigo una historia que ni el tiempo pueda borrar.</p>`;
+}else{
+contenido.innerHTML=`
+<h2>Siempre te voy a amar 💔</h2>
+<p>Gracias por cada momento, cada risa y cada recuerdo que guardo en mi corazón.</p>`;
+}
 }
 
 /* ===== CONFETI OPTIMIZADO ===== */
