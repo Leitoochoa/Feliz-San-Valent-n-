@@ -143,10 +143,10 @@ const historia = [
 
 `<h1>Nuestra Historia 💖</h1>
 <p>Mi amorcito, en este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto y la memoria llena de todo lo que hemos sentido. Quiero volver al primer latido, a las miradas tímidas, a los abrazos que nos cambiaron la vida, y recordarte que, si pudiera elegir otra vez, volvería a empezar contigo mil veces más.</p>
-<button onclick="siguiente()">Comenzar</button>`,
+<button onclick="siguiente()">Comenzar historia</button>`,
 
 `<h2>El Primero de Muchos 🙈</h2>
-<p>Quién diría que después de coincidir tanto tiempo sin conocernos, hoy estaría viviendo nuestro primer 14 de febrero agradeciendo que la vida decidiera presentarnos y convertir a una desconocida en mi lugar favorito.</p>
+<p>Quién diría que después de coincidir tanto tiempo sin conocernos, hoy estaríamos viviendo nuestro primer 14 de febrero agradeciendo que la vida decidiera presentarnos y convertir a una desconocida en mi lugar favorito.</p>
 <button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Septiembre 2025</h2>
@@ -168,15 +168,17 @@ En esa frase entendí que tu amor no era pasajero, que estabas dispuesta a queda
   
 `<h2>1 de enero</h2>
 <p style="text-align:center">
-Me colé en tu casa como un ladrón de minutos para robarle al año nuestro primer abrazo.
-Entre el miedo y las ganas de no soltarte, amanecimos estrenando calendario y nuestra historia.
+Aquel 31 de diciembre me colé en tu casa a escondidas, con el corazón latiendo más fuerte que el miedo. Mientras el mundo celebraba el cambio de año, yo solo pensaba en abrazarte. Y así, entre susurros y risas bajitas para que nadie nos descubriera,
+nos sorprendió el amanecer del 1 de enero juntos. 
+Estrenamos año abrazados, como si el universo hubiera querido que nuestro comienzo fuera exactamente así.
 </p>
 <button onclick="siguiente()">Siguiente</button>`,
 
 `<h2>Y entonces entendí algo…</h2>
 <p>
-Nuestra historia no se cuenta solo con fechas, sino con apoyo, valentía y amor real.
-Por eso quiero darte razones por las que te amo.
+Nuestra historia no se cuenta solo con fechas, ni siquiera con un 14 de febrero marcado en el calendario, sino con el apoyo en los días difíciles, con la valentía de quedarnos cuando más importa y con un amor real que se demuestra en cada detalle.
+Entendí que no quiero solo momentos contigo, quiero años, proyectos, metas, sueños… quiero que mi futuro tenga tu nombre.
+Por eso hoy, en nuestro primer 14 de febrero, no solo celebro que te amo, sino que te elijo para todo lo que viene. Y quiero abrir mi corazón para recordarte, una a una, las razones por las que te amo.
 </p>
 <button onclick="mostrarRazones()">Ver razones</button>`
 ];
@@ -196,9 +198,105 @@ Y si tuviera que decir por qué te amo, necesitaría al menos 100 intentos.</p>
 /* ===== 100 RAZONES EDITABLES ===== */
 const razones = [
 
-{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo tiene más sentido."},
-{titulo:"Razón 2 💖",texto:"Porque tu sonrisa puede cambiar mi día entero."},
+{titulo:"Razón 1 💖",texto:"Porque tu sonrisa tiene el poder de desarmarme en segundos."},
+{titulo:"Razón 2 😍",texto:"Porque desde que llegaste, todo se siente más bonito."},
 {titulo:"Razón 3 💗",texto:"Porque me apoyas incluso cuando dudo de mí mismo."},
+{titulo:"Razón 4 😂",texto:"Porque te ríes de mis chistes… aunque sean malísimos."},
+{titulo:"Razón 5 🥰",texto:"Porque contigo puedo ser yo sin filtros."},
+{titulo:"Razón 6 🤍",texto:"Porque me escuchas de verdad, no solo por compromiso."},
+{titulo:"Razón 7 🤗",texto:"Porque tus abrazos reinician mi sistema."},
+{titulo:"Razón 8 🔥",texto:"Porque tienes algo que me vuelve loco."},
+{titulo:"Razón 9 🌸",texto:"Porque haces que lo simple sea especial."},
+{titulo:"Razón 10 💌",texto:"Porque tus mensajes alegran cualquier día."},
+{titulo:"Razón 11 🫶",texto:"Porque siempre buscas la forma de entenderme."},
+{titulo:"Razón 12 💞",texto:"Porque luchas por nosotros."},
+{titulo:"Razón 13 😌",texto:"Porque me das paz incluso en el caos."},
+{titulo:"Razón 14 💓",texto:"Porque haces que mi corazón lata diferente."},
+{titulo:"Razón 15 ✨",texto:"Porque contigo todo tiene magia."},
+{titulo:"Razón 16 😏",texto:"Porque tienes esa mirada que me desarma."},
+{titulo:"Razón 17 🌎",texto:"Porque haces que mi mundo gire mejor."},
+{titulo:"Razón 18 🧠",texto:"Porque admiras mis ideas y me haces pensar mejor."},
+{titulo:"Razón 19 💬",texto:"Porque podemos hablar de todo y de nada."},
+{titulo:"Razón 20 🏡",texto:"Porque contigo me siento en casa."},
+{titulo:"Razón 21 🎯",texto:"Porque crees en mis metas."},
+{titulo:"Razón 22 🫂",texto:"Porque siempre estás cuando te necesito."},
+{titulo:"Razón 23 💎",texto:"Porque eres única."},
+{titulo:"Razón 24 🌙",texto:"Porque hasta las noches contigo son más lindas."},
+{titulo:"Razón 25 ☀️",texto:"Porque iluminas mis días."},
+{titulo:"Razón 26 😅",texto:"Porque soportas mis celos tontos."},
+{titulo:"Razón 27 🍦",texto:"Porque hasta unos helados contigo se volvieron recuerdo eterno."},
+{titulo:"Razón 28 🎶",texto:"Porque cualquier canción me recuerda a ti."},
+{titulo:"Razón 29 🧡",texto:"Porque tu cariño es sincero."},
+{titulo:"Razón 30 💪",texto:"Porque eres fuerte cuando yo no lo soy."},
+{titulo:"Razón 31 🥹",texto:"Porque me haces sentir amado."},
+{titulo:"Razón 32 📸",texto:"Porque nuestra primera foto significa más de lo que parece."},
+{titulo:"Razón 33 🎉",texto:"Porque celebras mis logros como si fueran tuyos."},
+{titulo:"Razón 34 😜",texto:"Porque haces mis días más divertidos."},
+{titulo:"Razón 35 🌹",texto:"Porque tienes el corazón más bonito."},
+{titulo:"Razón 36 🕊️",texto:"Porque me das tranquilidad."},
+{titulo:"Razón 37 🔒",texto:"Porque contigo me siento seguro."},
+{titulo:"Razón 38 📖",texto:"Porque estamos escribiendo nuestra propia historia."},
+{titulo:"Razón 39 🥳",texto:"Porque haces especial hasta lo improvisado."},
+{titulo:"Razón 40 🤍",texto:"Porque me aceptas tal como soy."},
+{titulo:"Razón 41 💫",texto:"Porque apareciste en el momento perfecto."},
+{titulo:"Razón 42 🥺",texto:"Porque me miras como si fuera importante."},
+{titulo:"Razón 43 💭",texto:"Porque siempre estás en mis pensamientos."},
+{titulo:"Razón 44 🌈",texto:"Porque llenas mi vida de colores."},
+{titulo:"Razón 45 😇",texto:"Porque tienes una ternura que me derrite."},
+{titulo:"Razón 46 🧩",texto:"Porque encajamos."},
+{titulo:"Razón 47 💍",texto:"Porque quiero un futuro contigo."},
+{titulo:"Razón 48 🫀",texto:"Porque mi corazón te eligió."},
+{titulo:"Razón 49 🥵",texto:"Porque me encantas más de lo que admito."},
+{titulo:"Razón 50 🎁",texto:"Porque eres el mejor regalo que me dio la vida."},
+{titulo:"Razón 51 📅",texto:"Porque este es nuestro primer 14 de febrero juntos."},
+{titulo:"Razón 52 🥂",texto:"Porque quiero brindar muchos años contigo."},
+{titulo:"Razón 53 🌟",texto:"Porque eres mi persona favorita."},
+{titulo:"Razón 54 💗",texto:"Porque haces que quiera ser mejor."},
+{titulo:"Razón 55 🛌",texto:"Porque hablar contigo hasta tarde vale cada sueño perdido."},
+{titulo:"Razón 56 🚀",texto:"Porque me impulsas a crecer."},
+{titulo:"Razón 57 🎀",texto:"Porque eres dulce incluso cuando estás enojada."},
+{titulo:"Razón 58 🫠",texto:"Porque me derrito cuando sonríes."},
+{titulo:"Razón 59 📱",texto:"Porque ver tu nombre en mi pantalla me emociona."},
+{titulo:"Razón 60 🧸",texto:"Porque contigo puedo ser cursi sin vergüenza."},
+{titulo:"Razón 61 🔥",texto:"Porque hay química que no se puede explicar."},
+{titulo:"Razón 62 🌺",texto:"Porque tu esencia es hermosa."},
+{titulo:"Razón 63 😎",texto:"Porque eres increíble y ni te das cuenta."},
+{titulo:"Razón 64 🕰️",texto:"Porque quiero años, no solo momentos contigo."},
+{titulo:"Razón 65 🏆",texto:"Porque eres mi mejor decisión."},
+{titulo:"Razón 66 🫶",texto:"Porque siempre eliges quedarte."},
+{titulo:"Razón 67 🌊",texto:"Porque calmas mis tormentas."},
+{titulo:"Razón 68 😄",texto:"Porque tu risa es mi sonido favorito."},
+{titulo:"Razón 69 💘",texto:"Porque me enamoras todos los días."},
+{titulo:"Razón 70 🎯",texto:"Porque confías en nuestro futuro."},
+{titulo:"Razón 71 🥰",texto:"Porque tus besos tienen magia."},
+{titulo:"Razón 72 🤝",texto:"Porque somos equipo."},
+{titulo:"Razón 73 💡",texto:"Porque me haces ver la vida diferente."},
+{titulo:"Razón 74 💬",texto:"Porque siempre aclaramos las cosas hablando."},
+{titulo:"Razón 75 🧠",texto:"Porque eres inteligente y brillante."},
+{titulo:"Razón 76 💞",texto:"Porque tu amor es valiente."},
+{titulo:"Razón 77 🫂",texto:"Porque me sostienes cuando flaqueo."},
+{titulo:"Razón 78 💃",texto:"Porque tienes una energía que me encanta."},
+{titulo:"Razón 79 🥹",texto:"Porque me haces sentir suficiente."},
+{titulo:"Razón 80 🏡",texto:"Porque quiero construir mi vida contigo."},
+{titulo:"Razón 81 🌻",texto:"Porque haces florecer lo mejor de mí."},
+{titulo:"Razón 82 🛡️",texto:"Porque me cuidas."},
+{titulo:"Razón 83 🎇",texto:"Porque haces que cada recuerdo brille."},
+{titulo:"Razón 84 💝",texto:"Porque tu amor es real."},
+{titulo:"Razón 85 🤍",texto:"Porque contigo aprendí lo que es compromiso."},
+{titulo:"Razón 86 😘",texto:"Porque tus besos son mi debilidad."},
+{titulo:"Razón 87 📚",texto:"Porque seguimos escribiendo capítulos juntos."},
+{titulo:"Razón 88 🌙",texto:"Porque quiero dormir y despertar contigo."},
+{titulo:"Razón 89 🧡",texto:"Porque eres paciencia y fuerza."},
+{titulo:"Razón 90 🎈",texto:"Porque haces mi vida más ligera."},
+{titulo:"Razón 91 💫",texto:"Porque apareciste y todo cambió."},
+{titulo:"Razón 92 🫀",texto:"Porque mi corazón te reconoce."},
+{titulo:"Razón 93 😍",texto:"Porque me encantas más cada día."},
+{titulo:"Razón 94 🌹",texto:"Porque eres lo mejor que me ha pasado."},
+{titulo:"Razón 95 🥂",texto:"Porque quiero celebrar muchos 14 de febrero contigo."},
+{titulo:"Razón 96 🧩",texto:"Porque somos el complemento perfecto."},
+{titulo:"Razón 97 🔐",texto:"Porque confío en ti."},
+{titulo:"Razón 98 💍",texto:"Porque quiero que mi futuro tenga tu nombre."},
+{titulo:"Razón 99 ✨",texto:"Porque contigo entendí que el amor no es perfecto… es real, y eso lo hace eterno."},
 
 {
 titulo:"Razón 100 ❤️",
@@ -210,6 +308,11 @@ la razón de mis alegrías, mi paz y el amor que quiero para toda mi vida.
 
 <img src="Mi-preciosa.jpeg">
 `
+},
+
+{
+titulo:"Razón 101 👑",
+texto:"Porque después de 100 razones, entendí que ninguna es suficiente para explicar lo que siento por ti… y aun así te seguiría eligiendo todos los días."
 }
 
 ];
