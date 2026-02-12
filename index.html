@@ -34,7 +34,16 @@ body{
   box-shadow:0 10px 40px rgba(0,0,0,0.2);
   animation:fade 0.6s ease;
 }
-
+  /* Por mi  */
+#progreso{
+  height:6px;
+  width:0%;
+  background:#ffffff;
+  border-radius:10px;
+  margin-bottom:15px;
+  transition:0.5s;
+}
+/* ... */
 h2{margin-bottom:15px;}
 
 p{line-height:1.6;}
@@ -86,8 +95,10 @@ img{
 <body>
 
 <div class="contenedor">
+  <div id="progreso"></div>
   <div id="contenido" class="card"></div>
 </div>
+
 
 <audio id="musica" src="Morat, Juanes-Besos en Guerra.mp3" loop></audio>
 
@@ -224,11 +235,18 @@ if(indiceRazon<razones.length){
 }
 
 function renderRazon(){
-let r=razones[indiceRazon];
+  
+document.getElementById("progreso").style.width =
+((indiceRazon+1)/razones.length)*100 + "%";
+
+
+cambiarFondo();  // 👈 AQUÍ
+
+let r = razones[indiceRazon];
+
 contenido.innerHTML=`
 <h2>${r.titulo}</h2>
 <p>${r.texto}</p>
-${r.foto?`<img src="${r.foto}">`:""}
 <button onclick="siguienteRazon()">Siguiente</button>`;
 }
 
@@ -266,9 +284,21 @@ setTimeout(()=>heart.remove(),7000);
 }
 
 setInterval(crearCorazon,800); // velocidad controlada
+function cambiarFondo(){
+  if(indiceRazon<=25)
+    document.body.style.background="linear-gradient(135deg,#ff9a9e,#fad0c4)";
+  else if(indiceRazon<=50)
+    document.body.style.background="linear-gradient(135deg,#a18cd1,#fbc2eb)";
+  else if(indiceRazon<=75)
+    document.body.style.background="linear-gradient(135deg,#ff758c,#ff7eb3)";
+  else
+    document.body.style.background="linear-gradient(135deg,#f6d365,#fda085)";
+}
+
+setInterval(crearCorazon,800);
 
 contenido.innerHTML=historia[0];
+  
 </script>
-
 </body>
 </html>
