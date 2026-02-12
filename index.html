@@ -5,79 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Historia 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,#ff9a9e,#fad0c4);
-  min-height:100vh;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
   overflow-x:hidden;
+  text-align:center;
+  color:#fff;
 }
 
-.container{
+.contenedor{
+  min-height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  min-height:100vh;
   padding:20px;
 }
 
 .card{
-  background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(10px);
-  border-radius:30px;
-  box-shadow:0 20px 40px rgba(255,105,135,0.35);
-  padding:40px 30px;
-  max-width:420px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  padding:30px;
+  border-radius:25px;
+  max-width:500px;
   width:100%;
-  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,0.2);
   animation:fade 0.6s ease;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:scale(.95);}
-  to{opacity:1;transform:scale(1);}
+h2{margin-bottom:15px;}
+
+p{line-height:1.6;}
+
+button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff4e80;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-h1,h2{
-  font-family:'Great Vibes',cursive;
-  color:#ff4f81;
-}
-
-p{
-  line-height:1.6;
+button:hover{
+  background:#ff1e63;
+  transform:scale(1.05);
 }
 
 img{
   width:100%;
-  border-radius:15px;
+  border-radius:20px;
   margin-top:15px;
 }
 
-button{
-  margin-top:20px;
-  padding:12px 28px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(135deg,#ff4f81,#ff85a2);
-  color:white;
-  font-size:1rem;
-  cursor:pointer;
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-button:hover{
-  transform:scale(1.05);
-}
-
-/* corazones */
+/* Confeti */
 .heart{
   position:fixed;
-  top:-20px;
-  font-size:20px;
+  top:-10px;
+  font-size:18px;
   animation:fall linear forwards;
-  pointer-events:none;
 }
 
 @keyframes fall{
@@ -86,31 +81,54 @@ button:hover{
     opacity:0;
   }
 }
-
-@media(max-width:480px){
-  .card{padding:30px 20px;}
-}
 </style>
 </head>
-
 <body>
 
-<audio id="musica" loop>
-  <source src="Morat, Juanes-Besos en Guerra.mp3" type="audio/mpeg">
-</audio>
-
-<div class="container">
-  <div class="card" id="contenido"></div>
+<div class="contenedor">
+  <div id="contenido" class="card"></div>
 </div>
 
+<audio id="musica" src="Morat, Juanes-Besos en Guerra.mp3" loop></audio>
+
+<!-- 🔥 FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCdHbE-XWj7NDtIU0N_v7GA-8MmxxDno1E",
+  authDomain: "san-valentin-f4317.firebaseapp.com",
+  databaseURL: "https://san-valentin-f4317-default-rtdb.firebaseio.com",
+  projectId: "san-valentin-f4317",
+  storageBucket: "san-valentin-f4317.firebasestorage.app",
+  messagingSenderId: "461191914428",
+  appId: "1:461191914428:web:626ac530df1b8f6360c1b9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.guardarRespuesta = function(respuesta){
+  const respuestasRef = ref(db,"respuestasSanValentin");
+  push(respuestasRef,{
+    respuesta:respuesta,
+    fecha:new Date().toISOString(),
+    userAgent:navigator.userAgent
+  });
+};
+</script>
+
 <script>
+const contenido=document.getElementById("contenido");
 const musica=document.getElementById("musica");
 musica.volume=0.4; // 🔊 regula volumen aquí (0 a 1)
 
-const contenido=document.getElementById("contenido");
+let indiceHistoria=0;
+let indiceRazon=0;
 
-/* ================= HISTORIA ================= */
-const historia=[
+/* ===== HISTORIA ===== */
+const historia = [
 
 `<h1>Nuestra Historia 💖</h1>
 <p>Mi amorcito, en este 14 de febrero quiero que recorras conmigo nuestra historia… paso a paso, con el corazón abierto y la memoria llena de todo lo que hemos sentido. Quiero volver al primer latido, a las miradas tímidas, a los abrazos que nos cambiaron la vida, y recordarte que, si pudiera elegir otra vez, volvería a empezar contigo mil veces más.</p>
@@ -133,7 +151,7 @@ const historia=[
 
   `<h2>Un dia amargo😔</h2>
 <p>Aquel día difícil, cuando todo parecía tambalear, me dijiste algo que se quedó para siempre en mí: La relación es de dos y no te voy a dejar.
-En esa frase entendí que tu amor no era pasajero, que estabas dispuesta a quedarte y a luchar por nosotros incluso cuando dolía..</p>
+En esa frase entendí que tu amor no era pasajero, que estabas dispuesto a quedarte y a luchar por nosotros incluso cuando dolía..</p>
 <button onclick="siguiente()">Siguiente</button>`,
 
   
@@ -151,91 +169,86 @@ Por eso quiero darte razones por las que te amo.
 </p>
 <button onclick="mostrarRazones()">Ver razones</button>`
 ];
+ 
+let iHistoria = 0;
+let iRazon = 0;
 
-let indiceHistoria=0;
-let indiceRazon=0;
+/* ===== INTRO RAZONES ===== */
+function mostrarIntroRazones(){
+contenido.innerHTML=`
+<h2>100 Razones Para Amarte 💕</h2>
+<p>Porque lo nuestro no se explica… se siente.  
+Y si tuviera que decir por qué te amo, necesitaría al menos 100 intentos.</p>
+<button onclick="mostrarRazones()">Empezar 💖</button>`;
+}
 
-/* ================= 100 RAZONES ================= */
-const razones=[
-{titulo:"Razón 1 💖",texto:"Porque iluminas mi vida incluso en mis días más grises."},
-{titulo:"Razón 2 💕",texto:"Porque tu sonrisa puede cambiar mi mundo entero."},
-{titulo:"Razón  😘",texto:"."},
-/* ✍️ AGREGA AQUÍ TODAS TUS RAZONES PERSONALIZADAS */
+/* ===== 100 RAZONES EDITABLES ===== */
+const razones = [
 
-{titulo:"Razón 100 ❤️",
-texto:"Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ, la mujer que quiero en mi futuro.",
-imagen:"Mi-preciosa.jpeg"}
+{titulo:"Razón 1 💕",texto:"Porque desde que llegaste, todo tiene más sentido."},
+{titulo:"Razón 2 💖",texto:"Porque tu sonrisa puede cambiar mi día entero."},
+{titulo:"Razón 3 💗",texto:"Porque me apoyas incluso cuando dudo de mí mismo."},
+
+{
+titulo:"Razón 100 ❤️",
+texto:`
+Por ser tú misma, KATHERINE LISSETH NIETO ALVAREZ,
+la razón de mis alegrías, mi paz y el amor que quiero para toda mi vida.
+
+<br><br>
+
+<img src="Mi-preciosa.jpeg">
+`
+}
+
 ];
-
-/* ================= FUNCIONES ================= */
-
+/* ===== FUNCIONES ===== */
 function siguiente(){
-  if(musica.paused) musica.play();
-  indiceHistoria++;
-  contenido.innerHTML=historia[indiceHistoria];
+if(musica.paused) musica.play();
+indiceHistoria++;
+contenido.innerHTML=historia[indiceHistoria];
 }
 
 function mostrarRazones(){
-  indiceRazon=0;
-  mostrarRazonActual();
-}
-
-function mostrarRazonActual(){
-  const r=razones[indiceRazon];
-
-  contenido.innerHTML=`
-  <h2>${r.titulo}</h2>
-  <p>${r.texto}</p>
-  ${r.imagen ? `<img src="${r.imagen}">` : ""}
-  <button onclick="siguienteRazon()">
-  ${indiceRazon===razones.length-1?"Final 💖":"Siguiente ➜"}
-  </button>
-  `;
+indiceRazon=0;
+renderRazon();
 }
 
 function siguienteRazon(){
-  indiceRazon++;
-  if(indiceRazon<razones.length){
-    mostrarRazonActual();
-  }else{
-    contenido.innerHTML=`
-    <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
-    <button onclick="respuesta('queda')">Me quedo 💖</button>
-    <button onclick="respuesta('va')">Me voy 💔</button>
-    `;
-  }
+indiceRazon++;
+if(indiceRazon<razones.length){
+  renderRazon();
+}else{
+  contenido.innerHTML=`
+  <h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
+  <button onclick="guardarRespuesta('Se queda ❤️')">Me quedo</button>
+  <button onclick="guardarRespuesta('Se va 💔')">Me voy</button>`;
+}
 }
 
-/* ================= WHATSAPP ================= */
-
-function respuesta(opcion){
-  let mensaje=opcion==="queda"
-  ?"Elegí quedarme contigo 💖"
-  :"Elegí irme 💔";
-
-  const numero="+593 939919644"; // ⚠️ PON TU NÚMERO
-  const url=`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-  window.open(url,"_blank");
+function renderRazon(){
+let r=razones[indiceRazon];
+contenido.innerHTML=`
+<h2>${r.titulo}</h2>
+<p>${r.texto}</p>
+${r.foto?`<img src="${r.foto}">`:""}
+<button onclick="siguienteRazon()">Siguiente</button>`;
 }
 
-/* ================= CONFETI SUAVE CONSTANTE ================= */
-
+/* ===== CONFETI OPTIMIZADO ===== */
 function crearCorazon(){
-  const heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="💗";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=(Math.random()*3+4)+"s";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),7000);
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerText="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+4)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),7000);
 }
 
-// cae uno cada 800ms (no satura)
-setInterval(crearCorazon,800);
+setInterval(crearCorazon,800); // velocidad controlada
 
-/* ================= INICIAR ================= */
 contenido.innerHTML=historia[0];
-
 </script>
 
 </body>
