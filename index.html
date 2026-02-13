@@ -594,31 +594,28 @@ solo crece cada día más.
 }
  
 function siguiente(){
-  if(musica.paused) musica.play();
-
+ if(musica.paused) musica.play();
   indiceHistoria++;
   indiceTotal++;
-
+  actualizarProgreso(); // 👈 antes de cambiar contenido
   contenido.innerHTML = historia[indiceHistoria];
-
-  actualizarProgreso(); // 👈 AGREGAR ESTA LÍNEA
 }
 
-function mostrarRazones(){
+  function mostrarRazones(){
   indiceRazon = 0;
   renderRazon();
   actualizarProgreso();
 }
 
 function siguienteRazon(){
-  indiceRazon++;
+ indiceRazon++;
   indiceTotal++;
+ actualizarProgreso(); // 👈 PRIMERO ACTUALIZA
   if(indiceRazon < razones.length){
     renderRazon();
   }else{
     mostrarDecision();
   }
-  actualizarProgreso();
 }
   
 function renderRazon(){
@@ -651,76 +648,53 @@ function renderRazon(){
   }
 }
   //aqui acaba//
-  function actualizarProgreso(){
-let totalPantallas = historia.length + razones.length;
-  let porcentaje = (indiceTotal / totalPantallas) * 100;
-document.getElementById("progreso").style.width = porcentaje + "%";
-let mensaje = "";
-if(porcentaje < 5){
-  mensaje = "Todo gran amor empieza con un pequeño paso 💌";
+function actualizarProgreso(){
+  let totalPantallas = historia.length + razones.length;
+  let porcentaje = Math.round((indiceTotal / totalPantallas) * 100);
+  document.getElementById("progreso").style.width = porcentaje + "%";
+  let mensaje = "";
+  if(porcentaje <= 5){
+    mensaje = "No sabía que una simple historia podía cambiarlo todo… 💌";
+  }
+  else if(porcentaje <= 10){
+    mensaje = "Y sin darme cuenta… ya estabas en mis pensamientos ✨";
+  }
+  else if(porcentaje <= 15){
+    mensaje = "A veces lo más bonito empieza sin avisar 🌙";
+  }
+  else if(porcentaje <= 20){
+    mensaje = "No fue un momento… fue el inicio de algo eterno 💕";
+  }
+  else if(porcentaje <= 30){
+    mensaje = "Aquí entendí que no eras casualidad… eras destino 🫀";
+  }
+  else if(porcentaje <= 40){
+    mensaje = "Hay miradas que no se olvidan… y la tuya es una de ellas 💞";
+  }
+  else if(porcentaje <= 50){
+    mensaje = "Mitad del camino… pero mi corazón ya no tenía regreso ❤️";
+  }
+  else if(porcentaje <= 60){
+    mensaje = "Si supieras cuántas veces agradecí haberte encontrado… 🥹";
+  }
+  else if(porcentaje <= 70){
+    mensaje = "No escribo razones… escribo lo que siento cuando pienso en ti ✍️💗";
+  }
+  else if(porcentaje <= 80){
+    mensaje = "Y aunque parezca exagerado… todo aquí es verdad 💎";
+  }
+  else if(porcentaje <= 90){
+    mensaje = "Ya casi termino… pero lo que siento apenas empieza 🌹";
+  }
+  else if(porcentaje < 100){
+    mensaje = "Un último paso… y entenderás por qué eres tan importante para mí 💫";
+  }
+  else{
+    mensaje = "No fue una lista… fue mi corazón desnudándose frente a ti ♾️💘";
+  }
+ document.getElementById("mensajeProgreso").innerText = mensaje;
 }
-else if(porcentaje < 10){
-  mensaje = "Apenas estamos comenzando esta historia ✨";
-}
-else if(porcentaje < 15){
-  mensaje = "Cada palabra nos acerca más 💕";
-}
-else if(porcentaje < 20){
-  mensaje = "Tal vez aún no lo notes… pero esto es especial 😌";
-}
-else if(porcentaje < 25){
-  mensaje = "Ya no es solo una página… es un sentimiento 💖";
-}
-else if(porcentaje < 30){
-  mensaje = "Ahora sí… empiezan las razones 🫀";
-}
-else if(porcentaje < 35){
-  mensaje = "Entraste a mi corazón… y no hay salida 💘";
-}
-else if(porcentaje < 40){
-  mensaje = "Si sonríes, ya gané ✨";
-}
-else if(porcentaje < 45){
-  mensaje = "No es una lista… es lo que siento por ti 💞";
-}
-else if(porcentaje < 50){
-  mensaje = "Mitad del camino… pero lo que siento es completo ❤️";
-}
-else if(porcentaje < 55){
-  mensaje = "Cada razón tiene tu nombre escondido 🥹";
-}
-else if(porcentaje < 60){
-  mensaje = "Sigue leyendo… mi corazón sigue hablando 💌";
-}
-else if(porcentaje < 65){
-  mensaje = "Si llegaste hasta aquí… ya sabes que esto es real 🫶";
-}
-else if(porcentaje < 70){
-  mensaje = "Lo que siento no cabe en 100 razones 💕";
-}
-else if(porcentaje < 75){
-  mensaje = "Y todavía falta lo más importante ✨";
-}
-else if(porcentaje < 80){
-  mensaje = "Ya casi llegamos… ¿lo sientes? 🫀";
-}
-else if(porcentaje < 85){
-  mensaje = "Mi corazón está hablando sin miedo 💎";
-}
-else if(porcentaje < 90){
-  mensaje = "Respira… lo mejor está por llegar ❤️";
-}
-else if(porcentaje < 95){
-  mensaje = "Aquí no hay exageración… solo verdad 💗";
-}
-else if(porcentaje < 100){
-  mensaje = "Un paso más… y sabrás todo 💫";
-}
-else{
-  mensaje = "No fue una historia… fue mi corazón entero hablándote ♾️💘";
-}
-  document.getElementById("mensajeProgreso").innerText = mensaje;
-} 
+ 
 /* ===== DECISIÓN FINAL ===== */
 function mostrarDecision(){
 contenido.innerHTML=`
