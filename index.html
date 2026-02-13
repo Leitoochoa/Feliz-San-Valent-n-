@@ -133,10 +133,7 @@ window.guardarRespuesta = function(respuesta){
 <script>
 const contenido=document.getElementById("contenido");
 const musica=document.getElementById("musica");
-musica.volume=0.4; // 🔊 regula volumen aquí (0 a 1)
-
-let indiceHistoria=0;
-let indiceRazon=0;
+musica.volume=0.1; // 🔊 regula volumen aquí (0 a 1)
 
 /* ===== HISTORIA ===== */
 const historia = [
@@ -525,7 +522,11 @@ contenido.innerHTML=`
 }
 
 function respuesta(valor){
-guardarRespuesta(valor);
+
+if(typeof guardarRespuesta === "function"){
+  guardarRespuesta(valor);
+}
+
 
 if(valor==="Se queda ❤️"){
 contenido.innerHTML=`
