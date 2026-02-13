@@ -650,18 +650,18 @@ function renderRazon(){
   else{
     textoBoton = "Ahora sí… ❤️";
   }
-
-  contenido.innerHTML=`
+contenido.innerHTML=`
   <h2>${r.titulo}</h2>
   <p>${r.texto}</p>
+  ${nombreSpan}
   <button class="boton-amor" onclick="siguienteRazon()">
   ${textoBoton}
   </button>`;
 
-  if(indiceRazon === 99){
-    setTimeout(escribirNombre,300);
-  }
-
+  if(razones[indiceRazon].titulo.includes("Razón 100")){
+  setTimeout(escribirNombre,300);
+}
+  
 }
 /* ===== DECISIÓN FINAL ===== */
 function mostrarDecision(){
