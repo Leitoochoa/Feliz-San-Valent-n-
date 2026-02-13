@@ -655,44 +655,77 @@ function actualizarProgreso(){
   let mensaje = "";
   /* ===== SI ESTAMOS EN HISTORIA ===== */
   if(indiceTotal < historia.length){
-    let progresoHistoria = indiceTotal / historia.length;
-    if(progresoHistoria < 0.2){
-      mensaje = "Todo comenzó sin saber que sería eterno… 💌";
-    }
-    else if(progresoHistoria < 0.4){
-      mensaje = "Entre risas inocentes… algo empezó a latir diferente 💕";
-    }
-    else if(progresoHistoria < 0.6){
-      mensaje = "No fue casualidad… fue destino cruzándonos 🌌";
-    }
-    else if(progresoHistoria < 0.8){
-      mensaje = "Incluso en los días difíciles… elegimos quedarnos 🫀";
-    }
-    else{
-      mensaje = "Nuestra historia apenas comenzaba… y ya era única ✨";
-    }
-  }
+   let progresoHistoria = indiceTotal / historia.length;
+if(progresoHistoria < 0.15){
+  mensaje = "Todo empezó sin que supiéramos lo importante que sería 💌";
+}
+else if(progresoHistoria < 0.30){
+  mensaje = "De simples conversaciones… a sentir algo diferente ✨";
+}
+else if(progresoHistoria < 0.45){
+  mensaje = "Entre risas pequeñas… nació algo grande 💕";
+}
+else if(progresoHistoria < 0.60){
+  mensaje = "No fue coincidencia… fue destino encontrándonos 🌙";
+}
+else if(progresoHistoria < 0.75){
+  mensaje = "Incluso en los días difíciles… elegimos quedarnos 🫀";
+}
+else if(progresoHistoria < 0.90){
+  mensaje = "Nuestra historia no fue perfecta… fue real 🤍";
+}
+else{
+  mensaje = "Y aquí entendí… que lo nuestro apenas comenzaba 🌹";
+}
+}
   /* ===== SI ESTAMOS EN RAZONES ===== */
-  else if(indiceTotal < historia.length + razones.length){
+ let progresoRazones = (indiceTotal - historia.length) / razones.length;
+let razonesRestantes = razones.length - (indiceTotal - historia.length);
 
-    let progresoRazones = (indiceTotal - historia.length) / razones.length;
-
-    if(progresoRazones < 0.2){
-      mensaje = "Ahora no cuento historia… cuento lo que siento por ti 💖";
-    }
-    else if(progresoRazones < 0.4){
-      mensaje = "Cada razón confirma que eres mi lugar seguro 🥹";
-    }
-    else if(progresoRazones < 0.6){
-      mensaje = "No es una lista… es mi corazón hablándote 💞";
-    }
-    else if(progresoRazones < 0.8){
-      mensaje = "Si llegaste hasta aquí… ya sabes que es real 🤍";
-    }
-    else{
-      mensaje = "No cabes en 100 razones… pero igual intenté escribirlas ❤️";
-    }
-  }
+if(progresoRazones < 0.10){
+  mensaje = "Ahora no cuento momentos… cuento lo que siento por ti 💖";
+}
+else if(progresoRazones < 0.20){
+  mensaje = "Cada razón tiene tu nombre escondido 🥹";
+}
+else if(progresoRazones < 0.30){
+  mensaje = "No escribo palabras… escribo latidos 🫀";
+}
+else if(progresoRazones < 0.40){
+  mensaje = "Si sonríes mientras lees… ya gané ✨";
+}
+else if(progresoRazones < 0.50){
+  mensaje = "Mitad del camino… pero mi corazón ya está completo ❤️";
+}
+else if(progresoRazones < 0.60){
+  mensaje = "No es exageración… es lo que provocas en mí 💞";
+}
+else if(progresoRazones < 0.70){
+  mensaje = "No eres una razón más… eres la razón de todas 🌹";
+}
+else if(progresoRazones < 0.80){
+  mensaje = "Ya no hablo por emoción… hablo por certeza 🤍";
+}
+else if(progresoRazones < 0.90){
+  mensaje = "Estoy escribiendo futuro… no solo sentimientos 💍";
+}
+/* ÚLTIMAS RAZONES — INTENSIDAD FINAL */
+else if(razonesRestantes === 5){
+  mensaje = "Aquí ya no hay dudas… solo decisión 🫀";
+}
+else if(razonesRestantes === 4){
+  mensaje = "Si pudiera elegir de nuevo… te elegiría otra vez 🌍";
+}
+else if(razonesRestantes === 3){
+  mensaje = "No quiero intentarlo contigo… quiero construirlo todo 🏡";
+}
+else if(razonesRestantes === 2){
+  mensaje = "No es amor de momento… es amor de vida ♾️";
+}
+else if(razonesRestantes === 1){
+  mensaje = "Después de 100 razones… sigo eligiéndote 💘";
+}
+}
   /* ===== DECISIÓN / FINAL ===== */
   else{
     mensaje = "Y después de todo esto… sigo eligiéndote cada día ♾️💘";
