@@ -625,31 +625,6 @@ entonces ya no sé qué más hacer…
   </p>
   `
 },
-  {
-    titulo: "La pregunta más importante… 💍",
-    texto: `
-    <h2>Después de todo esto…</h2>
-
-    <p>
-    Si mi corazón ya habló,
-    si mis razones fueron sinceras,
-    si sentiste algo al leer todo…
-    </p>
-
-    <p style="font-size:20px; font-weight:bold;">
-    ¿Quieres escribir esta historia conmigo? ❤️
-    </p>
-
-    <button class="boton-amor" onclick="aceptar()">
-    Sí, quiero 💖
-    </button>
-
-    <button class="boton-no" onclick="moverBoton(this)">
-    No, quiero 😅
-    </button>
-    `
-  }
-
 ];
 /* ===== FUNCIONES ===== */
 
@@ -714,7 +689,7 @@ function renderRazon(){
     textoBoton = "Estoy lista 🫀";
   }
   else{
-    textoBoton = "Ahora sí… ❤️";
+    textoBoton = "Continuar ❤️";
   }
   contenido.innerHTML = `
     <h2>${r.titulo}</h2>
@@ -788,10 +763,16 @@ else if(indiceRazon == 98){
   mensaje = "Quiero un amor que crezca con los años 🌱";
 }
 else if(indiceRazon == 99){
-  mensaje = "Lo nuestro vale cada esfuerzo 🔐";
+  mensaje = "Respira… lo que viene es mi verdad más sincera 🤍";
+}
+  else {
+  mensaje = "No queda nada por explicar… solo amarte 💖";
 }
 else{
-  mensaje = "Aquí empieza lo que no termina ♾️❤️";
+  mensaje = "Y si hiciera falta… empezaría otras 100 😘";
+}
+else{
+  mensaje = "Aqui no dejo palabras dejo mi intención";
 }
 
   texto.innerText = mensaje;
