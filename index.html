@@ -606,30 +606,55 @@ function siguiente(){
 
 function mostrarRazones(){
   indiceRazon = 0;
-
-  // Reinicia visualmente la barra
-  document.getElementById("progreso").style.width = "0%";
-  document.getElementById("mensajeProgreso").innerText = "Prepárate… 💕";
-
   renderRazon();
+  actualizarProgreso();
 }
 
 function siguienteRazon(){
-
   indiceRazon++;
-  indiceTotal++; // 👈 SUMAMOS AL TOTAL
-
+  indiceTotal++;
   if(indiceRazon < razones.length){
     renderRazon();
   }else{
     mostrarDecision();
   }
-
-  actualizarProgreso(); // 👈 ACTUALIZAMOS BARRA
+  actualizarProgreso();
 }
-
+  
 function renderRazon(){
-  let porcentaje = (indiceTotal / (historia.length + razones.length)) * 100;
+ cambiarFondo();
+ let r = razones[indiceRazon];
+  let textoBoton = "";
+  if(indiceRazon < 25){
+    textoBoton = "Sigue… 💕";
+  }
+  else if(indiceRazon < 50){
+    textoBoton = "Me estás enamorando 😌";
+  }
+  else if(indiceRazon < 75){
+    textoBoton = "No quiero que termine 💓";
+  }
+  else if(indiceRazon < 99){
+    textoBoton = "Estoy lista 🫀";
+  }
+  else{
+    textoBoton = "Ahora sí… ❤️";
+  }
+  contenido.innerHTML = `
+    <h2>${r.titulo}</h2>
+    <p>${r.texto}</p>
+    <button class="boton-amor" onclick="siguienteRazon()">
+      ${textoBoton}
+    </button>`;
+  if(r.titulo.includes("Razón 100")){
+    setTimeout(escribirNombre,300);
+  }
+}
+  //aqui acaba//
+  function actualizarProgreso(){
+let totalPantallas = historia.length + razones.length;
+  let porcentaje = (indiceTotal / totalPantallas) * 100;
+document.getElementById("progreso").style.width = porcentaje + "%";
 let mensaje = "";
 if(porcentaje < 5){
   mensaje = "Todo gran amor empieza con un pequeño paso 💌";
@@ -694,59 +719,6 @@ else if(porcentaje < 100){
 else{
   mensaje = "No fue una historia… fue mi corazón entero hablándote ♾️💘";
 }
-  document.getElementById("mensajeProgreso").innerText = mensaje;
-cambiarFondo();
- let r = razones[indiceRazon];
-let textoBoton = "";
- if(indiceRazon < 25){
-    textoBoton = "Sigue… 💕";
-  }
-  else if(indiceRazon < 50){
-    textoBoton = "Me estás enamorando 😌";
-  }
-  else if(indiceRazon < 75){
-    textoBoton = "No quiero que termine 💓";
-  }
-  else if(indiceRazon < 99){
-    textoBoton = "Estoy lista 🫀";
-  }
-  else{
-    textoBoton = "Ahora sí… ❤️";
-  }
-contenido.innerHTML=`
-  <h2>${r.titulo}</h2>
-  <p>${r.texto}</p>
-  <button class="boton-amor" onclick="siguienteRazon()">
-  ${textoBoton}
-  </button>`;
- if(razones[indiceRazon].titulo.includes("Razón 100")){
-  setTimeout(escribirNombre,300);
-}
-}
-  function actualizarProgreso(){
-let totalPantallas = historia.length + razones.length;
-  let porcentaje = (indiceTotal / totalPantallas) * 100;
-document.getElementById("progreso").style.width = porcentaje + "%";
-let mensaje = "";
-if(porcentaje < 10){
-    mensaje = "Todo gran amor empieza con un pequeño paso 💌";
-  }
-  else if(porcentaje < 30){
-    mensaje = "Nuestra historia se está escribiendo ✨";
-  }
-  else if(porcentaje < 50){
-    mensaje = "Ya estamos entrando en lo profundo 💕";
-  }
-  else if(porcentaje < 70){
-    mensaje = "Cada palabra aquí lleva tu nombre 🫀";
-  }
-  else if(porcentaje < 90){
-    mensaje = "Ya casi llegamos… pero mi amor no termina ❤️";
-  }
-  else{
-    mensaje = "No fue una página… fue mi corazón entero ♾️💘";
-  }
-
   document.getElementById("mensajeProgreso").innerText = mensaje;
 } 
 /* ===== DECISIÓN FINAL ===== */
