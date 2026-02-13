@@ -709,7 +709,6 @@ function actualizarProgreso(){
   let barra = document.getElementById("progreso");
   let texto = document.getElementById("mensajeProgreso");
 
-  // 🔒 Si no estamos en razones, no mostrar mensajes
   if(!enRazones){
     barra.style.width = "0%";
     texto.innerText = "";
@@ -718,7 +717,6 @@ function actualizarProgreso(){
 
   let totalRazones = razones.length;
   let porcentaje = Math.round((indiceRazon / totalRazones) * 100);
-
   barra.style.width = porcentaje + "%";
 
   texto.classList.remove("latido","brillo","final-amor");
@@ -726,54 +724,54 @@ function actualizarProgreso(){
 
   let mensaje = "";
 
- if(indiceRazon <= 5){
-  mensaje = "No fue casualidad… fue el destino acomodándonos 🌌";
-}
-else if(indiceRazon <= 15){
-  mensaje = "Lo que empezó con risas… ya estaba creciendo 💕";
-}
-else if(indiceRazon <= 30){
-  mensaje = "Aquí hablo de la mujer que eres 🫀";
-}
-else if(indiceRazon <= 45){
-  mensaje = "Este es un amor que se queda y lucha 🤝";
-}
-else if(indiceRazon <= 60){
-  mensaje = "Mi mundo aprendió a latir diferente 💞";
-}
-else if(indiceRazon <= 70){
-  mensaje = "Amarte me hizo mejor 🤍";
-}
-else if(indiceRazon <= 85){
-  mensaje = "Ya no sueño solo… sueño contigo ✨";
-}
-else if(indiceRazon <= 90){
-  mensaje = "Esto es una decisión para siempre ❤️‍🔥";
-}
-else if(indiceRazon <= 95){
-  mensaje = "Eres exactamente lo que necesitaba 🫀";
-}
-else if(indiceRazon == 96){
-  mensaje = "De todas las historias posibles… esta es la mía contigo 💫";
-}
-else if(indiceRazon == 97){
-  mensaje = "No busco perfección… busco verdad 🤍";
-}
-else if(indiceRazon == 98){
-  mensaje = "Quiero un amor que crezca con los años 🌱";
-  
-else if(indiceRazon == 99){
-  mensaje = "Respira… lo que viene es mi verdad más sincera 🤍";
-}
-else if(indiceRazon == 100){
-  mensaje = "No queda nada por explicar… solo amarte 💖";
-}
-else if(indiceRazon == 101){
-  mensaje = "Y si hiciera falta… empezaría otras 100 😘";
-}
-else{
-  mensaje = "Aquí no dejo palabras… dejo mi intención ❤️";
-}
+  if(indiceRazon <= 5){
+    mensaje = "No fue casualidad… fue el destino acomodándonos 🌌";
+  }
+  else if(indiceRazon <= 15){
+    mensaje = "Lo que empezó con risas… ya estaba creciendo 💕";
+  }
+  else if(indiceRazon <= 30){
+    mensaje = "Aquí hablo de la mujer que eres 🫀";
+  }
+  else if(indiceRazon <= 45){
+    mensaje = "Este es un amor que se queda y lucha 🤝";
+  }
+  else if(indiceRazon <= 60){
+    mensaje = "Mi mundo aprendió a latir diferente 💞";
+  }
+  else if(indiceRazon <= 70){
+    mensaje = "Amarte me hizo mejor 🤍";
+  }
+  else if(indiceRazon <= 85){
+    mensaje = "Ya no sueño solo… sueño contigo ✨";
+  }
+  else if(indiceRazon <= 90){
+    mensaje = "Esto es una decisión para siempre ❤️‍🔥";
+  }
+  else if(indiceRazon <= 95){
+    mensaje = "Eres exactamente lo que necesitaba 🫀";
+  }
+  else if(indiceRazon == 96){
+    mensaje = "De todas las historias posibles… esta es la mía contigo 💫";
+  }
+  else if(indiceRazon == 97){
+    mensaje = "No busco perfección… busco verdad 🤍";
+  }
+  else if(indiceRazon == 98){
+    mensaje = "Quiero un amor que crezca con los años 🌱";
+  }
+  else if(indiceRazon == 99){
+    mensaje = "Respira… lo que viene es mi verdad más sincera 🤍";
+  }
+  else if(indiceRazon == 100){
+    mensaje = "No queda nada por explicar… solo amarte 💖";
+  }
+  else if(indiceRazon == 101){
+    mensaje = "Y si hiciera falta… empezaría otras 100 😘";
+  }
+  else{
+    mensaje = "Aquí no dejo palabras… dejo mi intención ❤️";
+  }
 
   texto.innerText = mensaje;
 }
