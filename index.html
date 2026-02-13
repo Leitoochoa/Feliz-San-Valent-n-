@@ -156,11 +156,15 @@ img{
 
 <div class="contenedor">
 
+<div id="seccionProgreso" style="display:none;">
+
   <div class="barra-container">
     <div id="progreso" class="barra"></div>
   </div>
 
   <p id="mensajeProgreso" class="mensaje-progreso"></p>
+
+</div>
 
   <div id="contenido" class="card"></div>
 
@@ -653,10 +657,10 @@ function renderRazon(){
 contenido.innerHTML=`
   <h2>${r.titulo}</h2>
   <p>${r.texto}</p>
-  ${nombreSpan}
   <button class="boton-amor" onclick="siguienteRazon()">
   ${textoBoton}
   </button>`;
+
 
   if(razones[indiceRazon].titulo.includes("Razón 100")){
   setTimeout(escribirNombre,300);
