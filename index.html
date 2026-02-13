@@ -150,6 +150,35 @@ img{
     opacity:0;
   }
 }
+  /* 💓 Latido suave */
+.latido {
+  animation: latido 1s infinite;
+}
+
+@keyframes latido {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 💖 Final épico */
+.final-amor {
+  animation: finalGlow 2s infinite alternate;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+@keyframes finalGlow {
+  from { text-shadow: 0 0 10px #ff4da6; }
+  to { text-shadow: 0 0 30px #ff0080; }
+}
+
+/* 🌈 Barra final */
+.barra-final {
+  background: linear-gradient(90deg, #ff4da6, #ff0080, #ff4da6);
+  box-shadow: 0 0 20px #ff1493;
+}
+  
 </style>
 </head>
 <body>
@@ -616,7 +645,6 @@ function siguienteRazon(){
   }
   actualizarProgreso(); 
 }
-}
   
 function renderRazon(){
  cambiarFondo();
@@ -655,48 +683,38 @@ function actualizarProgreso(){
   let totalRazones = razones.length;
   let porcentaje = Math.round((indiceRazon / totalRazones) * 100);
 
-  document.getElementById("progreso").style.width = porcentaje + "%";
+  let barra = document.getElementById("progreso");
+  let texto = document.getElementById("mensajeProgreso");
+
+  barra.style.width = porcentaje + "%";
+
+  // 🔥 limpiar efectos anteriores
+  texto.classList.remove("latido","brillo","final-amor");
+  barra.classList.remove("barra-final");
 
   let mensaje = "";
 
-  if(porcentaje < 5){
-    mensaje = "Aquí empiezan mis razones… pero mi amor empezó antes 💌";
+  if(porcentaje < 70){
+    mensaje = "Cada razón es un pedacito de mi corazón 💕";
   }
-  else if(porcentaje < 15){
-    mensaje = "Cada razón es una parte de lo que siento 💕";
-  }
-  else if(porcentaje < 25){
-    mensaje = "No es una lista… es mi corazón hablando 🫀";
-  }
-  else if(porcentaje < 35){
-    mensaje = "Si sonríes leyendo esto… ya valió la pena ✨";
-  }
-  else if(porcentaje < 45){
-    mensaje = "Aún faltan muchas… pero todas llevan tu nombre 💞";
-  }
-  else if(porcentaje < 55){
-    mensaje = "Mitad del camino… y sigo sintiendo más 🥹";
-  }
-  else if(porcentaje < 65){
-    mensaje = "No sabía que amar podía sentirse así 💗";
-  }
-  else if(porcentaje < 75){
-    mensaje = "Si llegaste hasta aquí… ya sabes que esto es real 🫶";
-  }
-  else if(porcentaje < 85){
-    mensaje = "Ya casi… pero mi amor no tiene final ❤️";
-  }
-  else if(porcentaje < 95){
-    mensaje = "Respira… lo más profundo viene ahora 💎";
-  }
-  else if(porcentaje < 100){
-    mensaje = "Un paso más… y sabrás todo 💫";
-  }
-  else{
-    mensaje = "No eran 100 razones… eras tú siendo perfecta ♾️💘";
-  }
-
-  document.getElementById("mensajeProgreso").innerText = mensaje;
+ else if(porcentaje < 85){
+  mensaje = "Ya no estás leyendo razones… estás sintiendo lo que guardo por ti 💞";
+}
+else if(porcentaje < 90){
+  mensaje = "Si supieras cuántas veces imaginé un futuro contigo… no terminaría nunca 🫀";
+}
+else if(porcentaje < 95){
+  mensaje = "Aquí es donde dejo de escribir… y empiezo a hablarte desde el alma 💭❤️";
+  texto.classList.add("latido");
+}
+else if(porcentaje < 100){
+  mensaje = "Lo que viene no es una razón… es una promesa que nació en silencio ✨";
+  texto.classList.add("brillo");
+}
+else{
+  mensaje = "Después de todo… solo quiero que sepas que mi amor por ti no tiene punto final ♾️💘";
+  texto.classList.add("final-amor");
+  barra.classList.add("barra-final");
 }
 
 /* ===== otra cosa ===== */
