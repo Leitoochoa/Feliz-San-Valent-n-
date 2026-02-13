@@ -649,60 +649,53 @@ function renderRazon(){
 }
   //aqui acaba//
 function actualizarProgreso(){
-  let totalPantallas = historia.length + razones.length + 3; 
-  // +3 por intro razones, decisión y cierre final
+  let totalPantallas = historia.length + razones.length + 2;
   let porcentaje = Math.round((indiceTotal / totalPantallas) * 100);
   document.getElementById("progreso").style.width = porcentaje + "%";
   let mensaje = "";
-  /* ===== ETAPA HISTORIA ===== */
-  if(porcentaje <= 5){
-    mensaje = "Todo comenzó con una historia que no sabíamos que sería eterna… 💌";
+  /* ===== SI ESTAMOS EN HISTORIA ===== */
+  if(indiceTotal < historia.length){
+    let progresoHistoria = indiceTotal / historia.length;
+    if(progresoHistoria < 0.2){
+      mensaje = "Todo comenzó sin saber que sería eterno… 💌";
+    }
+    else if(progresoHistoria < 0.4){
+      mensaje = "Entre risas inocentes… algo empezó a latir diferente 💕";
+    }
+    else if(progresoHistoria < 0.6){
+      mensaje = "No fue casualidad… fue destino cruzándonos 🌌";
+    }
+    else if(progresoHistoria < 0.8){
+      mensaje = "Incluso en los días difíciles… elegimos quedarnos 🫀";
+    }
+    else{
+      mensaje = "Nuestra historia apenas comenzaba… y ya era única ✨";
+    }
   }
-  else if(porcentaje <= 10){
-    mensaje = "De desconocidos… a convertirnos en lugar seguro 💖";
+  /* ===== SI ESTAMOS EN RAZONES ===== */
+  else if(indiceTotal < historia.length + razones.length){
+
+    let progresoRazones = (indiceTotal - historia.length) / razones.length;
+
+    if(progresoRazones < 0.2){
+      mensaje = "Ahora no cuento historia… cuento lo que siento por ti 💖";
+    }
+    else if(progresoRazones < 0.4){
+      mensaje = "Cada razón confirma que eres mi lugar seguro 🥹";
+    }
+    else if(progresoRazones < 0.6){
+      mensaje = "No es una lista… es mi corazón hablándote 💞";
+    }
+    else if(progresoRazones < 0.8){
+      mensaje = "Si llegaste hasta aquí… ya sabes que es real 🤍";
+    }
+    else{
+      mensaje = "No cabes en 100 razones… pero igual intenté escribirlas ❤️";
+    }
   }
-  else if(porcentaje <= 15){
-    mensaje = "Septiembre no fue casualidad… fue destino 🌌";
-  }
-  else if(porcentaje <= 20){
-    mensaje = "Entre helados y risas… algo empezó a latir diferente 🍨🫀";
-  }
-  else if(porcentaje <= 25){
-    mensaje = "Incluso en los días amargos… elegimos quedarnos 😔❤️";
-  }
-  else if(porcentaje <= 30){
-    mensaje = "Estrenamos año abrazados… como si el universo lo hubiera planeado 🌅";
-  }
-  /* ===== INTRO RAZONES ===== */
-  else if(porcentaje <= 35){
-    mensaje = "Y entonces entendí… que amarte necesitaba más de una razón 💭";
-  }
-  /* ===== PRIMERAS RAZONES ===== */
-  else if(porcentaje <= 45){
-    mensaje = "No escribo razones… escribo lo que siento cuando pienso en ti 🥹";
-  }
-  else if(porcentaje <= 55){
-    mensaje = "A esta altura ya sabes… no eres un momento, eres mi vida 💞";
-  }
-  else if(porcentaje <= 65){
-    mensaje = "Lo nuestro no es perfecto… es real, y eso lo hace eterno 🔥";
-  }
-  else if(porcentaje <= 75){
-    mensaje = "Cada razón confirma que elegirte fue lo mejor que hice 🤍";
-  }
-  /* ===== FUTURO ===== */
-  else if(porcentaje <= 85){
-    mensaje = "Ya no hablo de presente… hablo de años contigo 💍";
-  }
-  else if(porcentaje <= 92){
-    mensaje = "No quiero intentarlo contigo… quiero construirlo todo 🏡";
-  }
-  /* ===== FINAL ===== */
-  else if(porcentaje < 100){
-    mensaje = "Respira… lo que viene ahora es mi promesa más sincera 🫀";
-  }
+  /* ===== DECISIÓN / FINAL ===== */
   else{
-    mensaje = "No fue una página… fue mi corazón entregándose sin miedo ♾️❤️";
+    mensaje = "Y después de todo esto… sigo eligiéndote cada día ♾️💘";
   }
   document.getElementById("mensajeProgreso").innerText = mensaje;
 }
