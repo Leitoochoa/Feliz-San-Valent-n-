@@ -6,6 +6,30 @@
 <title>Nuestra Historia 💖</title>
 
 <style>
+
+  #nombreMagico{
+  font-weight: bold;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+}
+
+.brillo{
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+  from{
+    text-shadow: 0 0 5px #fff,
+                 0 0 10px #ff4da6,
+                 0 0 20px #ff4da6;
+  }
+  to{
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #ff66cc,
+                 0 0 40px #ff66cc;
+  }
+}
+
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -404,7 +428,8 @@ texto:"Hay muchas cosas que amo de ti, pero si tuviera que resumirlo todo en una
 {
 titulo:"Razón 100 ❤️‍🔥",
 texto:`
-Porque eres tú… KATHERINE LISSETH NIETO ALVAREZ.
+
+Porque eres tú… <span id="nombreMagico"></span>
 
 No por lo que haces.
 No por cómo me miras.
@@ -440,31 +465,47 @@ Eres el amor que quiero para toda mi vida.
 `
 }, 
 {
-titulo:"Razón 101 ♾️",
+titulo:"La razón que lo explica todo 🫀",
 texto:`
-Porque esto no termina en una lista.
+No hay una lista que alcance
+ni palabras que midan lo que siento por ti.
 
-Ni en 101 razones.
-Ni en un 14 de febrero.
-Ni en una página web.
+Lo que siento no es emoción momentánea,
+no es ilusión,
+no es algo que apareció y podría irse.
 
-Si tuviera que seguir escribiendo razones,
-no me alcanzarían los números,
-ni los años,
-ni la vida entera.
+Es algo que se instaló en mí.
 
-Porque amarte no es una razón…
-es una decisión que quiero tomar todos los días.
+Es pensar en ti cuando planeo mi vida.
+Es preocuparme por tu bienestar como si fuera el mío.
+Es querer verte tranquila, feliz, segura.
+Es desear que nada te duela…
+y si duele, estar ahí.
 
-Y si algún día alguien me pregunta
-cuántas razones tengo para elegirte,
-solo voy a responder:
+Te amo de una forma que no hace ruido,
+pero es firme.
+De una forma que no presume,
+pero permanece.
+De una forma que no depende de días fáciles,
+porque incluso en los difíciles
+sigue intacta.
 
-Las mismas que tendría para seguir respirando.
+No te amo solo cuando todo está bien.
+Te amo en la calma,
+en la tensión,
+en el silencio,
+en cada etapa que venga.
 
-Siempre.
+Y si después de 100 razones,
+una historia entera,
+una página hecha con el corazón,
+y todo lo que hemos vivido…
 
-❤️
+esto no prueba cuánto te amo,
+
+entonces ya no sé qué más hacer…
+
+¿otras 100 razones? 😌❤️
 `
 },
 {
@@ -481,6 +522,26 @@ solo crece cada día más.
   
 ];
 /* ===== FUNCIONES ===== */
+
+ function escribirNombre(){
+  const nombre = "KATHERINE LISSETH NIETO ALVAREZ";
+  let i = 0;
+  const span = document.getElementById("nombreMagico");
+  
+  if(!span) return;
+
+  span.innerHTML = "";
+  
+  const intervalo = setInterval(()=>{
+    span.innerHTML += nombre[i];
+    i++;
+    if(i >= nombre.length){
+      clearInterval(intervalo);
+      span.classList.add("brillo");
+    }
+  },80);
+}
+ 
 function siguiente(){
 if(musica.paused) musica.play();
 indiceHistoria++;
@@ -502,6 +563,11 @@ if(indiceRazon<razones.length){
 }
 
 function renderRazon(){
+
+if(indiceRazon === 99){
+  setTimeout(escribirNombre,300);
+}
+
   
 document.getElementById("progreso").style.width =
 ((indiceRazon+1)/razones.length)*100 + "%";
@@ -520,7 +586,35 @@ contenido.innerHTML=`
 /* ===== DECISIÓN FINAL ===== */
 function mostrarDecision(){
 contenido.innerHTML=`
-<h2>¿Quieres seguir escribiendo esta historia conmigo? 💕</h2>
+<h2>Antes de preguntarte algo… 🫀</h2>
+
+<p>
+No quiero prometerte una vida perfecta.
+Quiero prometerte una vida real.
+
+Con días buenos,
+con días difíciles,
+con errores,
+con aprendizajes,
+con risas que duelan de tanto reír
+y abrazos que arreglen cualquier problema.
+
+No quiero alguien para un momento.
+Te quiero a ti,
+para todo lo que venga.
+</p>
+
+<h3>Y ahora sí…</h3>
+
+<p>
+Si yo sigo eligiéndote todos los días,
+sin rendirme,
+sin huir,
+sin soltar tu mano…
+
+¿te quedarías conmigo
+para construir algo que dure?
+</p>
 <button onclick="respuesta('Se queda ❤️')">Me quedo</button>
 <button onclick="respuesta('Se va 💔')">Me voy</button>`;
 }
@@ -534,8 +628,26 @@ if(typeof guardarRespuesta === "function"){
 
 if(valor==="Se queda ❤️"){
 contenido.innerHTML=`
-<h2>Sabía que dirías que sí 💖</h2>
-<p>Prometo seguir construyendo contigo una historia que ni el tiempo pueda borrar.</p>`;
+¿Te quedas conmigo?
+
+Entonces quédate…
+quédate en mis días buenos,
+pero sobre todo en los que necesiten más amor.
+
+Quédate en mis planes,
+en mis metas,
+en mis sueños.
+
+Quédate en mi futuro.
+
+Gracias por elegirme,
+porque yo te elegí desde hace mucho,
+y lo volvería a hacer mil veces más.
+
+Y si algún día dudas,
+prometo abrazarte hasta que recuerdes
+que aquí es tu lugar.
+❤️`
 }else{
 contenido.innerHTML=`
 <h2>Siempre te voy a amar 💔</h2>
@@ -556,49 +668,29 @@ setTimeout(()=>heart.remove(),7000);
 setInterval(crearCorazon,800); // velocidad controlada
 contenido.innerHTML=historia[0];
 
-  function cambiarFondo(){
+function cambiarFondo(){
 
-  // 🌅 Destino y comienzo (1–15)
-  if(indiceRazon <= 14){
-    document.body.style.background =
-    "linear-gradient(135deg,#ff9a9e,#fad0c4)";
-  }
-
-  // 💕 Su forma de ser (16–30)
-  else if(indiceRazon <= 29){
-    document.body.style.background =
-    "linear-gradient(135deg,#fbc2eb,#a6c1ee)";
-  }
-
-  // 🔥 Cómo ama (31–45)
-  else if(indiceRazon <= 44){
-    document.body.style.background =
-    "linear-gradient(135deg,#ff758c,#ff7eb3)";
-  }
-
-  // 💓 Lo que provoca en ti (46–60)
-  else if(indiceRazon <= 59){
-    document.body.style.background =
-    "linear-gradient(135deg,#a18cd1,#fbc2eb)";
-  }
-
-  // 🌱 Lo que aprendiste (61–75)
-  else if(indiceRazon <= 74){
-    document.body.style.background =
-    "linear-gradient(135deg,#84fab0,#8fd3f4)";
-  }
-
-  // 💍 Futuro juntos (76–90)
-  else if(indiceRazon <= 89){
-    document.body.style.background =
-    "linear-gradient(135deg,#f6d365,#fda085)";
-  }
-
-  // ♾️ Amor eterno (91–final)
-  else{
-    document.body.style.background =
-    "linear-gradient(135deg,#2b5876,#4e4376)";
-  }
+  if(indiceRazon<=25)
+    document.body.style.background="linear-gradient(135deg,#ff9a9e,#fad0c4)";
+  
+  else if(indiceRazon<=50)
+    document.body.style.background="linear-gradient(135deg,#a18cd1,#fbc2eb)";
+  
+  else if(indiceRazon<=75)
+    document.body.style.background="linear-gradient(135deg,#ff758c,#ff7eb3)";
+  
+  else if(indiceRazon<=98)
+    document.body.style.background="linear-gradient(135deg,#f6d365,#fda085)";
+  
+  else if(indiceRazon===99) // Razón 100
+    document.body.style.background="linear-gradient(135deg,#fbc2eb,#a6c1ee)";
+  
+  else if(indiceRazon===100) // Razón 101
+    document.body.style.background="linear-gradient(135deg,#141e30,#243b55)";
+  
+  else // Promesa
+    document.body.style.background="linear-gradient(135deg,#ff758c,#ff7eb3)";
+}
 }
 
 </script>
