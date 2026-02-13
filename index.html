@@ -648,57 +648,16 @@ function renderRazon(){
   }
 }
   //aqui acaba//
-function actualizarProgreso(){
-
-  let totalPantallas = historia.length + razones.length + 2;
-  let porcentaje = Math.round((indiceTotal / totalPantallas) * 100);
-  document.getElementById("progreso").style.width = porcentaje + "%";
-
-  let mensaje = "";
-
-  /* ===== HISTORIA ===== */
-  if(indiceTotal < historia.length){
-
-    let progresoHistoria = indiceTotal / historia.length;
-
-    if(progresoHistoria < 0.15){
-      mensaje = "Todo empezó sin que supiéramos lo importante que sería 💌";
-    }
-    else if(progresoHistoria < 0.30){
-      mensaje = "De simples conversaciones… a sentir algo diferente ✨";
-    }
-    else if(progresoHistoria < 0.45){
-      mensaje = "Entre risas pequeñas… nació algo grande 💕";
-    }
-    else if(progresoHistoria < 0.60){
-      mensaje = "No fue coincidencia… fue destino encontrándonos 🌙";
-    }
-    else if(progresoHistoria < 0.75){
-      mensaje = "Incluso en los días difíciles… elegimos quedarnos 🫀";
-    }
-    else if(progresoHistoria < 0.90){
-      mensaje = "Nuestra historia no fue perfecta… fue real 🤍";
-    }
-    else{
-      mensaje = "Y aquí entendí… que lo nuestro apenas comenzaba 🌹";
-    }
-
-  }
-
+  
   /* ===== RAZONES ===== */
 function actualizarProgreso(){
-
   let totalPantallas = historia.length + razones.length + 2;
   let porcentaje = Math.round((indiceTotal / totalPantallas) * 100);
   document.getElementById("progreso").style.width = porcentaje + "%";
-
   let mensaje = "";
-
   /* ===== HISTORIA ===== */
   if(indiceTotal < historia.length){
-
     let progresoHistoria = indiceTotal / historia.length;
-
     if(progresoHistoria < 0.15){
       mensaje = "Todo empezó sin que supiéramos lo importante que sería 💌";
     }
@@ -720,15 +679,11 @@ function actualizarProgreso(){
     else{
       mensaje = "Y aquí entendí… que lo nuestro apenas comenzaba 🌹";
     }
-
   }
-
   /* ===== RAZONES ===== */
   else if(indiceTotal < historia.length + razones.length){
-
     let progresoRazones = (indiceTotal - historia.length) / razones.length;
     let razonesRestantes = razones.length - (indiceTotal - historia.length);
-
     if(progresoRazones < 0.10){
       mensaje = "Ahora no cuento momentos… cuento lo que siento por ti 💖";
     }
@@ -771,9 +726,7 @@ function actualizarProgreso(){
     else if(razonesRestantes === 1){
       mensaje = "Después de 100 razones… sigo eligiéndote 💘";
     }
-
   }
-
   /* ===== DECISIÓN FINAL ===== */
   else{
     mensaje = "Y después de todo esto… sigo eligiéndote cada día ♾️💘";
@@ -782,7 +735,7 @@ function actualizarProgreso(){
   document.getElementById("mensajeProgreso").innerText = mensaje;
 }
 
-/* ===== DECISIÓN FINAL ===== */
+/* ===== otra cosa ===== */
 function mostrarDecision(){
 contenido.innerHTML=`
 <h2>Antes de preguntarte algo… 🫀</h2>
