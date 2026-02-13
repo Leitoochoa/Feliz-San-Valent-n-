@@ -156,10 +156,12 @@ img{
 
 <div class="contenedor">
 
-<div id="seccionProgreso" style="display:none;">
-
+<div id="seccionProgreso">
+  
   <div class="barra-container">
+    
     <div id="progreso" class="barra"></div>
+  
   </div>
 
   <p id="mensajeProgreso" class="mensaje-progreso"></p>
@@ -169,7 +171,7 @@ img{
   <div id="contenido" class="card"></div>
 
 </div>
-
+  
 <audio id="musica" src="Morat, Juanes-Besos en Guerra.mp3" loop></audio>
 
 <!-- 🔥 FIREBASE -->
@@ -207,6 +209,7 @@ musica.volume=0.1; // 🔊 regula volumen aquí (0 a 1)
 
 let indiceHistoria=0;
 let indiceRazon=0;
+let indiceTotal = 0;
 
 /* ===== HISTORIA ===== */
 const historia = [
@@ -589,57 +592,110 @@ solo crece cada día más.
 }
  
 function siguiente(){
-if(musica.paused) musica.play();
-indiceHistoria++;
-contenido.innerHTML=historia[indiceHistoria];
+  if(musica.paused) musica.play();
+
+  indiceHistoria++;
+  indiceTotal++;
+
+  contenido.innerHTML = historia[indiceHistoria];
+
+  actualizarProgreso(); // 👈 AGREGAR ESTA LÍNEA
 }
 
 function mostrarRazones(){
-indiceRazon=0;
-renderRazon();
+  indiceRazon = 0;
+
+  // Reinicia visualmente la barra
+  document.getElementById("progreso").style.width = "0%";
+  document.getElementById("mensajeProgreso").innerText = "Prepárate… 💕";
+
+  renderRazon();
 }
 
 function siguienteRazon(){
-indiceRazon++;
-if(indiceRazon<razones.length){
-  renderRazon();
-}else{
-  mostrarDecision();
-}
+
+  indiceRazon++;
+  indiceTotal++; // 👈 SUMAMOS AL TOTAL
+
+  if(indiceRazon < razones.length){
+    renderRazon();
+  }else{
+    mostrarDecision();
+  }
+
+  actualizarProgreso(); // 👈 ACTUALIZAMOS BARRA
 }
 
 function renderRazon(){
-
-  let porcentaje = ((indiceRazon+1)/razones.length)*100;
-  document.getElementById("progreso").style.width = porcentaje + "%";
-
-  let mensaje = "";
-
-  if(porcentaje < 25){
-    mensaje = "Apenas comenzamos… 💕";
-  }
-  else if(porcentaje < 50){
-    mensaje = "Ya casi vamos a la mitad 😌";
-  }
-  else if(porcentaje < 75){
-    mensaje = "Más de la mitad… esto se pone serio 🫀";
-  }
-  else if(porcentaje < 99){
-    mensaje = "Prepárate… lo mejor está por venir ❤️";
-  }
-  else{
-    mensaje = "Llegaste a la razón más importante ✨";
-  }
-
+let mensaje = "";
+if(porcentaje < 5){
+  mensaje = "Todo gran amor empieza con un pequeño paso 💌";
+}
+else if(porcentaje < 10){
+  mensaje = "Apenas estamos comenzando esta historia ✨";
+}
+else if(porcentaje < 15){
+  mensaje = "Cada palabra nos acerca más 💕";
+}
+else if(porcentaje < 20){
+  mensaje = "Tal vez aún no lo notes… pero esto es especial 😌";
+}
+else if(porcentaje < 25){
+  mensaje = "Ya no es solo una página… es un sentimiento 💖";
+}
+else if(porcentaje < 30){
+  mensaje = "Ahora sí… empiezan las razones 🫀";
+}
+else if(porcentaje < 35){
+  mensaje = "Entraste a mi corazón… y no hay salida 💘";
+}
+else if(porcentaje < 40){
+  mensaje = "Si sonríes, ya gané ✨";
+}
+else if(porcentaje < 45){
+  mensaje = "No es una lista… es lo que siento por ti 💞";
+}
+else if(porcentaje < 50){
+  mensaje = "Mitad del camino… pero lo que siento es completo ❤️";
+}
+else if(porcentaje < 55){
+  mensaje = "Cada razón tiene tu nombre escondido 🥹";
+}
+else if(porcentaje < 60){
+  mensaje = "Sigue leyendo… mi corazón sigue hablando 💌";
+}
+else if(porcentaje < 65){
+  mensaje = "Si llegaste hasta aquí… ya sabes que esto es real 🫶";
+}
+else if(porcentaje < 70){
+  mensaje = "Lo que siento no cabe en 100 razones 💕";
+}
+else if(porcentaje < 75){
+  mensaje = "Y todavía falta lo más importante ✨";
+}
+else if(porcentaje < 80){
+  mensaje = "Ya casi llegamos… ¿lo sientes? 🫀";
+}
+else if(porcentaje < 85){
+  mensaje = "Mi corazón está hablando sin miedo 💎";
+}
+else if(porcentaje < 90){
+  mensaje = "Respira… lo mejor está por llegar ❤️";
+}
+else if(porcentaje < 95){
+  mensaje = "Aquí no hay exageración… solo verdad 💗";
+}
+else if(porcentaje < 100){
+  mensaje = "Un paso más… y sabrás todo 💫";
+}
+else{
+  mensaje = "No fue una historia… fue mi corazón entero hablándote ♾️💘";
+}
   document.getElementById("mensajeProgreso").innerText = mensaje;
-
-  cambiarFondo();
-
-  let r = razones[indiceRazon];
-
-  let textoBoton = "";
-
-  if(indiceRazon < 25){
+cambiarFondo();
+ let r = razones[indiceRazon];
+let textoBoton = "";
+ if(indiceRazon < 25){
     textoBoton = "Sigue… 💕";
   }
   else if(indiceRazon < 50){
@@ -660,12 +716,35 @@ contenido.innerHTML=`
   <button class="boton-amor" onclick="siguienteRazon()">
   ${textoBoton}
   </button>`;
-
-
-  if(razones[indiceRazon].titulo.includes("Razón 100")){
+ if(razones[indiceRazon].titulo.includes("Razón 100")){
   setTimeout(escribirNombre,300);
 }
-  
+ function actualizarProgreso(){
+let totalPantallas = historia.length + razones.length;
+  let porcentaje = (indiceTotal / totalPantallas) * 100;
+document.getElementById("progreso").style.width = porcentaje + "%";
+let mensaje = "";
+if(porcentaje < 10){
+    mensaje = "Todo gran amor empieza con un pequeño paso 💌";
+  }
+  else if(porcentaje < 30){
+    mensaje = "Nuestra historia se está escribiendo ✨";
+  }
+  else if(porcentaje < 50){
+    mensaje = "Ya estamos entrando en lo profundo 💕";
+  }
+  else if(porcentaje < 70){
+    mensaje = "Cada palabra aquí lleva tu nombre 🫀";
+  }
+  else if(porcentaje < 90){
+    mensaje = "Ya casi llegamos… pero mi amor no termina ❤️";
+  }
+  else{
+    mensaje = "No fue una página… fue mi corazón entero ♾️💘";
+  }
+
+  document.getElementById("mensajeProgreso").innerText = mensaje;
+}
 }
 /* ===== DECISIÓN FINAL ===== */
 function mostrarDecision(){
@@ -751,6 +830,7 @@ setTimeout(()=>heart.remove(),7000);
 }
 setInterval(crearCorazon,800); // velocidad controlada
 contenido.innerHTML=historia[0];
+actualizarProgreso();
 
 function cambiarFondo(){
 
